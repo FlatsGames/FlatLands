@@ -50,44 +50,8 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Data
-    Ordinal: 3
-    Priority: 0
-    IconType: 2140
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/Editor Default Resources
-    Ordinal: 4
-    Priority: 0
-    IconType: 2140
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: Extensions
-    Ordinal: 5
-    Priority: 0
-    IconType: 2040
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
     Key: Fonts
-    Ordinal: 6
+    Ordinal: 3
     Priority: 0
     IconType: 2060
     SmallIcon: {fileID: 0}
@@ -99,7 +63,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Icons
-    Ordinal: 7
+    Ordinal: 4
     Priority: 0
     IconType: 2190
     SmallIcon: {fileID: 0}
@@ -111,7 +75,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Materials
-    Ordinal: 8
+    Ordinal: 5
     Priority: 0
     IconType: 2070
     SmallIcon: {fileID: 0}
@@ -123,7 +87,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Meshes
-    Ordinal: 9
+    Ordinal: 6
     Priority: 0
     IconType: 2080
     SmallIcon: {fileID: 0}
@@ -135,7 +99,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Plugins
-    Ordinal: 10
+    Ordinal: 7
     Priority: 0
     IconType: 2100
     SmallIcon: {fileID: 0}
@@ -146,20 +110,8 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Prefabs
-    Ordinal: 11
-    Priority: 0
-    IconType: 2110
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
     Key: Project
-    Ordinal: 12
+    Ordinal: 8
     Priority: 0
     IconType: 2120
     SmallIcon: {fileID: 0}
@@ -171,7 +123,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: RainbowFolders
-    Ordinal: 13
+    Ordinal: 9
     Priority: 0
     IconType: 2130
     SmallIcon: {fileID: 0}
@@ -183,7 +135,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Resources
-    Ordinal: 14
+    Ordinal: 10
     Priority: 0
     IconType: 2140
     SmallIcon: {fileID: 0}
@@ -194,32 +146,8 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Scenes
-    Ordinal: 15
-    Priority: 0
-    IconType: 2150
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: Scripts
-    Ordinal: 16
-    Priority: 0
-    IconType: 2160
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
     Key: Shaders
-    Ordinal: 17
+    Ordinal: 11
     Priority: 0
     IconType: 2170
     SmallIcon: {fileID: 0}
@@ -231,7 +159,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Terrains
-    Ordinal: 18
+    Ordinal: 12
     Priority: 0
     IconType: 2180
     SmallIcon: {fileID: 0}
@@ -243,7 +171,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Textures
-    Ordinal: 19
+    Ordinal: 13
     Priority: 0
     IconType: 2190
     SmallIcon: {fileID: 0}
@@ -255,7 +183,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Physics
-    Ordinal: 20
+    Ordinal: 14
     Priority: 0
     IconType: 2090
     SmallIcon: {fileID: 0}
@@ -267,7 +195,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Flares
-    Ordinal: 21
+    Ordinal: 15
     Priority: 0
     IconType: 2050
     SmallIcon: {fileID: 0}
@@ -278,32 +206,8 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Android
-    Ordinal: 22
-    Priority: 0
-    IconType: 3000
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: iOS
-    Ordinal: 23
-    Priority: 0
-    IconType: 3010
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
     Key: Windows
-    Ordinal: 24
+    Ordinal: 16
     Priority: 0
     IconType: 3040
     SmallIcon: {fileID: 0}
@@ -314,34 +218,22 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Mac
-    Ordinal: 25
+    Key: Code
+    Ordinal: 17
     Priority: 0
-    IconType: 3020
+    IconType: 2160
     SmallIcon: {fileID: 0}
     LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
+    IsIconRecursive: 1
+    BackgroundType: 130
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: WebGL
-    Ordinal: 26
+    Key: Animations
+    Ordinal: 18
     Priority: 0
-    IconType: 3030
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 0
-    BackgroundType: 0
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/GeekyHouse
-    Ordinal: 27
-    Priority: 0
-    IconType: 20
+    IconType: 2010
     SmallIcon: {fileID: 0}
     LargeIcon: {fileID: 0}
     IsIconRecursive: 1
@@ -350,68 +242,8 @@ MonoBehaviour:
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
-    Key: Artsets
-    Ordinal: 28
-    Priority: 0
-    IconType: 100
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 100
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 1
-    IsHidden: 0
-  - Type: 0
-    Key: Code
-    Ordinal: 29
-    Priority: 0
-    IconType: 2160
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 210
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: 2D
-    Ordinal: 30
-    Priority: 0
-    IconType: 2190
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 210
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: 3D
-    Ordinal: 31
-    Priority: 0
-    IconType: 2080
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 210
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: Animations
-    Ordinal: 32
-    Priority: 0
-    IconType: 2010
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 210
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
     Key: Animators
-    Ordinal: 33
+    Ordinal: 19
     Priority: 0
     IconType: 2010
     SmallIcon: {fileID: 0}
@@ -423,7 +255,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Audio
-    Ordinal: 34
+    Ordinal: 20
     Priority: 0
     IconType: 2020
     SmallIcon: {fileID: 0}
@@ -435,7 +267,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Materials
-    Ordinal: 35
+    Ordinal: 21
     Priority: 0
     IconType: 2070
     SmallIcon: {fileID: 0}
@@ -447,7 +279,7 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Prefabs
-    Ordinal: 36
+    Ordinal: 22
     Priority: 0
     IconType: 2110
     SmallIcon: {fileID: 0}
@@ -459,91 +291,31 @@ MonoBehaviour:
     IsHidden: 0
   - Type: 0
     Key: Resources
-    Ordinal: 37
+    Ordinal: 23
     Priority: 0
-    IconType: 2140
+    IconType: 160
     SmallIcon: {fileID: 0}
     LargeIcon: {fileID: 0}
     IsIconRecursive: 1
-    BackgroundType: 210
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 0
-    IsHidden: 0
-  - Type: 0
-    Key: Resources_moved
-    Ordinal: 38
-    Priority: 0
-    IconType: 2140
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 210
+    BackgroundType: 150
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 0
     Key: Scenes
-    Ordinal: 39
+    Ordinal: 24
     Priority: 0
     IconType: 2150
     SmallIcon: {fileID: 0}
     LargeIcon: {fileID: 0}
     IsIconRecursive: 1
-    BackgroundType: 210
+    BackgroundType: 50
     BackgroundTexture: {fileID: 0}
     IsBackgroundRecursive: 0
     IsHidden: 0
   - Type: 1
-    Key: Assets/GeekyHouse/_ExperimentalAssets
-    Ordinal: 40
-    Priority: 0
-    IconType: 50
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 200
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 1
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/GeekyHouse/_FXExperiments
-    Ordinal: 41
-    Priority: 0
-    IconType: 50
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 200
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 1
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/GeekyHouse/_ReadyAssets
-    Ordinal: 42
-    Priority: 0
-    IconType: 50
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 200
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 1
-    IsHidden: 0
-  - Type: 1
-    Key: Assets/GeekyHouse/_TestAssets
-    Ordinal: 43
-    Priority: 0
-    IconType: 50
-    SmallIcon: {fileID: 0}
-    LargeIcon: {fileID: 0}
-    IsIconRecursive: 1
-    BackgroundType: 200
-    BackgroundTexture: {fileID: 0}
-    IsBackgroundRecursive: 1
-    IsHidden: 0
-  - Type: 1
     Key: Assets/GeekyHouse/Game/Locations
-    Ordinal: 44
+    Ordinal: 25
     Priority: 0
     IconType: 140
     SmallIcon: {fileID: 0}
