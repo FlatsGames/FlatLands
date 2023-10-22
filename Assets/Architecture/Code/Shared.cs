@@ -2,14 +2,10 @@ namespace FlatLands.Architecture
 {
     public abstract class SharedObject : IShared
     {
-        [Inject] public Container container;
+        [Inject] protected Container _container;
 
-        public virtual void Init()
-        {
-        }
+        public virtual void Init() { }
 
-        public virtual void Dispose()
-        {
-        }
+        public virtual void Dispose() { }
     }
 }

@@ -4,7 +4,7 @@
     {
         private static Container MainContainer;
         
-        static internal void SetContainer(Container container)
+        public static void SetContainer(Container container)
         {
             MainContainer = container;
         }
