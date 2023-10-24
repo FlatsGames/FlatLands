@@ -6,7 +6,7 @@ namespace FlatLands.Architecture
 
         void IShared.SetContainer(Container container)
         {
-            throw new System.NotImplementedException();
+            _container = container;
         }
         
         public virtual void PreInit() { }
