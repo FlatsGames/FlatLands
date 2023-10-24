@@ -6,7 +6,7 @@ namespace FlatLands.Architecture
 {
     public abstract class InjectedSerializedMonoBehaviour : SerializedMonoBehaviour
     {
-        [Inject] protected Container _container;
+        [Inject] protected Container _container { get; private set; }
         
         public bool Inited { get; private set; }
         

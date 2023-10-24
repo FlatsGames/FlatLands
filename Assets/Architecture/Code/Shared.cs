@@ -2,7 +2,14 @@ namespace FlatLands.Architecture
 {
     public abstract class SharedObject : IShared
     {
-        [Inject] protected Container _container;
+        protected Container _container { get; private set; }
+
+        void IShared.SetContainer(Container container)
+        {
+            throw new System.NotImplementedException();
+        }
+        
+        public virtual void PreInit() { }
 
         public virtual void Init() { }
 

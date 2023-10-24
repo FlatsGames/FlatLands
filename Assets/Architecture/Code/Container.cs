@@ -93,7 +93,8 @@ namespace FlatLands.Architecture
 			foreach (var pair in _shareds)
 			{
 				IShared sharedObject = pair.Value;
-
+				sharedObject.SetContainer(this);
+				
 				Type type = pair.Key;
 				var fields = type.GetAllFields(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 				foreach (var field in fields)
