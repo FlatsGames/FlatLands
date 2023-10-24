@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using FlatLands.Architecture;
 using FlatLands.UI;
+using UnityEngine;
 
 namespace FlatLands.Locations
 {
@@ -44,7 +45,13 @@ namespace FlatLands.Locations
         {
             return _config.StartLocation.SceneName;
         }
-        
+
+        public void InvokeSceneLoaded()
+        {
+            var hierarchy = GameObject.FindObjectOfType<LocationHierarchy>();
+            CurLocation = (_config.StartLocation.SceneName, hierarchy);
+        }
+
 #endregion
 
     }

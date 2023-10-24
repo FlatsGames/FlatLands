@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Loading
+    uniqueID: 770905997
+    locked: 0
+  - name: MainUI
+    uniqueID: 2605406337
+    locked: 0
+  - name: HudUI
+    uniqueID: 2618413041
+    locked: 0

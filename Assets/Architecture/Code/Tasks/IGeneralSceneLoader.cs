@@ -5,6 +5,7 @@ namespace FlatLands.Architecture
         public bool NeedLoad { get; }
         public int LoadingSceneOrder { get; }
         public string GetLoadingSceneName();
+        public void InvokeSceneLoaded();
     }
 }
 

@@ -707,8 +707,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 770905997
+  m_SortingOrder: 10000
   m_TargetDisplay: 0
 --- !u!114 &7353164906139044223
 MonoBehaviour:
@@ -819,7 +819,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2966378490295471960}
   - component: {fileID: 8947179184293269547}
-  - component: {fileID: 2399262487598071547}
   - component: {fileID: 7103225173621357912}
   m_Layer: 6
   m_Name: LoadingCamera
@@ -894,14 +893,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2399262487598071547
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6283532077838592431}
-  m_Enabled: 1
 --- !u!114 &7103225173621357912
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -917,7 +908,7 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:

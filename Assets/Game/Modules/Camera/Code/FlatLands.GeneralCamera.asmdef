@@ -1,13 +1,10 @@
 {
-    "name": "FlatLands.Main",
+    "name": "FlatLands.GeneralCamera",
     "rootNamespace": "",
     "references": [
         "GUID:268109eae726949449e432e7b577b8c6",
         "GUID:88368031873508145bdc6d523ec40911",
-        "GUID:b4173b0df081df143aaedd431e3ba2d8",
-        "GUID:41dee8c3596a8e24cb64bce4f21998d0",
-        "GUID:0b255570168b02443b2dddb7be71798d",
-        "GUID:efa35b636d20f6b4c9c5fb8274b1388e"
+        "GUID:15fc0a57446b3144c949da3e2b9737a9"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
