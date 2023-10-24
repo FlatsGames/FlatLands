@@ -2,7 +2,7 @@
 
 namespace FlatLands.UI
 {
-    public sealed class MainMenuManager : SharedObject, ISceneLoader
+    public sealed class MainMenuManager : SharedObject, IGeneralSceneLoader
     {
        
         

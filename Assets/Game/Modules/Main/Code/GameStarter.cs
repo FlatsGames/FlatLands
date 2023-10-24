@@ -1,6 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.Locations;
+using FlatLands.Loader;
 using FlatLands.UI;
 using UnityEngine;
 
@@ -18,33 +21,74 @@ namespace FlatLands.Main
             _container = new Container(Main_Container_Name);
             GlobalContainer.SetContainer(_container);
 
+            _container.Add<LoaderManager>();
             _container.Add<UIManager>();
             _container.Add<LocationsManager>();
             _container.Add<MainMenuManager>();
             
             _container.ApplyDependencies();
-            LoadingScenes();
+            StartCoroutine(StartLoading());
         }
 
-        private async void LoadingScenes()
+        private IEnumerator StartLoading()
         {
-            var scenes = _container.GetAll<ISceneLoader>()
-                .OrderBy(loader => loader.LoadingSceneOrder);
+            var loaderManager = _container.Get<LoaderManager>();
+            loaderManager.ShowLoadingScreen();
+            
+            var SharedObjects = _container.SharedObjects.Distinct().ToList();
+            var Loadable      = _container.GetAll<IGeneralSceneLoader>().Distinct().ToList();
 
-            foreach (var scene in scenes)
+            var aggreagator = new ProgressAggregator();
+            aggreagator.Reset();
+            aggreagator.AddJobs(3);
+            aggreagator.AddJobs(SharedObjects.Count);
+            aggreagator.AddJobs(Loadable.Count);
+            
+            aggreagator.OnUpdate += value => loaderManager.UpdateLoadingScreenProgress(value, aggreagator.JobsCount);
+
+            yield return null;
+
+            aggreagator.Next();
+            yield return null;
+
+            aggreagator.Next();
+            yield return null;
+
+            foreach (var shared in SharedObjects)
             {
-                var sceneName = scene.GetLoadingSceneName();
-                var task = new LoadingSceneTask(sceneName);
-                
-                task.OnCompleted += LoadingSceneCompleted;
-                task.Start(scene.LoadingSceneOrder);
+                aggreagator.Next();
+                yield return null;
             }
 
-            void LoadingSceneCompleted(LoadingSceneTask loadingScene)
+            foreach (var loadable in Loadable)
             {
-                loadingScene.OnCompleted -= LoadingSceneCompleted;
-                Debug.Log($"Scene Loaded: {loadingScene.SceneName}");
+                var task = loaderManager.LoadSceneAsync(loadable.GetLoadingSceneName(), false);
+                task.Start(true);
+                while (!task.IsDone)
+                {
+                    aggreagator.SetSubProgress(task.Progress);
+                    yield return null;
+                }
+
+                aggreagator.Next();
+                yield return null;
             }
+
+            yield return null;
+
+            aggreagator.Next();
+            
+            
+            yield return new WaitForSeconds(3);
+
+            HandleLoadingComplete();
+        }
+
+        private void HandleLoadingComplete()
+        {
+            var loaderManager = _container.Get<LoaderManager>();
+            loaderManager.HideLoadingScreen();
+            Debug.Log("[Loading] COMPLETED!");
         }
     }
 }

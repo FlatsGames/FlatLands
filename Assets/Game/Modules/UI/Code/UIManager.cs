@@ -2,7 +2,7 @@ using FlatLands.Architecture;
 
 namespace FlatLands.UI
 {
-    public sealed class UIManager : SharedObject, ISceneLoader
+    public sealed class UIManager : SharedObject, IGeneralSceneLoader
     {
         public override void Init()
         {

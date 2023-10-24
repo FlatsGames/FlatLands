@@ -1,0 +1,19 @@
+{
+    "name": "enesLoader.Loader",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f",
+        "GUID:a5b846eaeed020f47bbcaaf629b69f3d",
+        "GUID:0ff1f978374f6304c89e077b27249d4f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

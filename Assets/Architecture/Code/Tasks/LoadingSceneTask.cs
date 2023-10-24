@@ -36,14 +36,15 @@ namespace FlatLands.Architecture
 			_isLoading     = isLoading;
 		}
 
-		public async void Start(int priority = 0)
+		public void Start(bool allowSceneActivation = false, int priority = 0)
 		{
 			 _loadingOperation = _isLoading ?
 				SceneManager.LoadSceneAsync(SceneName, LoadSceneMode.Additive) :
 				SceneManager.UnloadSceneAsync(SceneName);
 
 			 _loadingOperation.priority = priority;
-			
+			 _loadingOperation.allowSceneActivation = allowSceneActivation;
+			 
 			_loadingOperation.completed += HandleComplete;
 		}
 

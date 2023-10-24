@@ -10,6 +10,6 @@ namespace FlatLands.Architecture
 
 		event Action<T> OnCompleted;
 
-		void Start(int priority);
+		void Start(bool allowSceneActivation, int priority);
 	}
 }
