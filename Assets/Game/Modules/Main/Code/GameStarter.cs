@@ -26,7 +26,7 @@ namespace FlatLands.Main
             _container.Add<LocationsManager>();
             _container.Add<MainMenuManager>();
             
-            _container.ApplyDependencies();
+            _container.ApplyDependencies(preInit:true);
             StartCoroutine(StartLoading());
         }
 
@@ -62,12 +62,15 @@ namespace FlatLands.Main
 
             foreach (var loadable in Loadable)
             {
-                var task = loaderManager.LoadSceneAsync(loadable.GetLoadingSceneName(), false);
-                task.Start(true);
-                while (!task.IsDone)
+                if(loadable.NeedLoad)
                 {
-                    aggreagator.SetSubProgress(task.Progress);
-                    yield return null;
+                    var task = loaderManager.LoadSceneAsync(loadable.GetLoadingSceneName(), false);
+                    task.Start(true);
+                    while (!task.IsDone)
+                    {
+                        aggreagator.SetSubProgress(task.Progress);
+                        yield return null;
+                    }
                 }
 
                 aggreagator.Next();

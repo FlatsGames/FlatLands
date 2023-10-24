@@ -1,4 +1,4 @@
-﻿using Sirenix.OdinInspector;
+﻿using FlatLands.Architecture;
 using UnityEngine;
 
 namespace FlatLands.Locations
@@ -6,7 +6,7 @@ namespace FlatLands.Locations
     [CreateAssetMenu(
         menuName = "FlatLands/Locations/new Location Config", 
         fileName = nameof(LocationConfig))]
-    public sealed class LocationConfig : SerializedScriptableObject
+    public sealed class LocationConfig : MultitonScriptableObjectsByName<LocationConfig>
     {
         public string SceneName => name;
     }

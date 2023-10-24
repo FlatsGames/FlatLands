@@ -8,8 +8,9 @@ namespace FlatLands.UI
         
 #region ISceneLoader
 
+        public bool NeedLoad => true;
         public int LoadingSceneOrder => 10;
-        public string GetLoadingSceneName() => "MainMenu";
+        public string GetLoadingSceneName() => "Menu";
         
 #endregion
     }

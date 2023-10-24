@@ -86,7 +86,7 @@ namespace FlatLands.Architecture
 			return objects;
 		}
 
-		public void ApplyDependencies(bool init = false)
+		public void ApplyDependencies(bool preInit = true, bool init = false)
 		{
 			var containerType = typeof(Container);
 
@@ -108,11 +108,20 @@ namespace FlatLands.Architecture
 				}
 			}
 
+			if (preInit)
+				PreInit();
+
 			if(init)
 				Init();
 		}
 
-		public void Init()
+		private void PreInit()
+		{
+			foreach (var pair in _shareds)
+				pair.Value.PreInit();
+		}
+
+		private void Init()
 		{
 			foreach (var pair in _shareds)
 				pair.Value.Init();

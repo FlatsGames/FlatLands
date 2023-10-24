@@ -2,9 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/Container.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Container.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/IShared.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/IShared.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/Shared.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Shared.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/Tasks/IGeneralSceneLoader.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Tasks/IGeneralSceneLoader.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/GeneralLocationConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/GeneralLocationConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Scenes/TestLocation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Scenes/TestLocation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Code/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Code/MainMenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Scenes/MainMenu.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Scenes/MainMenu.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Oswald Bold SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +96,7 @@
       <workItem from="1697730068544" duration="13000" />
       <workItem from="1697730731050" duration="5642000" />
       <workItem from="1697972512293" duration="5702000" />
-      <workItem from="1698157528772" duration="10001000" />
+      <workItem from="1698157528772" duration="11074000" />
     </task>
     <servers />
   </component>

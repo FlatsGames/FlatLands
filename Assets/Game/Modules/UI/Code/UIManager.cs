@@ -16,6 +16,7 @@ namespace FlatLands.UI
 
 #region ISceneLoader
 
+        public bool NeedLoad => true;
         public int LoadingSceneOrder => 20;
         public string GetLoadingSceneName() => "UIScene";
         

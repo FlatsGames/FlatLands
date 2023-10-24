@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FlatLands.Architecture;
+﻿using FlatLands.Architecture;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -12,16 +10,12 @@ namespace FlatLands.Locations
     public sealed class GeneralLocationConfig : SingletonScriptableObject<GeneralLocationConfig>
     {
         [SerializeField] 
-        private LocationConfig _startLocation;
+        private bool _loadDefaultLocation = true;
         
-        [SerializeField] 
-        private List<LocationConfig> _locations;
+        [SerializeField, ShowIf("@_loadDefaultLocation")] 
+        private LocationConfig _startLocation;
 
-        [Button]
-        private void FindLocations()
-        {
-            _locations = new List<LocationConfig>();
-            _locations = Resources.LoadAll<LocationConfig>("").ToList();
-        }
+        public bool LoadDefaultLocation => _loadDefaultLocation;
+        public LocationConfig StartLocation => _startLocation;
     }
 }
