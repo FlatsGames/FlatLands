@@ -17,7 +17,6 @@ namespace FlatLands.Main
         
         private  void Start()
         {
-            
             _container = new Container(Main_Container_Name);
             GlobalContainer.SetContainer(_container);
 
@@ -47,7 +46,6 @@ namespace FlatLands.Main
         private IEnumerator StartLoading()
         {
             var loaderManager = _container.Get<LoaderManager>();
-            var primaryCameraManager = _container.Get<PrimaryCameraManager>();
             loaderManager.ShowLoadingScreen();
             
             var SharedObjects = _container.SharedObjects.Distinct().ToList();

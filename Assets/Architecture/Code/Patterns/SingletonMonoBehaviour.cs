@@ -13,7 +13,7 @@ namespace FlatLands.Architecture
 			{
 				if (_instance == null)
 				{
-					GameObject o = new GameObject(nameof(T));
+					var o = new GameObject(typeof(T).Name);
 					_instance = o.AddComponent<T>();
 					DontDestroyOnLoad(o);
 					_instance.Initialize();

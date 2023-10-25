@@ -27,7 +27,7 @@ namespace FlatLands.UI
 
         public string Id => "UICamera";
 
-        public Camera GetOverlayCamera =>  _hierarchy?.UICamera;
+        public Camera GetOverlayCamera =>  _hierarchy.UICamera;
 
 #endregion
 
