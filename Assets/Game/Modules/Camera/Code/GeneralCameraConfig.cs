@@ -1,4 +1,5 @@
 ﻿using FlatLands.Architecture;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FlatLands.GeneralCamera
@@ -12,7 +13,29 @@ namespace FlatLands.GeneralCamera
         private CameraHierarchy _cameraPrefab;
 
         public CameraHierarchy CameraPrefab => _cameraPrefab;
+
+        [SerializeField, BoxGroup("Settings")] 
+        private float _followSpeed = 0.1f;
+
+        [SerializeField, BoxGroup("Settings")] 
+        private float _turnSmooth;
         
+        [SerializeField, BoxGroup("Settings")] 
+        private float _horizontalRotationSpeed;
         
+        [SerializeField, BoxGroup("Settings")] 
+        private float _verticalRotationSpeed;
+        
+        [SerializeField, BoxGroup("Settings"), MinMaxSlider(-70, 90)] 
+        private Vector2 _angelLimit;
+
+
+        public float FollowSpeed => _followSpeed;
+        public float TurnSmooth => _turnSmooth;
+        
+        public float HorizontalRotationSpeed => _horizontalRotationSpeed;
+        public float VerticalRotationSpeed => _verticalRotationSpeed;
+
+        public Vector2 AngleLimit => _angelLimit;
     }
 }

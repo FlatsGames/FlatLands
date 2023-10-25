@@ -14,6 +14,19 @@ namespace FlatLands.GeneralCamera
         public bool IsActive { get; private set; }
 
         private Transform _cameraTarget;
+        private GeneralCameraConfig _config;
+        
+        private Vector3 _cameraFollowVelocity;
+       
+        private float _smoothX;
+        private float _smoothY;
+
+        private float _smoothXVelocity;
+        private float _smoothYVelocity;
+
+        private float _lookAngle;
+        private float _titleAngle;
+        
         
         internal void InvokeCameraCreated(CameraHierarchy hierarchy)
         {
@@ -23,16 +36,18 @@ namespace FlatLands.GeneralCamera
         public override void Init()
         {
             _overlayCameras = new Dictionary<string, Camera>();
+            _config = GeneralCameraConfig.Instance;
+            
             RegisterOverlayCameras();
             ApplyOverlayCamerasToGeneral();
 
-            UnityEventsProvider.OnUpdate += OnUpdate;
+            UnityEventsProvider.OnLateUpdate += OnLateUpdate;
             IsActive = true;
         }
 
         public override void Dispose()
         {
-            UnityEventsProvider.OnUpdate -= OnUpdate;
+            UnityEventsProvider.OnLateUpdate -= OnLateUpdate;
         }
 
         private void RegisterOverlayCameras()
@@ -56,7 +71,7 @@ namespace FlatLands.GeneralCamera
             }
         }
 
-        private void OnUpdate()
+        private void OnLateUpdate()
         {
             if(_cameraTarget == null)
                 return;
@@ -80,11 +95,36 @@ namespace FlatLands.GeneralCamera
 
         private void UpdateCameraPosition()
         {
-            Hierarchy.transform.DOMove(_cameraTarget.position, 0.1f);
+            var newCameraPos = Vector3.SmoothDamp(Hierarchy.transform.position, _cameraTarget.transform.position,
+                ref _cameraFollowVelocity, _config.FollowSpeed);
+            
+            Hierarchy.transform.position = newCameraPos;
         }
 
         private void UpdateCameraRotation()
         {
+           var mouseX = Input.GetAxis("Mouse X");
+           var mouseY = Input.GetAxis("Mouse Y");
+
+           var turnSmooth = _config.TurnSmooth;
+           
+           if (turnSmooth > 0)
+           {
+               _smoothX = Mathf.SmoothDamp(_smoothX, mouseX, ref _smoothXVelocity, turnSmooth);
+               _smoothY = Mathf.SmoothDamp(_smoothY, mouseY, ref _smoothYVelocity, turnSmooth);
+           }
+           else
+           {
+               _smoothX = mouseX;
+               _smoothY = mouseY;
+           }
+
+           _lookAngle += _smoothX * _config.HorizontalRotationSpeed;
+           Hierarchy.transform.rotation = Quaternion.Euler(0, _lookAngle, 0);
+
+           _titleAngle -= _smoothY *  _config.VerticalRotationSpeed;
+           _titleAngle = Mathf.Clamp(_titleAngle,  _config.AngleLimit.x,  _config.AngleLimit.y);
+           Hierarchy.Pivot.localRotation = Quaternion.Euler(_titleAngle, 0, 0);
             
         }
     }
