@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using DG.Tweening;
 using FlatLands.Architecture;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -10,6 +11,9 @@ namespace FlatLands.GeneralCamera
         private Dictionary<string, Camera> _overlayCameras;
         
         public CameraHierarchy Hierarchy { get; private set; }
+        public bool IsActive { get; private set; }
+
+        private Transform _cameraTarget;
         
         internal void InvokeCameraCreated(CameraHierarchy hierarchy)
         {
@@ -21,11 +25,14 @@ namespace FlatLands.GeneralCamera
             _overlayCameras = new Dictionary<string, Camera>();
             RegisterOverlayCameras();
             ApplyOverlayCamerasToGeneral();
+
+            UnityEventsProvider.OnUpdate += OnUpdate;
+            IsActive = true;
         }
 
         public override void Dispose()
         {
-            
+            UnityEventsProvider.OnUpdate -= OnUpdate;
         }
 
         private void RegisterOverlayCameras()
@@ -47,6 +54,38 @@ namespace FlatLands.GeneralCamera
             {
                 cameraData.cameraStack.Add(pair.Value);
             }
+        }
+
+        private void OnUpdate()
+        {
+            if(_cameraTarget == null)
+                return;
+            
+            if(!IsActive)
+                return;
+
+            UpdateCameraPosition();
+            UpdateCameraRotation();
+        }
+        
+        public void SetCameraTarget(Transform target)
+        {
+            _cameraTarget = target;
+        }
+
+        public void SetCameraActive(bool active)
+        {
+            IsActive = active;
+        }
+
+        private void UpdateCameraPosition()
+        {
+            Hierarchy.transform.DOMove(_cameraTarget.position, 0.1f);
+        }
+
+        private void UpdateCameraRotation()
+        {
+            
         }
     }
 }

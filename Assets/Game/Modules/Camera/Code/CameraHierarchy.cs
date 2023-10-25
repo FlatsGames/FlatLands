@@ -11,12 +11,34 @@ namespace FlatLands.GeneralCamera
         [SerializeField] 
         private Transform _pivot;
 
+        [SerializeField]
+        private Transform _cameraLook;
+
+        [SerializeField, BoxGroup("Debug")] 
+        private bool _showGizmos;
+
         public Camera CameraComponent => _camera;
         public Transform Pivot => _pivot;
 
-        public void SetCameraActive(bool isActive)
+#if UNITY_EDITOR
+
+        private void OnDrawGizmos()
         {
-            _camera.gameObject.SetActive(isActive);
+            if(!_showGizmos)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawSphere(_camera.transform.position, 0.1f);
+            
+            Gizmos.color = Color.magenta;
+            Gizmos.DrawSphere(_cameraLook.transform.position, 0.1f);
+
+            Gizmos.color = Color.blue;
+            Gizmos.DrawLine(_camera.transform.position, _cameraLook.transform.position);
+            Gizmos.DrawLine(_pivot.transform.position, transform.position);
         }
+        
+#endif
+        
     }
 }

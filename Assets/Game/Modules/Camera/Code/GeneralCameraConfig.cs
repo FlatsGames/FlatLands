@@ -12,5 +12,7 @@ namespace FlatLands.GeneralCamera
         private CameraHierarchy _cameraPrefab;
 
         public CameraHierarchy CameraPrefab => _cameraPrefab;
+        
+        
     }
 }

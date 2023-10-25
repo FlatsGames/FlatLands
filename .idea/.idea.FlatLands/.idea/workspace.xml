@@ -2,21 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/GeneralCharacterConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/GeneralCharacterConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/IEntityControllable.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/IEntityControllable.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Code/PrimaryMainMenuService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Code/PrimaryMainMenuService.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/Patterns/SingletonMonoBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Patterns/SingletonMonoBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/CameraHierarchy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/CameraHierarchy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/PrimaryCameraManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/PrimaryCameraManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs/[GeneralCamera].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs/[GeneralCamera].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/ILocationData.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/ILocationData.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationHierarchy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationHierarchy.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationsManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Locations/Code/LocationsManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Code/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/MainMenu/Code/MainMenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

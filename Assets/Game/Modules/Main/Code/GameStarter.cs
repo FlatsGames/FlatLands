@@ -1,11 +1,16 @@
 using System.Collections;
+using System.Diagnostics;
 using System.Linq;
 using FlatLands.Architecture;
+using FlatLands.Characters;
+using FlatLands.CharactersMediator;
+using FlatLands.EntityControllable;
 using FlatLands.GeneralCamera;
 using FlatLands.Locations;
 using FlatLands.Loader;
 using FlatLands.UI;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 namespace FlatLands.Main
 {
@@ -14,9 +19,14 @@ namespace FlatLands.Main
         private const string Main_Container_Name = "MainContainer";
         
         private Container _container;
+
+        private Stopwatch _loadingWatcher;
         
         private  void Start()
         {
+            _loadingWatcher = new Stopwatch();
+            _loadingWatcher.Start();
+            
             _container = new Container(Main_Container_Name);
             GlobalContainer.SetContainer(_container);
 
@@ -33,11 +43,20 @@ namespace FlatLands.Main
             //Main Menu
             _container.Add<PrimaryMainMenuService>();
             _container.Add<MainMenuManager>();
-            
+
             //Cameras
             _container.Add<PrimaryCameraManager>();
             _container.Add<GeneralCameraManager>();
             
+            //Entity Controllable
+            _container.Add<EntityControllableManager>();
+            
+            //Characters
+            _container.Add<CharactersManager>();
+            
+            //Character Mediator
+            _container.Add<CharactersMediatorManager>();
+
             _container.ApplyDependencies();
             
             StartCoroutine(StartLoading());
@@ -85,7 +104,7 @@ namespace FlatLands.Main
             _container.Init(() => aggregator.Next());
             
             yield return null;
-
+            
             HandleLoadingComplete();
         }
         
@@ -93,7 +112,9 @@ namespace FlatLands.Main
         {
             var loaderManager = _container.Get<LoaderManager>();
             loaderManager.HideLoadingScreen();
-            Debug.Log("[Loading] COMPLETED!");
+            
+            _loadingWatcher.Stop();
+            Debug.Log($"[Loading] COMPLETED! Sec: {_loadingWatcher.Elapsed.TotalSeconds}");
         }
     }
 }
