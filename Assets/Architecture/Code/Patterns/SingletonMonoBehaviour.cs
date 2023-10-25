@@ -13,7 +13,7 @@ namespace FlatLands.Architecture
 			{
 				if (_instance == null)
 				{
-					GameObject o = new GameObject("UnityEventProvider");
+					GameObject o = new GameObject(nameof(T));
 					_instance = o.AddComponent<T>();
 					DontDestroyOnLoad(o);
 					_instance.Initialize();
@@ -23,9 +23,6 @@ namespace FlatLands.Architecture
 			}
 		}
         
-		protected virtual void Initialize()
-		{
-			
-		}
+		protected virtual void Initialize() { }
 	}
 }
