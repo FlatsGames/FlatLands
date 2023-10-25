@@ -23,72 +23,72 @@ namespace FlatLands.Main
             GlobalContainer.SetContainer(_container);
 
             _container.Add<LoaderManager>();
+
+            //UI
+            _container.Add<PrimaryUIService>();
             _container.Add<UIManager>();
+
+            //Locations
+            _container.Add<PrimaryLocationsService>();
             _container.Add<LocationsManager>();
+            
+            
             _container.Add<MainMenuManager>();
+            
+            //Cameras
+            _container.Add<PrimaryCameraManager>();
             _container.Add<GeneralCameraManager>();
             
             _container.ApplyDependencies();
-            _container.PreInit();
             
             StartCoroutine(StartLoading());
         }
-
+        
         private IEnumerator StartLoading()
         {
             var loaderManager = _container.Get<LoaderManager>();
+            var primaryCameraManager = _container.Get<PrimaryCameraManager>();
             loaderManager.ShowLoadingScreen();
             
             var SharedObjects = _container.SharedObjects.Distinct().ToList();
-            var Loadable      = _container.GetAll<IGeneralSceneLoader>().Distinct().ToList();
-
-            var aggreagator = new ProgressAggregator();
-            aggreagator.Reset();
-            aggreagator.AddJobs(3);
-            aggreagator.AddJobs(SharedObjects.Count);
-            aggreagator.AddJobs(Loadable.Count);
+            var Loadable= _container.GetAll<IGeneralSceneLoader>().Distinct().OrderBy(l => l.LoadingSceneOrder).ToList();
             
-            aggreagator.OnUpdate += value => loaderManager.UpdateLoadingScreenProgress(value, aggreagator.JobsCount);
+            var aggregator = new ProgressAggregator();
+            aggregator.AddJobs(SharedObjects.Count);
+            aggregator.AddJobs(Loadable.Count);
+            
+            aggregator.OnUpdate += value => loaderManager.UpdateLoadingScreenProgress(value, aggregator.JobsCount);
 
             yield return null;
-
-            aggreagator.Next();
+            
+            _container.PrimaryInit(()=> aggregator.Next());
+            
             yield return null;
-
-            aggreagator.Next();
-            yield return null;
-
-            foreach (var shared in SharedObjects)
-            {
-                aggreagator.Next();
-                yield return null;
-            }
-
+            
             foreach (var loadable in Loadable)
             {
                 if(loadable.NeedLoad)
                 {
-                    var task = loaderManager.LoadSceneAsync(loadable.GetLoadingSceneName(), false, loadable.InvokeSceneLoaded);
+                    var task = loaderManager.LoadSceneAsync(loadable.GetLoadingSceneName(), false, () => loadable.InvokeSceneLoaded());
                     task.Start(true);
                     while (!task.IsDone)
                     {
-                        aggreagator.SetSubProgress(task.Progress);
+                        aggregator.SetSubProgress(task.Progress);
                         yield return null;
                     }
                 }
-
-                aggreagator.Next();
+            
+                aggregator.Next();
                 yield return null;
             }
             
             yield return null;
 
-            aggreagator.Next();
+            _container.Init(() => aggregator.Next());
+            
+            yield return null;
 
             yield return new WaitForSeconds(3);
-
-            _container.Init();
-
             HandleLoadingComplete();
         }
         

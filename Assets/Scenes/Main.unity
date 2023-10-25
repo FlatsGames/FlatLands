@@ -147,16 +147,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: '[Loading Screen]'
       objectReference: {fileID: 0}
-    - target: {fileID: 6283532077838592431, guid: 759cb07ca6d2fa24faf52a23d2324db7,
-        type: 3}
-      propertyPath: m_TagString
-      value: MainCamera
-      objectReference: {fileID: 0}
-    - target: {fileID: 7103225173621357912, guid: 759cb07ca6d2fa24faf52a23d2324db7,
-        type: 3}
-      propertyPath: m_CameraType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8551821625295924662, guid: 759cb07ca6d2fa24faf52a23d2324db7,
         type: 3}
       propertyPath: m_LocalPosition.x

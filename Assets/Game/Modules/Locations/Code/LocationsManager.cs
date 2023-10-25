@@ -1,11 +1,10 @@
 using System.Collections.Generic;
 using FlatLands.Architecture;
 using FlatLands.UI;
-using UnityEngine;
 
 namespace FlatLands.Locations
 {
-    public sealed class LocationsManager : SharedObject, IGeneralSceneLoader
+    public sealed class LocationsManager : SharedObject
     {
         [Inject] private UIManager _uiManager;
 
@@ -13,12 +12,6 @@ namespace FlatLands.Locations
 
         private (string, LocationHierarchy) CurLocation;
         private GeneralLocationConfig _config;
-
-        public override void PreInit()
-        {
-            _loadedLocations = new Dictionary<string, LocationHierarchy>();
-            _config = GeneralLocationConfig.Instance;
-        }
 
         public override void Init()
         {
@@ -29,30 +22,10 @@ namespace FlatLands.Locations
         {
             
         }
-
-        public void LoadLocation(LocationConfig location, bool changeLocation)
-        {
-            
-        }
-
-#region IGeneralSceneLoader
-
-        public bool NeedLoad => _config.LoadDefaultLocation;
-
-        public int LoadingSceneOrder => 100;
         
-        public string GetLoadingSceneName()
+        internal void InvokeSceneLoaded(string sceneName, LocationHierarchy hierarchy)
         {
-            return _config.StartLocation.SceneName;
+            CurLocation = (sceneName, hierarchy);
         }
-
-        public void InvokeSceneLoaded()
-        {
-            var hierarchy = GameObject.FindObjectOfType<LocationHierarchy>();
-            CurLocation = (_config.StartLocation.SceneName, hierarchy);
-        }
-
-#endregion
-
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FlatLands.UI
 {
-    public sealed class UIManager : SharedObject, IGeneralSceneLoader, IOverlayCameraHolder
+    public sealed class UIManager : SharedObject, IOverlayCameraHolder
     {
         public UIHierarchy Hierarchy => _hierarchy;
         private UIHierarchy _hierarchy;
@@ -18,18 +18,10 @@ namespace FlatLands.UI
            
         }
 
-#region ISceneLoader
-
-        public bool NeedLoad => true;
-        public int LoadingSceneOrder => 20;
-        public string GetLoadingSceneName() => "UIScene";
-        public void InvokeSceneLoaded()
+        internal void InvokeSceneLoaded(UIHierarchy hierarchy)
         {
-            _hierarchy = GameObject.FindObjectOfType<UIHierarchy>();
+            _hierarchy =  hierarchy;
         }
-
-#endregion
-
 
 #region IOverlayCameraHolder
 

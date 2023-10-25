@@ -7,12 +7,12 @@ namespace FlatLands.Architecture
 {
 	public sealed class Container
 	{
-		private        Dictionary<Type, IShared> _shareds;
+		public IReadOnlyList<IShared> SharedObjects => _shareds.Values.ToList();
 
-		public string          Name   { get; private set; }
-		public bool            Active { get; private set; }
-		
-		public List<IShared>   SharedObjects => _shareds.Values.ToList();
+		private Dictionary<Type, IShared> _shareds;
+
+		public string Name   { get; }
+		public bool Active { get; private set; }
 
 		public Container(string name)
 		{
@@ -109,16 +109,24 @@ namespace FlatLands.Architecture
 			}
 		}
 
-		public void PreInit()
+		public void PrimaryInit(Action sharedInitialized = null)
 		{
-			foreach (var pair in _shareds)
-				pair.Value.PreInit();
+			var primaryObjects = _shareds.Values.Where(v => v is PrimarySharedObject);
+			foreach (var shared in primaryObjects)
+			{
+				shared.Init();
+				sharedInitialized?.Invoke();
+			}
 		}
-
-		public void Init()
+		
+		public void Init(Action sharedInitialized = null)
 		{
-			foreach (var pair in _shareds)
-				pair.Value.Init();
+			var sharedObjects =  _shareds.Values.Where(v => v is not PrimarySharedObject);
+			foreach (var shared in sharedObjects)
+			{
+				shared.Init();
+				sharedInitialized?.Invoke();
+			}
 
 			Active = true;
 		}

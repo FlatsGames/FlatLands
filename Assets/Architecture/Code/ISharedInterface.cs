@@ -2,6 +2,6 @@
 {
     public interface ISharedInterface
     {
-        
+        internal void SetContainer(Container container);
     }
 }
