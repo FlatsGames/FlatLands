@@ -8,6 +8,11 @@ namespace FlatLands.UI
         public UIHierarchy Hierarchy => _hierarchy;
         private UIHierarchy _hierarchy;
         
+        internal void InvokeSceneLoaded(UIHierarchy hierarchy)
+        {
+            _hierarchy =  hierarchy;
+        }
+        
         public override void Init()
         {
             
@@ -16,11 +21,6 @@ namespace FlatLands.UI
         public override void Dispose()
         {
            
-        }
-
-        internal void InvokeSceneLoaded(UIHierarchy hierarchy)
-        {
-            _hierarchy =  hierarchy;
         }
 
 #region IOverlayCameraHolder

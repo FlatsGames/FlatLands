@@ -13,6 +13,11 @@ namespace FlatLands.Locations
         private (string, LocationHierarchy) CurLocation;
         private GeneralLocationConfig _config;
 
+        internal void InvokeSceneLoaded(string sceneName, LocationHierarchy hierarchy)
+        {
+            CurLocation = (sceneName, hierarchy);
+        }
+        
         public override void Init()
         {
             
@@ -21,11 +26,6 @@ namespace FlatLands.Locations
         public override void Dispose()
         {
             
-        }
-        
-        internal void InvokeSceneLoaded(string sceneName, LocationHierarchy hierarchy)
-        {
-            CurLocation = (sceneName, hierarchy);
         }
     }
 }

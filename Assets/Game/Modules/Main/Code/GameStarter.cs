@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.GeneralCamera;
@@ -32,7 +31,8 @@ namespace FlatLands.Main
             _container.Add<PrimaryLocationsService>();
             _container.Add<LocationsManager>();
             
-            
+            //Main Menu
+            _container.Add<PrimaryMainMenuService>();
             _container.Add<MainMenuManager>();
             
             //Cameras
@@ -88,7 +88,6 @@ namespace FlatLands.Main
             
             yield return null;
 
-            yield return new WaitForSeconds(3);
             HandleLoadingComplete();
         }
         
