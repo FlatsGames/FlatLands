@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14a89a45cdf14135bbfcbdcaae699b10, type: 3}
-  m_Name: GeneralCameraConfig
+  m_Script: {fileID: 11500000, guid: ccbff591a42b4d139c1083d99391ee80, type: 3}
+  m_Name: ItemsConfig
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,13 +21,3 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _cameraPrefab: {fileID: 5774940084799309143, guid: 2600f774b88e12f4e9ea6ba7e6d9fcdc,
-    type: 3}
-  _defaultPivotType: 1
-  _pivotOffset: 0.5
-  _pivotOffsetSpeed: 0.2
-  _followSpeed: 0.1
-  _turnSmooth: 0.2
-  _horizontalRotationSpeed: 1.5
-  _verticalRotationSpeed: 3
-  _angelLimit: {x: -30.109713, y: 60.434532}

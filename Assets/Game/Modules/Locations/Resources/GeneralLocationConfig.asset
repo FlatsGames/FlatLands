@@ -21,6 +21,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
+  _loadDefaultLocation: 1
   _startLocation: {fileID: 11400000, guid: 66454c451f3755f40905fba29096ea90, type: 2}
-  _locations:
-  - {fileID: 11400000, guid: 66454c451f3755f40905fba29096ea90, type: 2}

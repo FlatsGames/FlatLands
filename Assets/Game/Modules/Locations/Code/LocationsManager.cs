@@ -10,7 +10,7 @@ namespace FlatLands.Locations
 
         private Dictionary<string, LocationHierarchy> _loadedLocations;
 
-        private (string, LocationHierarchy) CurLocation;
+        public (string, LocationHierarchy) CurLocation { get; private set; }
         private GeneralLocationConfig _config;
 
         internal void InvokeSceneLoaded(string sceneName, LocationHierarchy hierarchy)
