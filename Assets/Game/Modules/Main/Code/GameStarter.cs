@@ -6,6 +6,7 @@ using FlatLands.Characters;
 using FlatLands.CharactersMediator;
 using FlatLands.EntityControllable;
 using FlatLands.GeneralCamera;
+using FlatLands.Items;
 using FlatLands.Locations;
 using FlatLands.Loader;
 using FlatLands.LocationsCamera;
@@ -58,7 +59,10 @@ namespace FlatLands.Main
             
             //Character Mediator
             _container.Add<CharactersMediatorManager>();
-
+            
+            //ItemsManager
+            _container.Add<ItemsManager>();
+            
             _container.ApplyDependencies();
             
             StartCoroutine(StartLoading());
