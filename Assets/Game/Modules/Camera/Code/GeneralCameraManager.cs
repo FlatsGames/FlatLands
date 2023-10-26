@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using DG.Tweening;
+﻿using System;
+using System.Collections.Generic;
 using FlatLands.Architecture;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
@@ -12,6 +12,8 @@ namespace FlatLands.GeneralCamera
         
         public CameraHierarchy Hierarchy { get; private set; }
         public bool IsActive { get; private set; }
+
+        public event Action<RaycastHit> OnHit;
 
         private Transform _cameraTarget;
         private GeneralCameraConfig _config;
@@ -42,13 +44,27 @@ namespace FlatLands.GeneralCamera
             ApplyOverlayCamerasToGeneral();
 
             UnityEventsProvider.OnLateUpdate += OnLateUpdate;
+            UnityEventsProvider.OnUpdate += OnUpdate;
             IsActive = true;
         }
 
         public override void Dispose()
         {
             UnityEventsProvider.OnLateUpdate -= OnLateUpdate;
+            UnityEventsProvider.OnUpdate -= OnUpdate;
         }
+        
+        private void OnUpdate()
+        {
+            UpdateHits();
+        }
+        
+        private void OnLateUpdate()
+        {
+            UpdateCameraMovement();
+        }
+
+#region Main
 
         private void RegisterOverlayCameras()
         {
@@ -70,8 +86,23 @@ namespace FlatLands.GeneralCamera
                 cameraData.cameraStack.Add(pair.Value);
             }
         }
+        
+        public void SetCameraTarget(Transform target)
+        {
+            _cameraTarget = target;
+        }
 
-        private void OnLateUpdate()
+        public void SetCameraActive(bool active)
+        {
+            IsActive = active;
+        }
+
+#endregion
+
+
+#region Movements
+        
+        private void UpdateCameraMovement()
         {
             if(_cameraTarget == null)
                 return;
@@ -82,16 +113,6 @@ namespace FlatLands.GeneralCamera
             UpdateCameraPosition();
             UpdateCameraRotation();
             UpdatePivot();
-        }
-        
-        public void SetCameraTarget(Transform target)
-        {
-            _cameraTarget = target;
-        }
-
-        public void SetCameraActive(bool active)
-        {
-            IsActive = active;
         }
 
         private void UpdatePivot()
@@ -139,7 +160,25 @@ namespace FlatLands.GeneralCamera
            _titleAngle -= _smoothY *  _config.VerticalRotationSpeed;
            _titleAngle = Mathf.Clamp(_titleAngle,  _config.AngleLimit.x,  _config.AngleLimit.y);
            Hierarchy.Pivot.localRotation = Quaternion.Euler(_titleAngle, 0, 0);
-            
         }
+        
+#endregion
+
+
+#region Hits
+
+        private void UpdateHits()
+        {
+            var cameraTransform = Hierarchy.CameraComponent.transform;
+            var startPos = cameraTransform.position;
+            var startDirection = cameraTransform.forward;
+
+            RaycastHit hit;
+            Physics.Raycast(startPos, startDirection, out hit, 100, ~_config.IgnoreHitLayers);
+            OnHit?.Invoke(hit);
+        }
+
+#endregion
+
     }
 }

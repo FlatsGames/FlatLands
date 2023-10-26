@@ -1,0 +1,19 @@
+{
+    "name": "FlatLands.LocationsCamera",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:b4173b0df081df143aaedd431e3ba2d8",
+        "GUID:e869d15df1f46c54aab96cf3382965d6",
+        "GUID:efa35b636d20f6b4c9c5fb8274b1388e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
