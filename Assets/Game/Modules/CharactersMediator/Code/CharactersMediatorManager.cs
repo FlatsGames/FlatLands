@@ -1,13 +1,14 @@
 using FlatLands.Architecture;
+using FlatLands.Characters;
 using FlatLands.EntityControllable;
 using FlatLands.GeneralCamera;
-using UnityEngine;
 
 namespace FlatLands.CharactersMediator
 {
 	public sealed class CharactersMediatorManager : SharedObject
 	{
 		[Inject] private EntityControllableManager _controllableManager;
+		[Inject] private CharactersManager _charactersManager;
 		[Inject] private GeneralCameraManager _cameraManager;
 
 		public override void Init()
@@ -24,6 +25,7 @@ namespace FlatLands.CharactersMediator
 		{
 			var entityTarget = _controllableManager.CurrentControllableEntity.EntityTransform;
 			_cameraManager.SetCameraTarget(entityTarget);
+			_charactersManager.CurrentCharacter.SetCharacterLookTarget(_cameraManager.Hierarchy.CameraLook, _cameraManager.Hierarchy.transform);
 		}
 	}
 }

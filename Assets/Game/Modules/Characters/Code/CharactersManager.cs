@@ -35,6 +35,7 @@ namespace FlatLands.Characters
         private void CreateCharacter(CharacterBehaviour prefab, Transform parent = null, bool isMain = true)
         {
             var character = GameObject.Instantiate(prefab, parent);
+            _container.InjectAt(character);
             _allCharacters.Add(character);
             if (isMain)
                 CurrentCharacter = character;

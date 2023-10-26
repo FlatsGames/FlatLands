@@ -19,7 +19,8 @@ namespace FlatLands.GeneralCamera
 
         public Camera CameraComponent => _camera;
         public Transform Pivot => _pivot;
-
+        public Transform CameraLook => _cameraLook;
+        
 #if UNITY_EDITOR
 
         private void OnDrawGizmos()
