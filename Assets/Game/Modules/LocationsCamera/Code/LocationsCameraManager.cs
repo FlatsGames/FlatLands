@@ -27,9 +27,8 @@ namespace FlatLands.LocationsCamera
 			if(hit.collider == null)
 				return;
 
-			var locationObject = hit.collider.GetComponent<ILocationObject>();
-			if (locationObject == null)
-				locationObject = hit.collider.GetComponentInParent<ILocationObject>();
+			var locationObject = hit.collider.GetComponent<ILocationObject>() 
+			                     ?? hit.collider.GetComponentInParent<ILocationObject>();
 
 			if(locationObject == null)
 				return;
