@@ -23,8 +23,11 @@ MonoBehaviour:
     SerializationNodes: []
   _cameraPrefab: {fileID: 5774940084799309143, guid: 2600f774b88e12f4e9ea6ba7e6d9fcdc,
     type: 3}
-  _defaultPivotType: 1
-  _pivotOffset: 0.5
+  _ignoreHitLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  _defaultPivotType: 0
+  _pivotOffset: 0.17
   _pivotOffsetSpeed: 0.2
   _followSpeed: 0.1
   _turnSmooth: 0.2

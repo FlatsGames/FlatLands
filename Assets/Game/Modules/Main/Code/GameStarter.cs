@@ -9,6 +9,7 @@ using FlatLands.GeneralCamera;
 using FlatLands.Items;
 using FlatLands.Locations;
 using FlatLands.Loader;
+using FlatLands.LocationsCamera;
 using FlatLands.UI;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -48,6 +49,7 @@ namespace FlatLands.Main
             //Cameras
             _container.Add<PrimaryCameraManager>();
             _container.Add<GeneralCameraManager>();
+            _container.Add<LocationsCameraManager>();
             
             //Entity Controllable
             _container.Add<EntityControllableManager>();

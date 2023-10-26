@@ -14,6 +14,9 @@ namespace FlatLands.GeneralCamera
 
         public CameraHierarchy CameraPrefab => _cameraPrefab;
 
+        [SerializeField, BoxGroup("Layers")]
+        private LayerMask _ignoreHitLayers;
+        
         [SerializeField, BoxGroup("Pivot")]
         private CameraPivotType _defaultPivotType;
 
@@ -37,6 +40,8 @@ namespace FlatLands.GeneralCamera
         
         [SerializeField, BoxGroup("Settings"), MinMaxSlider(-70, 90)] 
         private Vector2 _angelLimit;
+
+        public LayerMask IgnoreHitLayers => _ignoreHitLayers;
         
         public CameraPivotType DefaultPivotType => _defaultPivotType;
         public float PivotOffset => _pivotOffset;
