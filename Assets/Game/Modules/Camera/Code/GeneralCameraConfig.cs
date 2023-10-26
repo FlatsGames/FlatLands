@@ -14,6 +14,15 @@ namespace FlatLands.GeneralCamera
 
         public CameraHierarchy CameraPrefab => _cameraPrefab;
 
+        [SerializeField, BoxGroup("Pivot")]
+        private CameraPivotType _defaultPivotType;
+
+        [SerializeField, BoxGroup("Pivot")] 
+        private float _pivotOffset;
+        
+        [SerializeField, BoxGroup("Pivot")] 
+        private float _pivotOffsetSpeed;
+
         [SerializeField, BoxGroup("Settings")] 
         private float _followSpeed = 0.1f;
 
@@ -28,8 +37,11 @@ namespace FlatLands.GeneralCamera
         
         [SerializeField, BoxGroup("Settings"), MinMaxSlider(-70, 90)] 
         private Vector2 _angelLimit;
-
-
+        
+        public CameraPivotType DefaultPivotType => _defaultPivotType;
+        public float PivotOffset => _pivotOffset;
+        public float PivotOffsetSpeed => _pivotOffsetSpeed;
+        
         public float FollowSpeed => _followSpeed;
         public float TurnSmooth => _turnSmooth;
         
@@ -37,5 +49,11 @@ namespace FlatLands.GeneralCamera
         public float VerticalRotationSpeed => _verticalRotationSpeed;
 
         public Vector2 AngleLimit => _angelLimit;
+    }
+
+    public enum CameraPivotType
+    {
+        Left,
+        Right
     }
 }

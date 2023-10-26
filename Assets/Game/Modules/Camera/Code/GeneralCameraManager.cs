@@ -17,7 +17,8 @@ namespace FlatLands.GeneralCamera
         private GeneralCameraConfig _config;
         
         private Vector3 _cameraFollowVelocity;
-       
+        private float _pivotFollowVelocity;
+        
         private float _smoothX;
         private float _smoothY;
 
@@ -26,8 +27,7 @@ namespace FlatLands.GeneralCamera
 
         private float _lookAngle;
         private float _titleAngle;
-        
-        
+
         internal void InvokeCameraCreated(CameraHierarchy hierarchy)
         {
             Hierarchy = hierarchy;
@@ -81,6 +81,7 @@ namespace FlatLands.GeneralCamera
 
             UpdateCameraPosition();
             UpdateCameraRotation();
+            UpdatePivot();
         }
         
         public void SetCameraTarget(Transform target)
@@ -91,6 +92,19 @@ namespace FlatLands.GeneralCamera
         public void SetCameraActive(bool active)
         {
             IsActive = active;
+        }
+
+        private void UpdatePivot()
+        {
+            var pivotSide = _config.DefaultPivotType == CameraPivotType.Right
+                ? _config.PivotOffset
+                : -_config.PivotOffset;
+
+            var localPosition = Hierarchy.Pivot.localPosition;
+            var newSmoothPos = Mathf.SmoothDamp(localPosition.x, pivotSide, ref _pivotFollowVelocity, _config.PivotOffsetSpeed);
+            
+            localPosition = new Vector3(newSmoothPos, localPosition.y, localPosition.z);
+            Hierarchy.Pivot.localPosition = localPosition;
         }
 
         private void UpdateCameraPosition()
@@ -105,7 +119,7 @@ namespace FlatLands.GeneralCamera
         {
            var mouseX = Input.GetAxis("Mouse X");
            var mouseY = Input.GetAxis("Mouse Y");
-
+           
            var turnSmooth = _config.TurnSmooth;
            
            if (turnSmooth > 0)
