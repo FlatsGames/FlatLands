@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="" />
+    <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,9 +18,18 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../LegacyProjects/merge-expedition-develop/merge-expedition-develop/Assets/GeekyHouse/General/Code/GameStarter.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b1/0f74cb3b/02000507.il" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LocationCamera/Code/CameraBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LoadingSceen/Code/LoadingScreenManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Game/Code/GameStarter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Architecture/Code/Patterns/MultitonScriptableObjects.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/TemporalAA.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/836aea33117647b388cc5f48bed669c47000/f5/0f63c19a/CanvasGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10871f9e312b442cb78b9b97db88fdcb172a00/fa/9db8b8c7/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Modules/ScenesLoader/Code/ProgressAggregator.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/TemporalAA.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LocationCamera/Code/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/81/c3e4d704/BindingFlags.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -74,6 +85,7 @@
       <workItem from="1697972512293" duration="5702000" />
       <workItem from="1698157528772" duration="15758000" />
       <workItem from="1698244618880" duration="4643000" />
+      <workItem from="1698515556647" duration="1080000" />
     </task>
     <servers />
   </component>
