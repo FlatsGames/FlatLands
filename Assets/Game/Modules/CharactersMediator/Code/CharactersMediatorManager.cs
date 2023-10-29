@@ -23,9 +23,11 @@ namespace FlatLands.CharactersMediator
 
 		private void StartCharacterLife()
 		{
-			var entityTarget = _controllableManager.CurrentControllableEntity.EntityTransform;
-			_cameraManager.SetCameraTarget(entityTarget);
-			_charactersManager.CurrentCharacter.SetCharacterLookTarget(_cameraManager.Hierarchy.CameraLook, _cameraManager.Hierarchy.transform);
+			 var entityTarget = _controllableManager.CurrentControllableBehaviour.EntityTransform;
+			 _cameraManager.SetCameraTarget(entityTarget);
+			//_charactersManager.CurrentCharacter.SetCharacterLookTarget(_cameraManager.Hierarchy.CameraLook, _cameraManager.Hierarchy.transform);
+			
+			_charactersManager.CurrentCharacter.Init();
 		}
 	}
 }

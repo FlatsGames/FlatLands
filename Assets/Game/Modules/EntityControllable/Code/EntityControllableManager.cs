@@ -5,28 +5,37 @@ namespace FlatLands.EntityControllable
 {
     public sealed class EntityControllableManager : SharedObject
     {
-        public IEntityControllable CurrentControllableEntity { get; private set; }
+        public IEntityControllableProvider CurrentControllableProvider { get; private set; }
+        public IEntityControllableBehaviour CurrentControllableBehaviour { get; private set; }
 
         public event Action OnControllableEntityChanged;
         
         public override void Init()
         {
             UnityEventsProvider.OnUpdate += HandleUpdate;
+            UnityEventsProvider.OnFixedUpdate += HandleFixedUpdate;
         }
 
         public override void Dispose()
         {
             UnityEventsProvider.OnUpdate -= HandleUpdate;
+            UnityEventsProvider.OnFixedUpdate -= HandleFixedUpdate;
         }
 
         private void HandleUpdate()
         {
-            CurrentControllableEntity?.EntityUpdate();
+            CurrentControllableProvider?.EntityUpdate();
         }
 
-        public void SetControllableEntity(IEntityControllable entity)
+        private void HandleFixedUpdate()
         {
-            CurrentControllableEntity = entity;
+            CurrentControllableProvider?.EntityFixedUpdate();
+        }
+
+        public void SetControllableEntity(IEntityControllableProvider provider, IEntityControllableBehaviour behaviour)
+        {
+            CurrentControllableProvider = provider;
+            CurrentControllableBehaviour = behaviour;
             OnControllableEntityChanged?.Invoke();
         }
     }

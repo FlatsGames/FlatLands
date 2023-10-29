@@ -43,14 +43,14 @@ namespace FlatLands.GeneralCamera
             RegisterOverlayCameras();
             ApplyOverlayCamerasToGeneral();
 
-            UnityEventsProvider.OnLateUpdate += OnLateUpdate;
+            UnityEventsProvider.OnFixedUpdate += OnFixedUpdate;
             UnityEventsProvider.OnUpdate += OnUpdate;
             IsActive = true;
         }
 
         public override void Dispose()
         {
-            UnityEventsProvider.OnLateUpdate -= OnLateUpdate;
+            UnityEventsProvider.OnFixedUpdate -= OnFixedUpdate;
             UnityEventsProvider.OnUpdate -= OnUpdate;
         }
         
@@ -59,7 +59,7 @@ namespace FlatLands.GeneralCamera
             UpdateHits();
         }
         
-        private void OnLateUpdate()
+        private void OnFixedUpdate()
         {
             UpdateCameraMovement();
         }

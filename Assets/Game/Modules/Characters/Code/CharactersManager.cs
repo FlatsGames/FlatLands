@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using FlatLands.Architecture;
 using FlatLands.EntityControllable;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace FlatLands.Characters
 {
@@ -10,21 +10,18 @@ namespace FlatLands.Characters
     {
         [Inject] private EntityControllableManager _controllableManager;
         
-        private List<CharacterBehaviour> _allCharacters;
+        public CharacterProvider CurrentCharacter { get; private set; }
 
-        public CharacterBehaviour CurrentCharacter { get; private set; }
-
-        public event Action<CharacterBehaviour> OnCharacterCreated;
+        public event Action<CharacterProvider> OnCharacterCreated;
         
-        private GeneralCharacterConfig _config;
+        private CharacterConfig _config;
         
         public override void Init()
         {
-            _allCharacters = new List<CharacterBehaviour>();
-            _config = GeneralCharacterConfig.Instance;
+            _config = CharacterConfig.Instance;
             
-            CreateCharacter(_config.DefaultCharacterPrefab);
-            _controllableManager.SetControllableEntity(CurrentCharacter);
+            CreateDefaultCharacter(_config);
+            _controllableManager.SetControllableEntity(CurrentCharacter, CurrentCharacter.Behaviour);
         }
 
         public override void Dispose()
@@ -32,15 +29,32 @@ namespace FlatLands.Characters
             
         }
 
-        private void CreateCharacter(CharacterBehaviour prefab, Transform parent = null, bool isMain = true)
+        private void CreateDefaultCharacter(CharacterConfig config,  bool isMain = true)
         {
-            var character = GameObject.Instantiate(prefab, parent);
-            _container.InjectAt(character);
-            _allCharacters.Add(character);
+            var provider = CreateCharacterProvider(config);
             if (isMain)
-                CurrentCharacter = character;
+            {
+                CurrentCharacter = provider;
+            }
             
-            OnCharacterCreated?.Invoke(character);
+            OnCharacterCreated?.Invoke(provider);
+        }
+
+        private CharacterProvider CreateCharacterProvider(CharacterConfig config, bool spawnCharacter = true)
+        {
+            var character = new CharacterProvider(config);
+            if (spawnCharacter)
+            {
+                var behaviour = SpawnCharacterBehaviour(config);
+                character.SetBehaviour(behaviour);
+            }
+
+            return character;
+        }
+
+        private CharacterBehaviour SpawnCharacterBehaviour(CharacterConfig config, Transform parent = null)
+        {
+            return Object.Instantiate(config.CharacterPrefab, parent);
         }
     }
 }

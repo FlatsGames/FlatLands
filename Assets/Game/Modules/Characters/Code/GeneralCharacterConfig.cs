@@ -8,9 +8,9 @@ namespace FlatLands.Characters
         fileName = nameof(GeneralCharacterConfig))]
     public sealed class GeneralCharacterConfig : SingletonScriptableObject<GeneralCharacterConfig>
     {
-        [SerializeField] 
-        private CharacterBehaviour _defaultCharacterPrefab;
-
-        public CharacterBehaviour DefaultCharacterPrefab => _defaultCharacterPrefab;
+        // [SerializeField] 
+        // private CharacterBehaviour _defaultCharacterPrefab;
+        //
+        // public CharacterBehaviour DefaultCharacterPrefab => _defaultCharacterPrefab;
     }
 }
