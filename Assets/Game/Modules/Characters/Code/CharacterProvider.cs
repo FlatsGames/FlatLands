@@ -74,6 +74,11 @@ namespace FlatLands.Characters
                 Behaviour.OnAnimatorMoved += HandleAnimatorMoved;
         }
 
+        public void SetRotateTarget(Transform targetTransform)
+        {
+            _rotateTarget = targetTransform;
+        }
+
         public void Init()
         {
             Behaviour.CharacterAnimator.updateMode = AnimatorUpdateMode.AnimatePhysics;
@@ -117,6 +122,7 @@ namespace FlatLands.Characters
         private void UpdateInput()
         {
             MoveInput();
+            UpdateMoveDirection(_rotateTarget);
             SprintInput();
             StrafeInput();
             JumpInput();
@@ -189,18 +195,14 @@ namespace FlatLands.Characters
                 return;
             }
 
-            if (referenceTransform && !Config.RotateByWorld)
-            {
-                var right = referenceTransform.right;
-                right.y = 0;
+            if (!referenceTransform) 
+                return;
+            
+            var right = referenceTransform.right;
+            right.y = 0;
                 
-                var forward = Quaternion.AngleAxis(-90, Vector3.up) * right;
-                _moveDirection = (_inputSmooth.x * right) + (_inputSmooth.z * forward);
-            }
-            else
-            {
-                _moveDirection = new Vector3(_inputSmooth.x, 0, _inputSmooth.z);
-            }
+            var forward = Quaternion.AngleAxis(-90, Vector3.up) * right;
+            _moveDirection = (_inputSmooth.x * right) + (_inputSmooth.z * forward);
         }
 
         private void SetControllerMovementSpeed(CharacterMovementPair movementPair)

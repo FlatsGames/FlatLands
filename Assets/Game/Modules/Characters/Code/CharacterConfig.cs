@@ -16,9 +16,6 @@ namespace FlatLands.Characters
         private bool _useRootMotion = false;
         
         [SerializeField, BoxGroup("Main Settings")]
-        private bool _rotateByWorld = false;
-
-        [SerializeField, BoxGroup("Main Settings")]
         private bool _sprintOnlyFree = true;
         
         
@@ -79,7 +76,6 @@ namespace FlatLands.Characters
         public CharacterBehaviour CharacterPrefab => _characterPrefab;
 
         public bool UseRootMotion => _useRootMotion;
-        public bool RotateByWorld => _rotateByWorld;
         public bool SprintOnlyFree => _sprintOnlyFree;
 
         public KeyCode JumpInput => _jumpInput;

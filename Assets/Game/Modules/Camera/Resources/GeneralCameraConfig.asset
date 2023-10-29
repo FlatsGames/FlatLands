@@ -25,12 +25,12 @@ MonoBehaviour:
     type: 3}
   _ignoreHitLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 65654
   _defaultPivotType: 0
   _pivotOffset: 0.17
   _pivotOffsetSpeed: 0.2
-  _followSpeed: 0.1
+  _followSpeed: 0.05
   _turnSmooth: 0.2
-  _horizontalRotationSpeed: 1.5
-  _verticalRotationSpeed: 3
+  _horizontalRotationSpeed: 12
+  _verticalRotationSpeed: 12
   _angelLimit: {x: -30.109713, y: 60.434532}

@@ -81,9 +81,9 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _characterPrefab: {fileID: 0}
+  _characterPrefab: {fileID: 8511600455462435884, guid: b813e1b7b32a3514fa3a56051a84f8dc,
+    type: 3}
   _useRootMotion: 0
-  _rotateByWorld: 1
   _sprintOnlyFree: 1
   _jumpInput: 32
   _strafeInput: 9

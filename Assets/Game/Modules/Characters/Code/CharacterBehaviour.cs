@@ -16,8 +16,8 @@ namespace FlatLands.Characters
         [SerializeField, BoxGroup("Main Components")]
         private CapsuleCollider _capsuleCollider;
 
-        public string Name { get; }
-        public Transform EntityTransform { get; }
+        public string Name => "MainCharacter";
+        public Transform EntityTransform => transform;
 
         public Animator CharacterAnimator => _animator;
         public Rigidbody CharacterRigidbody => _rigidbody;

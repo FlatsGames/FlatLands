@@ -25,7 +25,7 @@ namespace FlatLands.CharactersMediator
 		{
 			 var entityTarget = _controllableManager.CurrentControllableBehaviour.EntityTransform;
 			 _cameraManager.SetCameraTarget(entityTarget);
-			//_charactersManager.CurrentCharacter.SetCharacterLookTarget(_cameraManager.Hierarchy.CameraLook, _cameraManager.Hierarchy.transform);
+			_charactersManager.CurrentCharacter.SetRotateTarget(_cameraManager.Hierarchy.CameraLook);
 			
 			_charactersManager.CurrentCharacter.Init();
 		}
