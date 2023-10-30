@@ -17,7 +17,7 @@ namespace FlatLands.UI
         public IReadOnlyDictionary<UIWindowType, UIWindowPair> Windows => _windows;
     }
 
-    public class UIWindowPair
+    public sealed class UIWindowPair
     {
         [SerializeField] 
         private bool _preload = true;

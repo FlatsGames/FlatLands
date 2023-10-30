@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using FlatLands.Architecture;
+using FlatLands.Cursors;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -8,6 +9,8 @@ namespace FlatLands.GeneralCamera
 {
     public sealed class GeneralCameraManager : SharedObject
     {
+        [Inject] private CursorManager _cursorManager;
+
         private Dictionary<string, Camera> _overlayCameras;
         
         public CameraHierarchy Hierarchy { get; private set; }
@@ -20,6 +23,9 @@ namespace FlatLands.GeneralCamera
         
         private Vector3 _cameraFollowVelocity;
         private float _pivotFollowVelocity;
+
+        private float _mouseX;
+        private float _mouseY;
         
         private float _smoothX;
         private float _smoothY;
@@ -43,12 +49,14 @@ namespace FlatLands.GeneralCamera
             RegisterOverlayCameras();
             ApplyOverlayCamerasToGeneral();
 
+            _cursorManager.OnCursorStateChanged += HandleCursorStateChanged;
             UnityEventsProvider.OnFixedUpdate += OnFixedUpdate;
             IsActive = true;
         }
 
         public override void Dispose()
         {
+            _cursorManager.OnCursorStateChanged -= HandleCursorStateChanged;
             UnityEventsProvider.OnFixedUpdate -= OnFixedUpdate;
         }
 
@@ -56,6 +64,11 @@ namespace FlatLands.GeneralCamera
         {
             UpdateCameraMovement();
             UpdateHits();
+        }
+
+        private void HandleCursorStateChanged()
+        {
+            IsActive = !_cursorManager.CursorActive;
         }
 
 #region Main
@@ -100,13 +113,20 @@ namespace FlatLands.GeneralCamera
         {
             if(_cameraTarget == null)
                 return;
-            
-            if(!IsActive)
-                return;
 
+            UpdateInput();
             UpdateCameraPosition();
             UpdateCameraRotation();
             UpdatePivot();
+        }
+
+        private void UpdateInput()
+        {
+            if(!IsActive)
+                return;
+
+            _mouseX = Input.GetAxis("Mouse X");
+            _mouseY = Input.GetAxis("Mouse Y");
         }
 
         private void UpdatePivot()
@@ -132,20 +152,17 @@ namespace FlatLands.GeneralCamera
 
         private void UpdateCameraRotation()
         {
-           var mouseX = Input.GetAxis("Mouse X");
-           var mouseY = Input.GetAxis("Mouse Y");
-           
-           var turnSmooth = _config.TurnSmooth;
+            var turnSmooth = _config.TurnSmooth;
            
            if (turnSmooth > 0)
            {
-               _smoothX = Mathf.SmoothDamp(_smoothX, mouseX, ref _smoothXVelocity, turnSmooth);
-               _smoothY = Mathf.SmoothDamp(_smoothY, mouseY, ref _smoothYVelocity, turnSmooth);
+               _smoothX = Mathf.SmoothDamp(_smoothX, _mouseX, ref _smoothXVelocity, turnSmooth);
+               _smoothY = Mathf.SmoothDamp(_smoothY, _mouseY, ref _smoothYVelocity, turnSmooth);
            }
            else
            {
-               _smoothX = mouseX;
-               _smoothY = mouseY;
+               _smoothX = _mouseX;
+               _smoothY = _mouseY;
            }
 
            _lookAngle += _smoothX * _config.HorizontalRotationSpeed;

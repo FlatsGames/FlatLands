@@ -1,4 +1,6 @@
-﻿using FlatLands.EntityControllable;
+﻿using FlatLands.Architecture;
+using FlatLands.Cursors;
+using FlatLands.EntityControllable;
 using UnityEngine;
 
 namespace FlatLands.Characters
@@ -7,7 +9,7 @@ namespace FlatLands.Characters
     {
         private const string Horizontal_Input_Name = "Horizontal";
         private const string Vertical_Input_Name = "Vertical";
-        
+
         private int AnimatorInputHorizontal => Animator.StringToHash("InputHorizontal");
         private int AnimatorInputVertical => Animator.StringToHash("InputVertical");
         private int AnimatorInputMagnitude => Animator.StringToHash("InputMagnitude");
@@ -20,6 +22,8 @@ namespace FlatLands.Characters
         private float AnimatorRunningSpeed => 1f;
         private float AnimatorSprintSpeed => 1.5f;
 
+        [Inject] private CursorManager _cursorManager;
+        
         public CharacterConfig Config { get; }
         public CharacterBehaviour Behaviour { get; private set; }
         
@@ -28,6 +32,8 @@ namespace FlatLands.Characters
         public bool IsGrounded { get; private set; }
         public bool IsSprinting { get; private set; }
         public bool StopMove { get; private set; }
+        
+        public bool IsActive { get; internal set; }
 
         private PhysicMaterial _frictionPhysics;
         private PhysicMaterial _maxFrictionPhysics;
@@ -94,8 +100,12 @@ namespace FlatLands.Characters
         
         public void EntityUpdate()
         {
-            UpdateInput();
             UpdateAnimator();
+
+            if(!IsActive)
+                return;
+            
+            UpdateInput();
         }
 
         public void EntityFixedUpdate()

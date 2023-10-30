@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FlatLands.Architecture;
+using FlatLands.Cursors;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
@@ -8,6 +9,8 @@ namespace FlatLands.UI
 {
     public sealed class UIManager : SharedObject, IOverlayCameraHolder
     {
+        [Inject] private CursorManager _cursorManager;
+        
         private Dictionary<UIWindowType, UIWindow> _windows;
         private Dictionary<Type, UIWindow> _windowsByType;
         private List<UIWindow> _showedWindows;
@@ -33,8 +36,7 @@ namespace FlatLands.UI
             
             _config = GeneralUIConfig.Instance;
             CreateWindows();
-
-            UnityEventsProvider.OnUpdate += OnUpdate;
+            _cursorManager.HideCursor();
         }
 
         public override void Dispose()
@@ -57,15 +59,6 @@ namespace FlatLands.UI
             }
         }
 
-        private void OnUpdate()
-        {
-            if(Input.GetKeyDown(KeyCode.H))
-                Show(UIWindowType.ExampleWindow);
-            
-            if(Input.GetKeyDown(KeyCode.J))
-                Hide(UIWindowType.ExampleWindow);
-        }
-
 
 #region Show / Hide
 
@@ -76,6 +69,7 @@ namespace FlatLands.UI
             window.Show();
             _showedWindows.Add(window);
             OnWindowShowed?.Invoke(window);
+            _cursorManager.ShowCursor();
         }
         
         public void Hide(UIWindowType type)
@@ -84,6 +78,7 @@ namespace FlatLands.UI
             window.Hide();
             _showedWindows.Remove(window);
             OnWindowHided?.Invoke(window);
+            _cursorManager.HideCursor();
         }
 
 #endregion

@@ -4,6 +4,7 @@ using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.Characters;
 using FlatLands.CharactersMediator;
+using FlatLands.Cursors;
 using FlatLands.EntityControllable;
 using FlatLands.GeneralCamera;
 using FlatLands.Items;
@@ -37,6 +38,7 @@ namespace FlatLands.Main
             //UI
             _container.Add<PrimaryUIService>();
             _container.Add<UIManager>();
+            _container.Add<CursorManager>();
 
             //Locations
             _container.Add<PrimaryLocationsService>();
