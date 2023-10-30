@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FlatLands.Items
 {
-    public class ItemData : MonoBehaviour
+    public class ItemData
     {
         public ItemConfig Config { get; }
         public int Count { get; set; }
