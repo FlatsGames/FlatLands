@@ -23,6 +23,13 @@ namespace FlatLands.GeneralCamera
         
 #if UNITY_EDITOR
 
+        private float _debugDistance;
+        
+        public void SetDebugHit(float distance)
+        {
+            _debugDistance = distance;
+        }
+        
         private void OnDrawGizmos()
         {
             if(!_showGizmos)
@@ -33,10 +40,13 @@ namespace FlatLands.GeneralCamera
             
             Gizmos.color = Color.magenta;
             Gizmos.DrawSphere(_cameraLook.transform.position, 0.1f);
-
+            
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(_camera.transform.position, _cameraLook.transform.position);
             Gizmos.DrawLine(_pivot.transform.position, transform.position);
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(_camera.transform.position, _camera.transform.forward * _debugDistance);
         }
         
 #endif

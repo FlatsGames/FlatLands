@@ -44,24 +44,18 @@ namespace FlatLands.GeneralCamera
             ApplyOverlayCamerasToGeneral();
 
             UnityEventsProvider.OnFixedUpdate += OnFixedUpdate;
-            UnityEventsProvider.OnUpdate += OnUpdate;
             IsActive = true;
         }
 
         public override void Dispose()
         {
             UnityEventsProvider.OnFixedUpdate -= OnFixedUpdate;
-            UnityEventsProvider.OnUpdate -= OnUpdate;
         }
-        
-        private void OnUpdate()
-        {
-            UpdateHits();
-        }
-        
+
         private void OnFixedUpdate()
         {
             UpdateCameraMovement();
+            UpdateHits();
         }
 
 #region Main
@@ -173,9 +167,16 @@ namespace FlatLands.GeneralCamera
             var startPos = cameraTransform.position;
             var startDirection = cameraTransform.forward;
 
+            var ray = new Ray(startPos, startDirection);
             RaycastHit hit;
-            Physics.Raycast(startPos, startDirection, out hit, 100, ~_config.IgnoreHitLayers);
+            Physics.SphereCast(ray, 0.2f, out hit, 10, ~_config.IgnoreHitLayers);
+
             OnHit?.Invoke(hit);
+
+#if UNITY_EDITOR
+            Hierarchy.SetDebugHit(10);
+#endif
+            
         }
 
 #endregion
