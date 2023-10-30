@@ -8,5 +8,15 @@
         {
             _model = model as ExampleWindowModel;
         }
+
+        internal override void Init()
+        {
+            
+        }
+
+        internal override void Dispose()
+        {
+            
+        }
     }
 }

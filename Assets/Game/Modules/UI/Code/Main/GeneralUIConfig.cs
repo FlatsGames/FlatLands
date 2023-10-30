@@ -19,10 +19,10 @@ namespace FlatLands.UI
 
     public class UIWindowPair
     {
-        [SerializeField, HorizontalGroup] 
+        [SerializeField] 
         private bool _preload = true;
         
-        [SerializeField, HorizontalGroup] 
+        [SerializeField] 
         private UIWindow _prefab;
 
         public bool PreloadPrefab => _preload;

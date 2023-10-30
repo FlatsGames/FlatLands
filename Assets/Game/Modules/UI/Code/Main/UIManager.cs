@@ -14,8 +14,8 @@ namespace FlatLands.UI
 
         public UIHierarchy Hierarchy => _hierarchy;
 
-        public event Action<UIWindow> OnWindowShow;
-        public event Action<UIWindow> OnWindowHide;
+        public event Action<UIWindow> OnWindowShowed;
+        public event Action<UIWindow> OnWindowHided;
         
         private UIHierarchy _hierarchy;
         private GeneralUIConfig _config;
@@ -33,6 +33,8 @@ namespace FlatLands.UI
             
             _config = GeneralUIConfig.Instance;
             CreateWindows();
+
+            UnityEventsProvider.OnUpdate += OnUpdate;
         }
 
         public override void Dispose()
@@ -55,6 +57,15 @@ namespace FlatLands.UI
             }
         }
 
+        private void OnUpdate()
+        {
+            if(Input.GetKeyDown(KeyCode.H))
+                Show(UIWindowType.ExampleWindow);
+            
+            if(Input.GetKeyDown(KeyCode.J))
+                Hide(UIWindowType.ExampleWindow);
+        }
+
 
 #region Show / Hide
 
@@ -64,7 +75,7 @@ namespace FlatLands.UI
             window.SetModel(model);
             window.Show();
             _showedWindows.Add(window);
-            OnWindowShow?.Invoke(window);
+            OnWindowShowed?.Invoke(window);
         }
         
         public void Hide(UIWindowType type)
@@ -72,7 +83,7 @@ namespace FlatLands.UI
             var window = GetOrCreateWindow(type);
             window.Hide();
             _showedWindows.Remove(window);
-            OnWindowHide?.Invoke(window);
+            OnWindowHided?.Invoke(window);
         }
 
 #endregion
@@ -90,7 +101,8 @@ namespace FlatLands.UI
                     
             var prefab = windowSettings.Prefab;
             window = Object.Instantiate(prefab, Hierarchy.WindowsLayer);
-            window.Init(type);
+            window.SetWindowType(type);
+            window.Init();
             _windows[type] = window;
             _windowsByType[windowSettings.PrefabType] = window;
             return window;

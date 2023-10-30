@@ -1,48 +1,62 @@
 ﻿using System;
 using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace FlatLands.UI
 {
     public abstract class UIWindow : SerializedMonoBehaviour
     {
+        [SerializeField, BoxGroup("Main Settings")] 
+        private GameObject _root;
+
+        [SerializeField, BoxGroup("Main Settings")]
+        private Canvas _canvas;
+        
         public UIWindowType WindowType { get; private set; }
         
         public bool IsWindowActive { get; private set; }
         
-        public event Action<UIWindow> OnShow;
-        public event Action<UIWindow> OnHide;
+        public event Action<UIWindow> OnWindowShow;
+        public event Action<UIWindow> OnWindowHide;
 
-        internal virtual void Init(UIWindowType type)
+        internal virtual void Init() { }
+
+        internal virtual void Dispose() { }
+        
+        internal virtual void SetModel(IUIModel model) { }
+
+        internal void SetWindowType(UIWindowType type)
         {
             WindowType = type;
         }
 
-        internal virtual void Dispose()
+        internal void Show()
         {
+            _root.gameObject.SetActive(true);
+            IsWindowActive = true;
             
-        }
-        
-        internal virtual void SetModel(IUIModel model)
-        {
-            
-        }
-        
-        internal virtual void Show()
-        {
             if(IsWindowActive)
                 return;
-            
-            IsWindowActive = true;
-            OnShow?.Invoke(this);
+
+            OnShow();
+            OnWindowShow?.Invoke(this);
         }
 
-        internal virtual void Hide()
+        protected virtual void OnShow() { }
+
+        internal void Hide()
         {
+
+            _root.gameObject.SetActive(false);
+            IsWindowActive = false;
+            
             if(!IsWindowActive)
                 return;
-            
-            IsWindowActive = false;
-            OnHide?.Invoke(this);
+
+            OnHide();
+            OnWindowHide?.Invoke(this);
         }
+        
+        protected virtual void OnHide() { }
     }
 }
