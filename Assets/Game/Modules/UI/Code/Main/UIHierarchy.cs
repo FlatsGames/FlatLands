@@ -18,5 +18,7 @@ namespace FlatLands.UI
         private Transform _hudLayer;
 
         public Camera UICamera => _uiCamera;
+
+        public Transform WindowsLayer => _windowsLayer;
     }
 }

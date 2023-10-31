@@ -3,19 +3,31 @@
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/CameraHierarchy.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/CameraHierarchy.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/FlatLands.GeneralCamera.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/FlatLands.GeneralCamera.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraConfig.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraConfig.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/PrimaryCameraManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/PrimaryCameraManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs/[GeneralCamera].prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs/[GeneralCamera].prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Resources.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Resources/GeneralCameraConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Resources/GeneralCameraConfig.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Resources/CharacterConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Resources/CharacterConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharactersMediator/Code/CharactersMediatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharactersMediator/Code/CharactersMediatorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/blue_floor_Tiled.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/blue_floor_Tiled.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-black.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-black.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-dark-gray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-dark-gray.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-light-gray.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-light-gray.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-white.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/invector-icon-white.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/orange_cube.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/orange_cube.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/red_cube.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/red_cube.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/stair_chromo.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Invector-3rdPersonController_LITE/3D Models/Others/Materials/stair_chromo.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/FlatLands.UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/FlatLands.UI.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/GeneralUIConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/GeneralUIConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
