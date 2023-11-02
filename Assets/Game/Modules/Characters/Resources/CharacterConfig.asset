@@ -102,3 +102,5 @@ MonoBehaviour:
   _groundMinDistance: 0.25
   _groundMaxDistance: 0.5
   _slopeLimit: 75
+  _headIkWeight: 0.325
+  _bodyIkWeight: 0.3
