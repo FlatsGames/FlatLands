@@ -96,15 +96,12 @@ namespace FlatLands.Characters
             _colliderHeight = collider.height;
 
             IsGrounded = true;
+            IsActive = true;
         }
         
         public void EntityUpdate()
         {
             UpdateAnimator();
-
-            if(!IsActive)
-                return;
-            
             UpdateInput();
         }
 
@@ -140,6 +137,12 @@ namespace FlatLands.Characters
         
         private void MoveInput()
         {
+            if(!IsActive)
+            {
+                _inputAxis = new Vector3(0, 0, 0);
+                return;
+            }
+            
             _inputAxis.x = Input.GetAxis(Horizontal_Input_Name);
             _inputAxis.z = Input.GetAxis(Vertical_Input_Name);
         }
