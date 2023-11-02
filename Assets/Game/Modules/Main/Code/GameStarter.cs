@@ -62,8 +62,9 @@ namespace FlatLands.Main
             //Character Mediator
             _container.Add<CharactersMediatorManager>();
             
-            //ItemsManager
+            //Items
             _container.Add<ItemsManager>();
+            _container.Add<ItemsSpawnManager>();
             
             _container.ApplyDependencies();
             

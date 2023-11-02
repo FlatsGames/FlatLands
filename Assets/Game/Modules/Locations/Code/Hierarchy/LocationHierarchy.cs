@@ -8,6 +8,7 @@ namespace FlatLands.Locations
     {
         [SerializeField]
         private List<ILocationData> _locationDatas = new ();
+        
 
         public T GetData<T>() where T : ILocationData
         {
@@ -19,6 +20,15 @@ namespace FlatLands.Locations
             }
 
             return default;
+        }
+
+        [Button]
+        private void Refresh()
+        {
+            foreach (var data in _locationDatas)
+            {
+                data.Refresh(gameObject);
+            }
         }
     }
 }

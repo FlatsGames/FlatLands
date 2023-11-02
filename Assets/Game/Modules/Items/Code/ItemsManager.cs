@@ -12,24 +12,35 @@ namespace FlatLands.Items
         [Inject] private LocationsManager _locationsManager;
         [Inject] private LocationsCameraManager _locationsCameraManager;
         
-        private Dictionary<string, ItemData> _itemsPair;
-        private int _viewsCounter;
         private Transform _dropContainer;
         
         public List<ItemData> ItemsData { get; private set; }
-        
+
+        private List<ItemView> _itemsViewsOnScene;
 
         public override void Init()
         {
             // _locationsCameraManager.OnLocationObjectHit += 
+            
             ItemsData = new List<ItemData>();
-            _itemsPair = new Dictionary<string, ItemData>();
             ItemConfig.Init();
             var configs = ItemConfig.ByName;
-            var itemsData = _locationsManager.CurLocation.Item2.GetData<ItemsLocationData>();
-            _dropContainer = itemsData.DropContainer;
+            var itemsLocationData = _locationsManager.CurLocation.Item2.GetData<ItemsLocationData>();
+            _dropContainer = itemsLocationData.DropContainer;
+            _itemsViewsOnScene = itemsLocationData.itemsViewsOnScene;
+            GetItemsDataOnScene();
         }
 
+        private void GetItemsDataOnScene()
+        {
+            foreach (var view in _itemsViewsOnScene)
+            {
+                var config = view.Config;
+                var count = view.Count;
+                CreatItemData(config, count);
+            }
+        }
+        
         public ItemData CreatItemData(ItemConfig config, int startCount)
         {
             var newData = new ItemData(config, startCount);
@@ -47,9 +58,6 @@ namespace FlatLands.Items
             var prefab = itemData.Config.ItemPrefab;
             var itemView = GameObject.Instantiate(prefab,position, Quaternion.identity);
             itemData.ItemView = itemView;
-            itemView.SetId(_viewsCounter);
-            _itemsPair.TryAdd(itemView.Id, itemData);
-            _viewsCounter++;
             return itemView;
         }
 
@@ -60,7 +68,6 @@ namespace FlatLands.Items
             GameObject.Destroy(itemData.ItemView.gameObject);
             itemData.ItemView = null;
         }
-        
         
         
     }
