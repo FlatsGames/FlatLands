@@ -72,12 +72,18 @@ namespace FlatLands.Characters
         public void SetBehaviour(CharacterBehaviour behaviour)
         {
             if(Behaviour != null)
+            {
                 Behaviour.OnAnimatorMoved -= HandleAnimatorMoved;
+                Behaviour.OnAnimatorIks -= HandleAnimatorIk;
+            }
             
             Behaviour = behaviour;
             
             if(Behaviour != null)
+            {
                 Behaviour.OnAnimatorMoved += HandleAnimatorMoved;
+                Behaviour.OnAnimatorIks += HandleAnimatorIk;
+            }
         }
 
         public void SetRotateTarget(Transform targetTransform)
@@ -440,6 +446,15 @@ namespace FlatLands.Characters
             _inputMagnitude = movementPair.WalkByDefault 
                 ? Mathf.Clamp(newInput.magnitude, 0, walkAnimSpeed) 
                 : Mathf.Clamp(curMagnitude, 0, runAnimSpeed);
+        }
+
+        private void HandleAnimatorIk(int layer)
+        {
+            if(_rotateTarget == null)
+                return;
+            
+            Behaviour.CharacterAnimator.SetLookAtWeight(Config.HeadIkWeight);
+            Behaviour.CharacterAnimator.SetLookAtPosition(_rotateTarget.position);
         }
 
 #endregion

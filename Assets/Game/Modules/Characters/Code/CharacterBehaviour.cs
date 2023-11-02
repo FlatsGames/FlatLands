@@ -24,10 +24,16 @@ namespace FlatLands.Characters
         public CapsuleCollider CharacterCollider => _capsuleCollider;
 
         public event Action OnAnimatorMoved;
+        public event Action<int> OnAnimatorIks;
         
         private void OnAnimatorMove()
         {
             OnAnimatorMoved?.Invoke();
+        }
+
+        private void OnAnimatorIK(int layerIndex)
+        {
+            OnAnimatorIks?.Invoke(layerIndex);
         }
     }
 }

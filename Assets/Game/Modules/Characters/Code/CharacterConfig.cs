@@ -72,6 +72,13 @@ namespace FlatLands.Characters
         
         [SerializeField, FoldoutGroup("Ground Settings"), Range(30, 80)]
         private float _slopeLimit = 75f;
+
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _headIkWeight = 0.4f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _bodyIkWeight = 0.3f;
         
         public CharacterBehaviour CharacterPrefab => _characterPrefab;
 
@@ -98,6 +105,10 @@ namespace FlatLands.Characters
         public float GroundMinDistance => _groundMinDistance;
         public float GroundMaxDistance => _groundMaxDistance;
         public float SlopeLimit => _slopeLimit;
+
+
+        public float HeadIkWeight => _headIkWeight;
+        public float BodyIkWeight => _bodyIkWeight;
     }
     
     [HideReferenceObjectPicker]
