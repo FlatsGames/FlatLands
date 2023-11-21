@@ -3416,6 +3416,7 @@ GameObject:
   - component: {fileID: 952099941991868354}
   - component: {fileID: 8511600455462435884}
   - component: {fileID: 129866559304606127}
+  - component: {fileID: 6096968926646336080}
   - component: {fileID: 8755436316111745431}
   - component: {fileID: 4841066811661521754}
   - component: {fileID: 6271203107814421326}
@@ -3508,12 +3509,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'VBOT_:LeftHand'\n\tTransform 'VBOT_:LeftForeArm'\n\tTransform
-    'VBOT_:Spine'\n\tTransform 'VBOT_:RightArm'\n\tTransform 'VBOT_:LeftArm'\n\tTransform
-    'VBOT_:Hips'\n\tTransform 'VBOT_:Spine2'\n\tTransform 'VBOT_:RightForeArm'\n\tTransform
-    'VBOT_:RightHand'\n\tTransform 'VBOT_:LeftHand'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -3632,6 +3628,27 @@ MonoBehaviour:
   _rightHandHolder: {fileID: 4738153306406787896}
   _leftHandConstraint: {fileID: 3995516082595860111}
   _rightHandConstraint: {fileID: 6593331608240423755}
+--- !u!114 &6096968926646336080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919255373390838018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902210af1cc24ddcbd0e346870941866, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
 --- !u!114 &8755436316111745431
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -69,11 +69,7 @@ namespace FlatLands.Equipments
         //ActionTime range 0 to 1
         private IEnumerator PlayEquipmentAnimation(string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
         {
-            yield return _animator.PlayAnimationWithAction(
-                animName, 
-                WeaponAnimatorSubMachineName, 
-                actionTime, 
-                action,
+            yield return _animator.PlayAnimationWithAction(WeaponAnimatorSubMachineName, animName, actionTime, action,
                 completeCallback);
         }
         

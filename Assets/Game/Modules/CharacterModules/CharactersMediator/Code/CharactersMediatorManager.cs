@@ -1,4 +1,5 @@
 using FlatLands.Architecture;
+using FlatLands.CharacterCombat;
 using FlatLands.CharacterEquipment;
 using FlatLands.Characters;
 using FlatLands.EntityControllable;
@@ -12,10 +13,14 @@ namespace FlatLands.CharactersMediator
 		[Inject] private CharactersManager _charactersManager;
 		[Inject] private GeneralCameraManager _cameraManager;
 
+		private CharacterEquipmentProvider _equipmentProvider;
+		private CharacterCombatProvider _combatProvider;
+		
 		public override void Init()
 		{
 			StartCharacterLife();
 			StartEquipmentProvider();
+			StartCombatProvider();
 		}
 
 		public override void Dispose()
@@ -36,9 +41,17 @@ namespace FlatLands.CharactersMediator
 			var characterBehaviour = _charactersManager.CurrentCharacter.Behaviour;
 			var characterEquipmentBehaviour = characterBehaviour.GetComponent<CharacterEquipmentBehaviour>();
 
-			var equipmentProvider = new CharacterEquipmentProvider(characterEquipmentBehaviour, characterBehaviour.CharacterAnimator);
-			equipmentProvider.Init();
+			_equipmentProvider = new CharacterEquipmentProvider(characterEquipmentBehaviour, characterBehaviour.CharacterAnimator);
+			_equipmentProvider.Init();
+		}
 
+		private void StartCombatProvider()
+		{
+			var characterBehaviour = _charactersManager.CurrentCharacter.Behaviour;
+			var characterCombatBehaviour = characterBehaviour.GetComponent<CharacterCombatBehaviour>();
+
+			_combatProvider = new CharacterCombatProvider(_equipmentProvider, characterCombatBehaviour, characterBehaviour.CharacterAnimator);
+			_combatProvider.Init();
 		}
 	}
 }

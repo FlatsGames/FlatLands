@@ -10,10 +10,14 @@ namespace FlatLands.CombatSystem
         where TAnimEnum : Enum
     {
         [SerializeField] 
-        private Dictionary<TAnimEnum, string> _combatAnimations;
-
-        public IReadOnlyDictionary<TAnimEnum, string> CombatAnimations => _combatAnimations;
+        private string _animatorSubLayer;
         
+        [SerializeField] 
+        private List<TAnimEnum> _combatAnimations;
+        
+        public string AnimatorSubLayer => _animatorSubLayer;
+        public IReadOnlyList<TAnimEnum> CombatAnimations => _combatAnimations;
+
         public abstract WeaponEquipmentSlotType Category { get; }
     }
 }
