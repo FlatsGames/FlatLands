@@ -1,0 +1,20 @@
+{
+    "name": "FlatLands.CharacterCombat",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:0f23418212482c94983a1cb5b1a6b845",
+        "GUID:9978d14fb67f2b0409a68ec884e3a4be",
+        "GUID:343918e9d6f022740918d5e36787fcd2",
+        "GUID:700f64dacfe35ce41a25b6b73ccc89eb"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
