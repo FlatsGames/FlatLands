@@ -56,5 +56,39 @@ namespace FlatLands.Architecture
 
             callback?.Invoke();
         }
+        
+        public static IEnumerator PlayAnimationWithAction(this Animator animator, string animLayer, string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
+        {
+            var hashAnim = Animator.StringToHash(animLayer + "." + animName);
+            animator.Play(hashAnim);
+            
+            var duration = 0f;
+            var animations = animator.runtimeAnimatorController.animationClips;
+            foreach (var anim in animations)
+            {
+                if (anim.name != animName) 
+                    continue;
+                
+                duration = Mathf.Max(duration, anim.length);
+                break;
+            }
+
+            if(actionTime.HasValue)
+            {
+                var actionDuration = duration * actionTime.Value;
+                yield return new WaitForSeconds(actionDuration);
+                action?.Invoke();
+
+                var remainedDuration = duration - actionDuration;
+                yield return new WaitForSeconds(remainedDuration);
+            }
+            else
+            {
+                if (duration > 0)
+                    yield return new WaitForSeconds(duration);
+            }
+
+            completeCallback?.Invoke();
+        }
     }
 }

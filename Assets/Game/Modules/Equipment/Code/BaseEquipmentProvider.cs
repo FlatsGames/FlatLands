@@ -69,36 +69,12 @@ namespace FlatLands.Equipments
         //ActionTime range 0 to 1
         private IEnumerator PlayEquipmentAnimation(string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
         {
-            var hashAnim = Animator.StringToHash(WeaponAnimatorSubMachineName + "." + animName);
-            _animator.Play(hashAnim);
-            
-            var duration = 0f;
-            var animations = _animator.runtimeAnimatorController.animationClips;
-            foreach (var anim in animations)
-            {
-                if (anim.name != animName) 
-                    continue;
-                
-                duration = Mathf.Max(duration, anim.length);
-                break;
-            }
-
-            if(actionTime.HasValue)
-            {
-                var actionDuration = duration * actionTime.Value;
-                yield return new WaitForSeconds(actionDuration);
-                action?.Invoke();
-
-                var remainedDuration = duration - actionDuration;
-                yield return new WaitForSeconds(remainedDuration);
-            }
-            else
-            {
-                if (duration > 0)
-                    yield return new WaitForSeconds(duration);
-            }
-
-            completeCallback?.Invoke();
+            yield return _animator.PlayAnimationWithAction(
+                animName, 
+                WeaponAnimatorSubMachineName, 
+                actionTime, 
+                action,
+                completeCallback);
         }
         
 #endregion
