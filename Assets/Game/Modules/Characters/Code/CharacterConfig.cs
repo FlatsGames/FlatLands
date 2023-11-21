@@ -75,11 +75,25 @@ namespace FlatLands.Characters
 
         
         [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _headIkWeight = 0.4f;
+        private float _mainWeight = 1f;
         
         [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
         private float _bodyIkWeight = 0.3f;
         
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _headIkWeight = 0.4f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float eyesIkWeight = 0.3f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _clampIkWeight = 0.3f;
+
+
+        [SerializeField, FoldoutGroup("Battle Settings")]
+        private KeyCode _takeWeaponKey = KeyCode.Alpha1;
+
+
         public CharacterBehaviour CharacterPrefab => _characterPrefab;
 
         public bool UseRootMotion => _useRootMotion;
@@ -107,8 +121,13 @@ namespace FlatLands.Characters
         public float SlopeLimit => _slopeLimit;
 
 
-        public float HeadIkWeight => _headIkWeight;
+        public float MainWeight => _mainWeight;
         public float BodyIkWeight => _bodyIkWeight;
+        public float HeadIkWeight => _headIkWeight;
+        public float EyesIkWeight => eyesIkWeight;
+        public float ClampIkWeight => _clampIkWeight;
+
+        public KeyCode TakeWeaponKey => _takeWeaponKey;
     }
     
     [HideReferenceObjectPicker]

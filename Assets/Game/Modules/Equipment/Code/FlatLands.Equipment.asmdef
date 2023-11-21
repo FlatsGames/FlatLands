@@ -1,13 +1,12 @@
 {
-    "name": "FlatLands.CharactersMediator",
+    "name": "FlatLands.Equipment",
     "rootNamespace": "",
     "references": [
         "GUID:268109eae726949449e432e7b577b8c6",
         "GUID:56a9d80c140e7d84eba4f4798e936dd3",
         "GUID:efa35b636d20f6b4c9c5fb8274b1388e",
         "GUID:0f23418212482c94983a1cb5b1a6b845",
-        "GUID:343918e9d6f022740918d5e36787fcd2",
-        "GUID:700f64dacfe35ce41a25b6b73ccc89eb"
+        "GUID:7f7d1af65c2641843945d409d28f2e20"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

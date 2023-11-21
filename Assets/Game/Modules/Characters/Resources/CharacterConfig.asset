@@ -102,5 +102,9 @@ MonoBehaviour:
   _groundMinDistance: 0.25
   _groundMaxDistance: 0.5
   _slopeLimit: 75
-  _headIkWeight: 0.325
-  _bodyIkWeight: 0.3
+  _mainWeight: 1
+  _bodyIkWeight: 0.035
+  _headIkWeight: 0.178
+  eyesIkWeight: 0.352
+  _clampIkWeight: 0.531
+  _takeWeaponKey: 49

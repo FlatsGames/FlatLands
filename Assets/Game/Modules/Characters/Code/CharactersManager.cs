@@ -15,7 +15,7 @@ namespace FlatLands.Characters
         public CharacterProvider CurrentCharacter { get; private set; }
 
         public event Action<CharacterProvider> OnCharacterCreated;
-        
+
         private CharacterConfig _config;
         
         public override void Init()

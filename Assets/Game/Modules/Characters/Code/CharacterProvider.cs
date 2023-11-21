@@ -453,7 +453,7 @@ namespace FlatLands.Characters
             if(_rotateTarget == null)
                 return;
             
-            Behaviour.CharacterAnimator.SetLookAtWeight(Config.HeadIkWeight);
+            Behaviour.CharacterAnimator.SetLookAtWeight(Config.MainWeight, Config.BodyIkWeight, Config.HeadIkWeight, Config.EyesIkWeight, Config.ClampIkWeight);
             Behaviour.CharacterAnimator.SetLookAtPosition(_rotateTarget.position);
         }
 
