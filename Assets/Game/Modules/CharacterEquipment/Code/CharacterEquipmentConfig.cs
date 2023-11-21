@@ -41,7 +41,13 @@ namespace FlatLands.CharacterEquipment
         [SerializeField] private string _takeWeaponAnimationName;
         [SerializeField] private string _putWeaponAnimationName;
 
+        [SerializeField] private Vector3 _posInRightHand;
+        [SerializeField] private Vector3 _rotInRightHand;
+
         public string TakeWeaponAnimationName => _takeWeaponAnimationName;
         public string PutWeaponAnimationName => _putWeaponAnimationName;
+
+        public Vector3 PosInRightHand => _posInRightHand;
+        public Vector3 RotInRightHand => _rotInRightHand;
     }
 }

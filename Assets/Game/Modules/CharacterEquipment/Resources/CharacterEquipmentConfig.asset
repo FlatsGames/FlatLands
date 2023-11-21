@@ -119,6 +119,36 @@ MonoBehaviour:
     - Name: _putWeaponAnimationName
       Entry: 1
       Data: Put_WeaponLower
+    - Name: _posInRightHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -18.2
+    - Name: 
+      Entry: 4
+      Data: 4.7
+    - Name: 
+      Entry: 4
+      Data: -0.7
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _rotInRightHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 5.577
+    - Name: 
+      Entry: 4
+      Data: -0.493
+    - Name: 
+      Entry: 4
+      Data: -100
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -140,6 +170,36 @@ MonoBehaviour:
     - Name: _putWeaponAnimationName
       Entry: 1
       Data: Put_WeaponSpine
+    - Name: _posInRightHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _rotInRightHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -0.024
+    - Name: 
+      Entry: 4
+      Data: -0.008
+    - Name: 
+      Entry: 4
+      Data: -104.16
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -161,6 +221,36 @@ MonoBehaviour:
     - Name: _putWeaponAnimationName
       Entry: 1
       Data: Put_WeaponBelt
+    - Name: _posInRightHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -10.88
+    - Name: 
+      Entry: 4
+      Data: 2.03
+    - Name: 
+      Entry: 4
+      Data: -1.02
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _rotInRightHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 12.181
+    - Name: 
+      Entry: 4
+      Data: -0.492
+    - Name: 
+      Entry: 4
+      Data: -98.006
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 

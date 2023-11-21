@@ -7,12 +7,15 @@ namespace FlatLands.Equipments
 {
 	public abstract class BaseEquipmentBehaviour : SerializedMonoBehaviour
 	{
+		[SerializeField] private Transform _rightHandHolder;
+		
 		[SerializeField] private TwoBoneIKConstraint _leftHandConstraint;
 		[SerializeField] private TwoBoneIKConstraint _rightHandConstraint;
 		
 		[SerializeField, ReadOnly] 
 		private Dictionary<WeaponEquipmentSlotType, EquipmentSlotBehaviour> _equipmentSlotsBehaviourPairs;
-		
+
+		public Transform RightHandHolder => _rightHandHolder;
 		public TwoBoneIKConstraint LeftHandConstraint => _leftHandConstraint;
 		public TwoBoneIKConstraint RightHandConstraint => _rightHandConstraint;
 

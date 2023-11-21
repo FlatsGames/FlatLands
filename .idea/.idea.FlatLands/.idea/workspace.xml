@@ -2,32 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Code/CharacterEquipmentBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Code/CharacterEquipmentBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Code/CharacterEquipmentConfig.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Code/CharacterEquipmentConfig.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotBehaviour.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/IWeaponEquipmentSetting.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/IWeaponEquipmentSetting.cs.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/WeaponEquipmentStateBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/WeaponEquipmentStateBehaviour.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/Utils/AnimatorUtils.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Utils/AnimatorUtils.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/Basic_StrafeMoveset.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/Basic_StrafeMoveset.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Code/CharacterEquipmentConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Code/CharacterEquipmentConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Resources/CharacterEquipmentConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterEquipment/Resources/CharacterEquipmentConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Put_WeaponLower.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Put_WeaponLower.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Put_WeaponLower.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Put_WeaponLower.anim.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Take_WeaponLower.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Take_WeaponLower.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Take_WeaponSpine.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animations/WithWeapon/Take_WeaponSpine.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animators/CharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Animators/CharacterAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterBehaviour.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/FlatLands.Characters.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/FlatLands.Characters.asmdef" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Prefabs/[Main_Character].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Prefabs/[Main_Character].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Resources/CharacterConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Resources/CharacterConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharactersMediator/Code/CharactersMediatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharactersMediator/Code/CharactersMediatorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharactersMediator/Code/FlatLands.CharactersMediator.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharactersMediator/Code/FlatLands.CharactersMediator.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/IWeaponEquipmentSetting.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/IWeaponEquipmentSetting.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +110,7 @@
       <workItem from="1699087454939" duration="2358000" />
       <workItem from="1699091075923" duration="12577000" />
       <workItem from="1699258736146" duration="15590000" />
-      <workItem from="1700577225858" duration="313000" />
+      <workItem from="1700577225858" duration="4099000" />
     </task>
     <servers />
   </component>

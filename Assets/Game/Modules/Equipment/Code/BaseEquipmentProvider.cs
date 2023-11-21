@@ -66,7 +66,8 @@ namespace FlatLands.Equipments
             return stateBehaviour;
         }
 
-        private IEnumerator PlayEquipmentAnimation(string animName, Action callback = null)
+        //ActionTime range 0 to 1
+        private IEnumerator PlayEquipmentAnimation(string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
         {
             var hashAnim = Animator.StringToHash(WeaponAnimatorSubMachineName + "." + animName);
             _animator.Play(hashAnim);
@@ -82,10 +83,22 @@ namespace FlatLands.Equipments
                 break;
             }
 
-            if (duration > 0) 
-                yield return new WaitForSeconds(duration);
+            if(actionTime.HasValue)
+            {
+                var actionDuration = duration * actionTime.Value;
+                yield return new WaitForSeconds(actionDuration);
+                action?.Invoke();
 
-            callback?.Invoke();
+                var remainedDuration = duration - actionDuration;
+                yield return new WaitForSeconds(remainedDuration);
+            }
+            else
+            {
+                if (duration > 0)
+                    yield return new WaitForSeconds(duration);
+            }
+
+            completeCallback?.Invoke();
         }
         
 #endregion
@@ -127,7 +140,19 @@ namespace FlatLands.Equipments
                 var equipmentSettings = GetEquipmentSettings(_currentSlot.SlotType);
                 var animName = equipmentSettings.TakeWeaponAnimationName;
             
-                _handsCoroutine = PlayEquipmentAnimation(animName, callback);
+                _handsCoroutine = PlayEquipmentAnimation(
+                    animName,
+                    0.5f, 
+                    () =>
+                    {
+                        var handHolder = _behaviour.RightHandHolder;
+                        var equippedWeapon = _currentSlot.PivotTrans;
+                        equippedWeapon.SetParent(handHolder);
+                        equippedWeapon.DOLocalMove(equipmentSettings.PosInRightHand, 0.2f);
+                        equippedWeapon.DOLocalRotate(equipmentSettings.RotInRightHand, 0.2f);
+                    },
+                    callback);
+                
                 UnityEventsProvider.CoroutineStart(_handsCoroutine);
             }
         }
@@ -144,14 +169,23 @@ namespace FlatLands.Equipments
             var equipmentSettings = GetEquipmentSettings(_currentSlot.SlotType);
             var animName = equipmentSettings.PutWeaponAnimationName;
 
-            _handsCoroutine = PlayEquipmentAnimation(animName, EndRemoveFromHands);
+            _handsCoroutine = PlayEquipmentAnimation(
+                animName, 
+                0.5f, 
+                () =>
+                {
+                    var equippedWeapon = _currentSlot.PivotTrans;
+                    equippedWeapon.SetParent(_currentSlot.transform);
+                    equippedWeapon.DOLocalMove(Vector3.zero, 0.2f);
+                    equippedWeapon.DOLocalRotateQuaternion(Quaternion.identity, 0.2f);
+                },
+                () =>
+                {
+                    _currentSlot = null;
+                    callback?.Invoke();
+                });
+            
             UnityEventsProvider.CoroutineStart(_handsCoroutine);
-
-            void EndRemoveFromHands()
-            {
-                _currentSlot = null;
-                callback?.Invoke();
-            }
         }
         
 #endregion
