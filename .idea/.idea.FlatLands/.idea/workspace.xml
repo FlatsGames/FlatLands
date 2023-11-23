@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatBehaviour.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Utils/DOTweenUtils.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Utils/DOTweenUtils.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_1.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_1.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_2.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_2.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_2.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_2.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_3.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_3.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_3.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_3.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_4.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_4.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_4.anim.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Animations/LeftLeg_Attack_4.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Resources/CharacterCombat_LeftLegSlot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Resources/CharacterCombat_LeftLegSlot.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Main_Character].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Main_Character].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/CharactersMediatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/CharactersMediatorManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/FlatLands.CharactersMediator.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/FlatLands.CharactersMediator.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CombatSystem/Code/BaseCombatConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CombatSystem/Code/BaseCombatConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CombatSystem/Code/BaseCombatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CombatSystem/Code/BaseCombatProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRegeneratedHudElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRegeneratedHudElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,11 +31,13 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/836aea33117647b388cc5f48bed669c47000/f5/0f63c19a/CanvasGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10871f9e312b442cb78b9b97db88fdcb172a00/fa/9db8b8c7/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LocationCamera/Code/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/95/3c41a72a/DOTween.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LegacyProjects/merge-expedition-develop/merge-expedition-develop/Assets/GeekyHouse/General/Code/GameStarter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ed3dae649e648f7a159faaaa24538931fe00/fc/db7bdee1/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a0f19b0e419485eafaaec7c95c00afb27800/ce/32e9601d/StateMachineBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LocationCamera/Code/CameraBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.animation.rigging@1.2.1/Runtime/AnimationRig/Constraints/TwoBoneIKConstraint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/4a/6e6344b7/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62e5378dafa04b578167b1824529a48c7c00/84/dc41279e/Input.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a0f19b0e419485eafaaec7c95c00afb27800/5a/7d156213/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LegacyProjects/merge-expedition-develop/merge-expedition-develop/Packages/com.geekyhouse.submodule.location.interactive/Runtime/LocationInteractiveObject.cs" root0="SKIP_HIGHLIGHTING" />
