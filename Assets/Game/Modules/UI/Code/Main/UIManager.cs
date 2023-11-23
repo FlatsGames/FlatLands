@@ -96,6 +96,7 @@ namespace FlatLands.UI
                     
             var prefab = windowSettings.Prefab;
             window = Object.Instantiate(prefab, Hierarchy.WindowsLayer);
+            _container.InjectAt(window);
             window.SetWindowType(type);
             window.Init();
             _windows[type] = window;
