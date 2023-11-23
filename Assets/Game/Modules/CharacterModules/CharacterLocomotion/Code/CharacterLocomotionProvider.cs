@@ -1,11 +1,9 @@
-﻿using FlatLands.Architecture;
-using FlatLands.Cursors;
-using FlatLands.EntityControllable;
+﻿using FlatLands.Characters;
 using UnityEngine;
 
-namespace FlatLands.Characters
+namespace FlatLands.CharacterLocomotion
 {
-    public sealed class CharacterProvider : IEntityControllableProvider
+    public sealed class CharacterLocomotionProvider : ICharacterProvider
     {
         private const string Horizontal_Input_Name = "Horizontal";
         private const string Vertical_Input_Name = "Vertical";
@@ -21,10 +19,8 @@ namespace FlatLands.Characters
         private float AnimatorWalkSpeed => 0.5f;
         private float AnimatorRunningSpeed => 1f;
         private float AnimatorSprintSpeed => 1.5f;
-
-        [Inject] private CursorManager _cursorManager;
         
-        public CharacterConfig Config { get; }
+        public CharacterLocomotionConfig LocomotionConfig { get; private set; }
         public CharacterBehaviour Behaviour { get; private set; }
         
         public bool IsJumping { get; private set; }
@@ -33,7 +29,7 @@ namespace FlatLands.Characters
         public bool IsSprinting { get; private set; }
         public bool StopMove { get; private set; }
         
-        public bool IsActive { get; internal set; }
+        public bool IsActive { get; set; }
 
         private PhysicMaterial _frictionPhysics;
         private PhysicMaterial _maxFrictionPhysics;
@@ -64,11 +60,6 @@ namespace FlatLands.Characters
         
 #region Main
 
-        public CharacterProvider(CharacterConfig config)
-        {
-            Config = config;
-        }
-
         public void SetBehaviour(CharacterBehaviour behaviour)
         {
             if(Behaviour != null)
@@ -93,6 +84,7 @@ namespace FlatLands.Characters
 
         public void Init()
         {
+            LocomotionConfig = CharacterLocomotionConfig.Instance;
             Behaviour.CharacterAnimator.updateMode = AnimatorUpdateMode.AnimatePhysics;
 
             CreatePhysicsMaterials();
@@ -105,13 +97,18 @@ namespace FlatLands.Characters
             IsActive = true;
         }
         
-        public void EntityUpdate()
+        public void Dispose()
+        {
+            
+        }
+
+        public void HandleUpdate()
         {
             UpdateAnimator();
             UpdateInput();
         }
 
-        public void EntityFixedUpdate()
+        public void HandleFixedUpdate()
         {
             CheckGround();
             CheckSlopeLimit();
@@ -155,22 +152,22 @@ namespace FlatLands.Characters
 
         private void StrafeInput()
         {
-            if (Input.GetKeyDown(Config.StrafeInput))
+            if (Input.GetKeyDown(LocomotionConfig.StrafeInput))
                 Strafe();
         }
 
         private void SprintInput()
         {
-            if (Input.GetKeyDown(Config.SprintInput))
+            if (Input.GetKeyDown(LocomotionConfig.SprintInput))
                 Sprint(true);
-            else if (Input.GetKeyUp(Config.SprintInput))
+            else if (Input.GetKeyUp(LocomotionConfig.SprintInput))
                 Sprint(false);
         }
         
         private void JumpInput()
         {
-            var canJump = IsGrounded && GroundAngle() < Config.SlopeLimit && !IsJumping && !StopMove;
-            if (Input.GetKeyDown(Config.JumpInput) && canJump)
+            var canJump = IsGrounded && GroundAngle() < LocomotionConfig.SlopeLimit && !IsJumping && !StopMove;
+            if (Input.GetKeyDown(LocomotionConfig.JumpInput) && canJump)
                 Jump();
         }
 
@@ -184,21 +181,21 @@ namespace FlatLands.Characters
             if (_lockMovement) 
                 return;
 
-            if (Config.LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && !IsStrafing 
-                || Config.LocomotionType.Equals(CharacterLocomotionType.OnlyFree))
+            if (LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && !IsStrafing 
+                || LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.OnlyFree))
             {
-                SetControllerMovementSpeed(Config.FreeMovementPair);
-                SetAnimatorMoveSpeed(Config.FreeMovementPair);
+                SetControllerMovementSpeed(LocomotionConfig.FreeMovementPair);
+                SetAnimatorMoveSpeed(LocomotionConfig.FreeMovementPair);
             }
-            else if (Config.LocomotionType.Equals(CharacterLocomotionType.OnlyStrafe) 
-                     || Config.LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && IsStrafing)
+            else if (LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.OnlyStrafe) 
+                     || LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && IsStrafing)
             {
                 IsStrafing = true;
-                SetControllerMovementSpeed(Config.StrafeMovementPair);
-                SetAnimatorMoveSpeed(Config.StrafeMovementPair);
+                SetControllerMovementSpeed(LocomotionConfig.StrafeMovementPair);
+                SetAnimatorMoveSpeed(LocomotionConfig.StrafeMovementPair);
             }
 
-            if (!Config.UseRootMotion)
+            if (!LocomotionConfig.UseRootMotion)
                 MoveCharacter(_moveDirection);
         }
         
@@ -207,8 +204,8 @@ namespace FlatLands.Characters
             if (_inputAxis.magnitude <= 0.01)
             {
                 var movementPair = IsStrafing
-                    ? Config.StrafeMovementPair.MovementSmooth
-                    : Config.FreeMovementPair.MovementSmooth;
+                    ? LocomotionConfig.StrafeMovementPair.MovementSmooth
+                    : LocomotionConfig.FreeMovementPair.MovementSmooth;
                 
                 _moveDirection = Vector3.Lerp(_moveDirection, Vector3.zero, movementPair * Time.deltaTime);
                 return;
@@ -242,8 +239,8 @@ namespace FlatLands.Characters
         private void MoveCharacter(Vector3 _direction)
         {
             var smooth = IsStrafing 
-                ? Config.StrafeMovementPair.MovementSmooth 
-                : Config.FreeMovementPair.MovementSmooth;
+                ? LocomotionConfig.StrafeMovementPair.MovementSmooth 
+                : LocomotionConfig.FreeMovementPair.MovementSmooth;
             
             _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, smooth * Time.deltaTime);
 
@@ -257,7 +254,7 @@ namespace FlatLands.Characters
             if (_direction.magnitude > 1f)
                 _direction.Normalize();
 
-            var curPos = Config.UseRootMotion
+            var curPos = LocomotionConfig.UseRootMotion
                 ? Behaviour.CharacterAnimator.rootPosition
                 : Behaviour.CharacterRigidbody.position;
             
@@ -275,16 +272,16 @@ namespace FlatLands.Characters
             var transform = Behaviour.transform;
             var collider = Behaviour.CharacterCollider;
             
-            if (Physics.Linecast(transform.position + Vector3.up * (collider.height * 0.5f), transform.position + _moveDirection.normalized * (collider.radius + 0.2f), out var hitInfo, Config.GroundLayer))
+            if (Physics.Linecast(transform.position + Vector3.up * (collider.height * 0.5f), transform.position + _moveDirection.normalized * (collider.radius + 0.2f), out var hitInfo, LocomotionConfig.GroundLayer))
             {
                 var hitAngle = Vector3.Angle(Vector3.up, hitInfo.normal);
 
                 var targetPoint = hitInfo.point + _moveDirection.normalized * collider.radius;
-                if ((hitAngle > Config.SlopeLimit) && Physics.Linecast(transform.position + Vector3.up * (collider.height * 0.5f), targetPoint, out hitInfo, Config.GroundLayer))
+                if ((hitAngle > LocomotionConfig.SlopeLimit) && Physics.Linecast(transform.position + Vector3.up * (collider.height * 0.5f), targetPoint, out hitInfo, LocomotionConfig.GroundLayer))
                 {
                     hitAngle = Vector3.Angle(Vector3.up, hitInfo.normal);
 
-                    if (hitAngle > Config.SlopeLimit && hitAngle < 85f)
+                    if (hitAngle > LocomotionConfig.SlopeLimit && hitAngle < 85f)
                     {
                         StopMove = true;
                         return;
@@ -298,7 +295,7 @@ namespace FlatLands.Characters
         private void Sprint(bool value)
         {
             var sprintConditions = _inputAxis.sqrMagnitude > 0.1f && IsGrounded &&
-                                    !(IsStrafing && !Config.StrafeMovementPair.WalkByDefault && (_horizontalSpeed >= 0.5 || _horizontalSpeed <= -0.5 || _verticalSpeed <= 0.1f));
+                                    !(IsStrafing && !LocomotionConfig.StrafeMovementPair.WalkByDefault && (_horizontalSpeed >= 0.5 || _horizontalSpeed <= -0.5 || _verticalSpeed <= 0.1f));
 
             if (value && sprintConditions)
             {
@@ -329,8 +326,8 @@ namespace FlatLands.Characters
                 return;
 
             var rotationWithCamera = IsStrafing
-                ? Config.StrafeMovementPair.RotateWithCamera
-                : Config.FreeMovementPair.RotateWithCamera;
+                ? LocomotionConfig.StrafeMovementPair.RotateWithCamera
+                : LocomotionConfig.FreeMovementPair.RotateWithCamera;
             
             var validInput = _inputAxis != Vector3.zero || rotationWithCamera;
 
@@ -338,13 +335,13 @@ namespace FlatLands.Characters
                 return;
 
             var curSmooth = IsStrafing
-                ? Config.StrafeMovementPair.MovementSmooth
-                : Config.FreeMovementPair.MovementSmooth;
+                ? LocomotionConfig.StrafeMovementPair.MovementSmooth
+                : LocomotionConfig.FreeMovementPair.MovementSmooth;
             
             _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, curSmooth * Time.deltaTime);
             
             
-            var dir = (IsStrafing && (!IsSprinting || Config.SprintOnlyFree == false) || (Config.FreeMovementPair.RotateWithCamera && _inputAxis == Vector3.zero)) 
+            var dir = (IsStrafing && (!IsSprinting || LocomotionConfig.SprintOnlyFree == false) || (LocomotionConfig.FreeMovementPair.RotateWithCamera && _inputAxis == Vector3.zero)) 
                       && _rotateTarget ? _rotateTarget.forward : _moveDirection;
             RotateToDirection(dir);
         }
@@ -358,15 +355,15 @@ namespace FlatLands.Characters
         private void RotateToDirection(Vector3 direction)
         {
             var movementPair = IsStrafing 
-                ? Config.StrafeMovementPair.RotationSpeed 
-                : Config.FreeMovementPair.RotationSpeed;
+                ? LocomotionConfig.StrafeMovementPair.RotationSpeed 
+                : LocomotionConfig.FreeMovementPair.RotationSpeed;
             
             RotateToDirection(direction, movementPair);
         }
 
         private void RotateToDirection(Vector3 direction, float rotationSpeed)
         {
-            if (!Config.JumpAndRotate && !IsGrounded) 
+            if (!LocomotionConfig.JumpAndRotate && !IsGrounded) 
                 return;
             
             direction.y = 0f;
@@ -390,7 +387,7 @@ namespace FlatLands.Characters
                 transform.rotation = Behaviour.CharacterAnimator.rootRotation;
             }
 
-            if (Config.UseRootMotion)
+            if (LocomotionConfig.UseRootMotion)
                 MoveCharacter(_moveDirection);
         }
         
@@ -404,8 +401,8 @@ namespace FlatLands.Characters
             animator.SetFloat(AnimatorGroundDistance, _groundDistance);
 
             var verticalSpeed = StopMove ? 0 : _verticalSpeed;
-            var strafeSmooth = Config.StrafeMovementPair.AnimationSmooth;
-            var freeSmooth = Config.FreeMovementPair.AnimationSmooth;
+            var strafeSmooth = LocomotionConfig.StrafeMovementPair.AnimationSmooth;
+            var freeSmooth = LocomotionConfig.FreeMovementPair.AnimationSmooth;
 
             if (IsStrafing)
             {
@@ -453,7 +450,7 @@ namespace FlatLands.Characters
             if(_rotateTarget == null)
                 return;
             
-            Behaviour.CharacterAnimator.SetLookAtWeight(Config.MainWeight, Config.BodyIkWeight, Config.HeadIkWeight, Config.EyesIkWeight, Config.ClampIkWeight);
+            Behaviour.CharacterAnimator.SetLookAtWeight(LocomotionConfig.MainWeight, LocomotionConfig.BodyIkWeight, LocomotionConfig.HeadIkWeight, LocomotionConfig.EyesIkWeight, LocomotionConfig.ClampIkWeight);
             Behaviour.CharacterAnimator.SetLookAtPosition(_rotateTarget.position);
         }
 
@@ -464,7 +461,7 @@ namespace FlatLands.Characters
 
         private void Jump()
         {
-            _jumpCounter = Config.JumpTimer;
+            _jumpCounter = LocomotionConfig.JumpTimer;
             IsJumping = true;
 
             if (_inputAxis.sqrMagnitude < 0.1f)
@@ -487,7 +484,7 @@ namespace FlatLands.Characters
 
             var rigidbody = Behaviour.CharacterRigidbody;
             var vel = rigidbody.velocity;
-            vel.y = Config.JumpHeight;
+            vel.y = LocomotionConfig.JumpHeight;
             rigidbody.velocity = vel;
         }
 
@@ -502,11 +499,11 @@ namespace FlatLands.Characters
             if (transform.position.y > _heightReached) 
                 _heightReached = transform.position.y;
             
-            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, Config.AirSmooth * Time.deltaTime);
+            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, LocomotionConfig.AirSmooth * Time.deltaTime);
 
-            if (Config.JumpWithRigidbodyForce && !IsGrounded)
+            if (LocomotionConfig.JumpWithRigidbodyForce && !IsGrounded)
             {
-                rigidbody.AddForce(_moveDirection * Config.AirSpeed * Time.deltaTime, ForceMode.VelocityChange);
+                rigidbody.AddForce(_moveDirection * LocomotionConfig.AirSpeed * Time.deltaTime, ForceMode.VelocityChange);
                 return;
             }
 
@@ -514,11 +511,11 @@ namespace FlatLands.Characters
             _moveDirection.x = Mathf.Clamp(_moveDirection.x, -1f, 1f);
             _moveDirection.z = Mathf.Clamp(_moveDirection.z, -1f, 1f);
 
-            var targetPosition = rigidbody.position + (_moveDirection * Config.AirSpeed) * Time.deltaTime;
+            var targetPosition = rigidbody.position + (_moveDirection * LocomotionConfig.AirSpeed) * Time.deltaTime;
             var targetVelocity = (targetPosition - transform.position) / Time.deltaTime;
 
             targetVelocity.y = rigidbody.velocity.y;
-            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, Config.AirSmooth * Time.deltaTime);
+            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, LocomotionConfig.AirSmooth * Time.deltaTime);
         }
         
 #endregion
@@ -563,28 +560,28 @@ namespace FlatLands.Characters
             var rigidbody = Behaviour.CharacterRigidbody;
             var transform = Behaviour.transform;
             
-            if (_groundDistance <= Config.GroundMinDistance)
+            if (_groundDistance <= LocomotionConfig.GroundMinDistance)
             {
                 IsGrounded = true;
                 if (!IsJumping && _groundDistance > 0.05f)
-                    rigidbody.AddForce(transform.up * (Config.ExtraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
+                    rigidbody.AddForce(transform.up * (LocomotionConfig.ExtraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
 
                 _heightReached = transform.position.y;
             }
             else
             {
-                if (_groundDistance >= Config.GroundMaxDistance)
+                if (_groundDistance >= LocomotionConfig.GroundMaxDistance)
                 {
                     IsGrounded = false;
                     _verticalVelocity = rigidbody.velocity.y;
                     if (!IsJumping)
                     {
-                        rigidbody.AddForce(transform.up * Config.ExtraGravity * Time.deltaTime, ForceMode.VelocityChange);
+                        rigidbody.AddForce(transform.up * LocomotionConfig.ExtraGravity * Time.deltaTime, ForceMode.VelocityChange);
                     }
                 }
                 else if (!IsJumping)
                 {
-                    rigidbody.AddForce(transform.up * (Config.ExtraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
+                    rigidbody.AddForce(transform.up * (LocomotionConfig.ExtraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
                 }
             }
          }
@@ -593,7 +590,7 @@ namespace FlatLands.Characters
          {
             var collider = Behaviour.CharacterCollider;
             
-            collider.material = (IsGrounded && GroundAngle() <= Config.SlopeLimit + 1) 
+            collider.material = (IsGrounded && GroundAngle() <= LocomotionConfig.SlopeLimit + 1) 
                 ? _frictionPhysics 
                 : _slippyPhysics;
 
@@ -614,16 +611,16 @@ namespace FlatLands.Characters
             var dist = 10f;
             
             var ray2 = new Ray(transform.position + new Vector3(0, _colliderHeight * 0.5f, 0), Vector3.down);
-            if (Physics.Raycast(ray2, out _groundHit, (_colliderHeight * 0.5f) + dist, Config.GroundLayer) && !_groundHit.collider.isTrigger)
+            if (Physics.Raycast(ray2, out _groundHit, (_colliderHeight * 0.5f) + dist, LocomotionConfig.GroundLayer) && !_groundHit.collider.isTrigger)
                 dist = transform.position.y - _groundHit.point.y;
             
-            if (dist >= Config.GroundMinDistance)
+            if (dist >= LocomotionConfig.GroundMinDistance)
             {
                 var pos = transform.position + Vector3.up * (collider.radius);
                 var ray = new Ray(pos, -Vector3.up);
-                if (Physics.SphereCast(ray, radius, out _groundHit, collider.radius + Config.GroundMaxDistance, Config.GroundLayer) && !_groundHit.collider.isTrigger)
+                if (Physics.SphereCast(ray, radius, out _groundHit, collider.radius + LocomotionConfig.GroundMaxDistance, LocomotionConfig.GroundLayer) && !_groundHit.collider.isTrigger)
                 {
-                    Physics.Linecast(_groundHit.point + (Vector3.up * 0.1f), _groundHit.point + Vector3.down * 0.15f, out _groundHit, Config.GroundLayer);
+                    Physics.Linecast(_groundHit.point + (Vector3.up * 0.1f), _groundHit.point + Vector3.down * 0.15f, out _groundHit, LocomotionConfig.GroundLayer);
                     var newDist = transform.position.y - _groundHit.point.y;
                     if (dist > newDist) dist = newDist;
                 }

@@ -2,11 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Utils/DOTweenUtils.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Utils/DOTweenUtils.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/IEntityControllableBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/IEntityControllableBehaviour.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRegeneratedHudElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRegeneratedHudElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/CharacterAttributesProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/CharacterAttributesProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/CharacterConfig.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/CharacterConfig.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/CharacterProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/CharacterProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/CharactersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/CharactersManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/GeneralCharacterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Code/GeneralCharacterConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Resources/CharacterConfig.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Resources/CharacterConfig.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/CharactersMediatorManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/CharactersMediatorManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/FlatLands.CharactersMediator.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharactersMediator/Code/FlatLands.CharactersMediator.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/EntityControllableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/EntityControllableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/IEntityControllableProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/EntityControllable/Code/IEntityControllableProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/UIManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

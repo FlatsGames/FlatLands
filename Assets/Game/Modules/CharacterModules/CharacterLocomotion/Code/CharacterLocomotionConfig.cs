@@ -2,16 +2,13 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace FlatLands.Characters
+namespace FlatLands.CharacterLocomotion
 {
     [CreateAssetMenu(
-        menuName = "FlatLands/Characters/" + nameof(CharacterConfig), 
-        fileName = nameof(CharacterConfig))]
-    public sealed class CharacterConfig : SingletonScriptableObject<CharacterConfig>
+        menuName = "FlatLands/Characters/" + nameof(CharacterLocomotionConfig), 
+        fileName = nameof(CharacterLocomotionConfig))]
+    public sealed class CharacterLocomotionConfig : SingletonScriptableObject<CharacterLocomotionConfig>
     {
-        [SerializeField, BoxGroup("Main Settings")] 
-        private CharacterBehaviour _characterPrefab;
-        
         [SerializeField, BoxGroup("Main Settings")]
         private bool _useRootMotion = false;
         
@@ -88,14 +85,7 @@ namespace FlatLands.Characters
         
         [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
         private float _clampIkWeight = 0.3f;
-
-
-        [SerializeField, FoldoutGroup("Battle Settings")]
-        private KeyCode _takeWeaponKey = KeyCode.Alpha1;
-
-
-        public CharacterBehaviour CharacterPrefab => _characterPrefab;
-
+        
         public bool UseRootMotion => _useRootMotion;
         public bool SprintOnlyFree => _sprintOnlyFree;
 
@@ -126,8 +116,6 @@ namespace FlatLands.Characters
         public float HeadIkWeight => _headIkWeight;
         public float EyesIkWeight => eyesIkWeight;
         public float ClampIkWeight => _clampIkWeight;
-
-        public KeyCode TakeWeaponKey => _takeWeaponKey;
     }
     
     [HideReferenceObjectPicker]

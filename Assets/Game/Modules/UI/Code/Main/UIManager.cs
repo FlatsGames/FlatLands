@@ -20,9 +20,11 @@ namespace FlatLands.UI
 
         public UIManager()
         {
+            _uiElements = new List<UIElement>();
             _windows = new Dictionary<UIWindowType, UIWindow>();
             _windowsByType = new Dictionary<Type, UIWindow>();
             _showedWindows = new List<UIWindow>();
+            _hudElements = new Dictionary<UIHudElementType, UIHudElement>();
         }
         
         internal void InvokeSceneLoaded(UIHierarchy hierarchy)
@@ -155,13 +157,13 @@ namespace FlatLands.UI
 
             foreach (var uiElement in hudLayer.LayerGroupElements)
             {
-                InitUIElement(uiElement);
-
                 var hudElement = uiElement as UIHudElement;
                 if(hudElement == null)
                     continue;
 
                 _hudElements[hudElement.HudElementType] = hudElement;
+                
+                InitUIElement(uiElement);
             }
         }
 

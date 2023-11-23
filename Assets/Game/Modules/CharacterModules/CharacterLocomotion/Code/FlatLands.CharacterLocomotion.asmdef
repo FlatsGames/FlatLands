@@ -1,0 +1,19 @@
+{
+    "name": "FlatLands.CharacterLocomotion",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:7f7d1af65c2641843945d409d28f2e20",
+        "GUID:af4a3ceb227b8f94cb8375f40e156398",
+        "GUID:0f23418212482c94983a1cb5b1a6b845"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

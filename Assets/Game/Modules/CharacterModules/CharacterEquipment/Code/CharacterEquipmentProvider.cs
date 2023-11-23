@@ -1,10 +1,11 @@
 ﻿using FlatLands.Architecture;
+using FlatLands.Characters;
 using FlatLands.Equipments;
 using UnityEngine;
 
 namespace FlatLands.CharacterEquipment
 {
-    public sealed class CharacterEquipmentProvider : BaseEquipmentProvider
+    public sealed class CharacterEquipmentProvider : BaseEquipmentProvider, ICharacterProvider
     {
         protected override string WeaponAnimatorLayerName => "WeaponLayer";
         protected override string WeaponAnimatorSubMachineName => "Take Put Weapon";
@@ -13,42 +14,46 @@ namespace FlatLands.CharacterEquipment
         
         public CharacterEquipmentProvider(BaseEquipmentBehaviour behaviour, Animator animator) : base(behaviour, animator) { }
 
-         public void Init()
-         {
-             _config = CharacterEquipmentConfig.Instance;
-             UnityEventsProvider.OnUpdate += OnUpdate;
-         }
+        public void Init()
+        { 
+            _config = CharacterEquipmentConfig.Instance;
+        }
+
+        public void Dispose() 
+        {
          
-         public void Dispose()
-         {
-             UnityEventsProvider.OnUpdate -= OnUpdate;
-         }
+        }
 
-         private void OnUpdate()
-         {
-             UpdateInput();
-         }
+        public void HandleUpdate()
+        { 
+            UpdateInput();
+        }
 
-         public override IWeaponEquipmentSetting GetEquipmentSettings(WeaponEquipmentSlotType slotType)
-         {
-             return _config.GetWeaponEquipmentSettings(slotType);
-         }
+        public void HandleFixedUpdate()
+        {
+         
+        }
 
-         private void UpdateInput()
-         {
-             foreach (var key in _config.WeaponInputKeys)
-             {
-                 if (Input.GetKeyDown(key))
-                 {
-                     var slotType = _config.GetWeaponInputKey(key);
-                     TakeWeapon(slotType);
-                 }
-             }
-         }
+        public override IWeaponEquipmentSetting GetEquipmentSettings(WeaponEquipmentSlotType slotType)
+        { 
+            return _config.GetWeaponEquipmentSettings(slotType);
+        }
 
-         private void TakeWeapon(WeaponEquipmentSlotType slotType)
-         {
-             TakeWeaponToHands(slotType);
-         }
+        private void UpdateInput()
+        {
+            foreach (var key in _config.WeaponInputKeys)
+            {
+                if (Input.GetKeyDown(key))
+                {
+                    var slotType = _config.GetWeaponInputKey(key);
+                    TakeWeapon(slotType);
+                }
+            }
+        }
+
+        private void TakeWeapon(WeaponEquipmentSlotType slotType)
+        {
+            TakeWeaponToHands(slotType);
+        }
     }
 }

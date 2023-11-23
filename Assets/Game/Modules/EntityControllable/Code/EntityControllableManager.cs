@@ -10,27 +10,6 @@ namespace FlatLands.EntityControllable
 
         public event Action OnControllableEntityChanged;
         
-        public override void Init()
-        {
-            UnityEventsProvider.OnUpdate += HandleUpdate;
-            UnityEventsProvider.OnFixedUpdate += HandleFixedUpdate;
-        }
-
-        public override void Dispose()
-        {
-            UnityEventsProvider.OnUpdate -= HandleUpdate;
-            UnityEventsProvider.OnFixedUpdate -= HandleFixedUpdate;
-        }
-
-        private void HandleUpdate()
-        {
-            CurrentControllableProvider?.EntityUpdate();
-        }
-
-        private void HandleFixedUpdate()
-        {
-            CurrentControllableProvider?.EntityFixedUpdate();
-        }
 
         public void SetControllableEntity(IEntityControllableProvider provider, IEntityControllableBehaviour behaviour)
         {

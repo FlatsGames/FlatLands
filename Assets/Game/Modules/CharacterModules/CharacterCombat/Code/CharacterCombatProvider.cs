@@ -1,12 +1,12 @@
 using System.Linq;
-using FlatLands.Architecture;
 using FlatLands.CharacterEquipment;
+using FlatLands.Characters;
 using FlatLands.CombatSystem;
 using UnityEngine;
 
 namespace FlatLands.CharacterCombat
 {
-	public sealed class CharacterCombatProvider : BaseCombatProvider<CharacterCombatAnimations>
+	public sealed class CharacterCombatProvider : BaseCombatProvider<CharacterCombatAnimations>, ICharacterProvider
 	{
 		private readonly CharacterEquipmentProvider _characterEquipmentProvider;
 
@@ -24,15 +24,14 @@ namespace FlatLands.CharacterCombat
 		public void Init()
 		{
 			CharacterCombatConfig.Init();
-			UnityEventsProvider.OnUpdate += HandleUpdate;
 		}
 		
 		public void Dispose()
 		{
-			UnityEventsProvider.OnUpdate -= HandleUpdate;
+			
 		}
-
-		private void HandleUpdate()
+		
+		public void HandleUpdate()
 		{
 			if(Input.GetMouseButtonDown(0))
 			{
@@ -43,6 +42,11 @@ namespace FlatLands.CharacterCombat
 				
 				Attack(config, attackName);
 			}
+		}
+		
+		public void HandleFixedUpdate()
+		{
+			
 		}
 	}
 }

@@ -2,7 +2,9 @@ using FlatLands.Architecture;
 using FlatLands.CharacterAttributes;
 using FlatLands.CharacterCombat;
 using FlatLands.CharacterEquipment;
+using FlatLands.CharacterLocomotion;
 using FlatLands.Characters;
+using FlatLands.Cursors;
 using FlatLands.EntityControllable;
 using FlatLands.GeneralCamera;
 
@@ -13,53 +15,80 @@ namespace FlatLands.CharactersMediator
 		[Inject] private EntityControllableManager _controllableManager;
 		[Inject] private CharactersManager _charactersManager;
 		[Inject] private GeneralCameraManager _cameraManager;
+		[Inject] private CursorManager _cursorManager;
 
-		private CharacterEquipmentProvider _equipmentProvider;
-		private CharacterCombatProvider _combatProvider;
-		private CharacterAttributesProvider _attributesProvider;
+		private CharacterGroup _characterGroup;
+		private CharacterBehaviour _characterBehaviour;
 		
 		public override void Init()
 		{
 			StartCharacterLife();
-			StartEquipmentProvider();
-			StartCombatProvider();
+			LocomotionProvider();
+			EquipmentProvider();
+			CombatProvider();
 			StartAttributeProvider();
+			
+			_controllableManager.SetControllableEntity(_characterGroup, _characterBehaviour);
+			var entityTarget = _controllableManager.CurrentControllableBehaviour.EntityTransform;
+			_cameraManager.SetCameraTarget(entityTarget);
+			
+			_cursorManager.OnCursorStateChanged += HandleCursorStateChanged;
+			_characterGroup.Init();
 		}
 
 		public override void Dispose()
 		{
-			
+			_cursorManager.OnCursorStateChanged -= HandleCursorStateChanged;
+			_characterGroup.Dispose();
 		}
 
 		private void StartCharacterLife()
 		{
-			 var entityTarget = _controllableManager.CurrentControllableBehaviour.EntityTransform;
-			 _cameraManager.SetCameraTarget(entityTarget);
-			_charactersManager.CurrentCharacter.SetRotateTarget(_cameraManager.Hierarchy.CameraLook);
-			_charactersManager.CurrentCharacter.Init();
+			_charactersManager.CreateDefaultCharacter();
+			_characterGroup = _charactersManager.CurrentCharacter;
+			_characterBehaviour = _characterGroup.CharacterBehaviour;
 		}
 
-		private void StartEquipmentProvider()
+		private void LocomotionProvider()
 		{
-			var characterBehaviour = _charactersManager.CurrentCharacter.Behaviour;
-			var characterEquipmentBehaviour = characterBehaviour.GetComponent<CharacterEquipmentBehaviour>();
-
-			_equipmentProvider = new CharacterEquipmentProvider(characterEquipmentBehaviour, characterBehaviour.CharacterAnimator);
-			_equipmentProvider.Init();
+			var cameraLook = _cameraManager.Hierarchy.CameraLook;
+			
+			var locomotionProvider = new CharacterLocomotionProvider();
+			locomotionProvider.SetBehaviour(_characterBehaviour);
+			locomotionProvider.SetRotateTarget(cameraLook);
+			
+			_charactersManager.CurrentCharacter.AddProvider(locomotionProvider);
 		}
 
-		private void StartCombatProvider()
+		private void EquipmentProvider()
 		{
-			var characterBehaviour = _charactersManager.CurrentCharacter.Behaviour;
-			var characterCombatBehaviour = characterBehaviour.GetComponent<CharacterCombatBehaviour>();
+			var equipmentBehaviour = _characterBehaviour.GetComponent<CharacterEquipmentBehaviour>();
+			var equipmentProvider = new CharacterEquipmentProvider(equipmentBehaviour, _characterBehaviour.CharacterAnimator);
+			_charactersManager.CurrentCharacter.AddBehaviour(equipmentBehaviour);
+			_charactersManager.CurrentCharacter.AddProvider(equipmentProvider);
+		}
 
-			_combatProvider = new CharacterCombatProvider(_equipmentProvider, characterCombatBehaviour, characterBehaviour.CharacterAnimator);
-			_combatProvider.Init();
+		private void CombatProvider()
+		{
+			var equipmentBehaviour = _characterGroup.GetBehaviour<CharacterEquipmentBehaviour>();
+			var combatBehaviour = _characterBehaviour.GetComponent<CharacterCombatBehaviour>();
+			var equipmentProvider = _characterGroup.GetProvider<CharacterEquipmentProvider>();
+			
+			var combatProvider = new CharacterCombatProvider(equipmentProvider, combatBehaviour, _characterBehaviour.CharacterAnimator);
+			
+			_charactersManager.CurrentCharacter.AddBehaviour(equipmentBehaviour);
+			_charactersManager.CurrentCharacter.AddProvider(combatProvider);
 		}
 
 		private void StartAttributeProvider()
 		{
-			_attributesProvider = new CharacterAttributesProvider();
+			var attributesProvider = new CharacterAttributesProvider();
+			_charactersManager.CurrentCharacter.AddProvider(attributesProvider);
+		}
+
+		private void HandleCursorStateChanged()
+		{
+			_charactersManager.CurrentCharacter.GetProvider<CharacterLocomotionProvider>().IsActive = !_cursorManager.CursorActive;
 		}
 	}
 }
