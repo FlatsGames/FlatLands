@@ -11,17 +11,19 @@ namespace FlatLands.UI
     {
         [Inject] private CursorManager _cursorManager;
         
-        private Dictionary<UIWindowType, UIWindow> _windows;
-        private Dictionary<Type, UIWindow> _windowsByType;
-        private List<UIWindow> _showedWindows;
-
         public UIHierarchy Hierarchy => _hierarchy;
 
-        public event Action<UIWindow> OnWindowShowed;
-        public event Action<UIWindow> OnWindowHided;
-        
+        private List<UIElement> _uiElements;
+
         private UIHierarchy _hierarchy;
         private GeneralUIConfig _config;
+
+        public UIManager()
+        {
+            _windows = new Dictionary<UIWindowType, UIWindow>();
+            _windowsByType = new Dictionary<Type, UIWindow>();
+            _showedWindows = new List<UIWindow>();
+        }
         
         internal void InvokeSceneLoaded(UIHierarchy hierarchy)
         {
@@ -30,22 +32,46 @@ namespace FlatLands.UI
         
         public override void Init()
         {
-            _windows = new Dictionary<UIWindowType, UIWindow>();
-            _windowsByType = new Dictionary<Type, UIWindow>();
-            _showedWindows = new List<UIWindow>();
-            
             _config = GeneralUIConfig.Instance;
+
+            InitHudElements();
             CreateWindows();
             _cursorManager.HideCursor();
+
+            UnityEventsProvider.OnUpdate += HandleUpdate;
         }
 
         public override void Dispose()
         {
-            foreach (var pair in _windows)
+            UnityEventsProvider.OnUpdate -= HandleUpdate;
+            foreach (var uiElement in _uiElements)
             {
-                pair.Value.Dispose();
+                uiElement.Dispose();
             }
         }
+        
+        private void InitUIElement(UIElement element)
+        {
+            _container.InjectAt(element);
+            element.Init();
+            _uiElements.Add(element);
+        }
+
+        private void HandleUpdate()
+        {
+            foreach (var uiElement in _uiElements)
+            {
+                uiElement.HandleUpdate();
+            }
+        }
+
+#region Windows
+
+        private Dictionary<UIWindowType, UIWindow> _windows;
+        private Dictionary<Type, UIWindow> _windowsByType;
+        private List<UIWindow> _showedWindows;
+        public event Action<UIWindow> OnWindowShowed;
+        public event Action<UIWindow> OnWindowHided;
 
         private void CreateWindows()
         {
@@ -58,9 +84,6 @@ namespace FlatLands.UI
                 window.Hide();
             }
         }
-
-
-#region Show / Hide
 
         public void Show(UIWindowType type, IUIModel model = null)
         {
@@ -81,11 +104,6 @@ namespace FlatLands.UI
             _cursorManager.HideCursor();
         }
 
-#endregion
-        
-
-#region Get
-
         private UIWindow GetOrCreateWindow(UIWindowType type)
         {
             if (_windows.TryGetValue(type, out var window))
@@ -95,10 +113,12 @@ namespace FlatLands.UI
                 return default;
                     
             var prefab = windowSettings.Prefab;
-            window = Object.Instantiate(prefab, Hierarchy.WindowsLayer);
-            _container.InjectAt(window);
+            if (!Hierarchy.LayerGroups.TryGetValue(UILayerGroupType.Windows, out var group))
+                return default;
+            
+            window = Object.Instantiate(prefab, group.transform);
             window.SetWindowType(type);
-            window.Init();
+            InitUIElement(window);
             _windows[type] = window;
             _windowsByType[windowSettings.PrefabType] = window;
             return window;
@@ -121,6 +141,46 @@ namespace FlatLands.UI
             return window;
         }
         
+#endregion
+
+
+#region HUD
+
+        private Dictionary<UIHudElementType, UIHudElement> _hudElements;
+
+        private void InitHudElements()
+        {
+            if (!Hierarchy.LayerGroups.TryGetValue(UILayerGroupType.Hud, out var hudLayer))
+                return;
+
+            foreach (var uiElement in hudLayer.LayerGroupElements)
+            {
+                InitUIElement(uiElement);
+
+                var hudElement = uiElement as UIHudElement;
+                if(hudElement == null)
+                    continue;
+
+                _hudElements[hudElement.HudElementType] = hudElement;
+            }
+        }
+
+        public T GetHudElement<T>(UIHudElementType type) where T : UIHudElement
+        {
+            if (!_hudElements.TryGetValue(type, out var hudElement))
+                return default;
+
+            return (T)hudElement;
+        }
+        
+        public UIHudElement GetHudElement(UIHudElementType type)
+        {
+            if (!_hudElements.TryGetValue(type, out var hudElement))
+                return default;
+
+            return hudElement;
+        }
+
 #endregion
 
 
