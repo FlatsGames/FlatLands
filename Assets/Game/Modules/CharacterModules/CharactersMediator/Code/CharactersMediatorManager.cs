@@ -1,4 +1,5 @@
 using FlatLands.Architecture;
+using FlatLands.CharacterAttributes;
 using FlatLands.CharacterCombat;
 using FlatLands.CharacterEquipment;
 using FlatLands.Characters;
@@ -15,12 +16,14 @@ namespace FlatLands.CharactersMediator
 
 		private CharacterEquipmentProvider _equipmentProvider;
 		private CharacterCombatProvider _combatProvider;
+		private CharacterAttributesProvider _attributesProvider;
 		
 		public override void Init()
 		{
 			StartCharacterLife();
 			StartEquipmentProvider();
 			StartCombatProvider();
+			StartAttributeProvider();
 		}
 
 		public override void Dispose()
@@ -52,6 +55,11 @@ namespace FlatLands.CharactersMediator
 
 			_combatProvider = new CharacterCombatProvider(_equipmentProvider, characterCombatBehaviour, characterBehaviour.CharacterAnimator);
 			_combatProvider.Init();
+		}
+
+		private void StartAttributeProvider()
+		{
+			_attributesProvider = new CharacterAttributesProvider();
 		}
 	}
 }
