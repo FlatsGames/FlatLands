@@ -32,9 +32,6 @@ namespace FlatLands.Characters
             foreach (var pair in _providers)
             {
                 pair.Value.Init();
-                
-                UnityEventsProvider.OnUpdate += HandleUpdate;
-                UnityEventsProvider.OnFixedUpdate += HandleFixedUpdate;
             }
         }
         
@@ -42,22 +39,19 @@ namespace FlatLands.Characters
         {
             foreach (var pair in _providers)
             {
-                UnityEventsProvider.OnUpdate -= HandleUpdate;
-                UnityEventsProvider.OnFixedUpdate -= HandleFixedUpdate;
-                
                 pair.Value.Dispose();
             }
         }
 
-        private void HandleUpdate()
+        public void EntityUpdate()
         {
             foreach (var pair in _providers)
             {
                 pair.Value.HandleUpdate();
             }
         }
-        
-        private void HandleFixedUpdate()
+
+        public void EntityFixedUpdate()
         {
             foreach (var pair in _providers)
             {
