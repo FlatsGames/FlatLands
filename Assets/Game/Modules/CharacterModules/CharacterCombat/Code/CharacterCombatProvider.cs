@@ -1,3 +1,4 @@
+using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.CharacterEquipment;
 using FlatLands.CombatSystem;
@@ -36,8 +37,11 @@ namespace FlatLands.CharacterCombat
 			if(Input.GetMouseButtonDown(0))
 			{
 				var config = CharacterCombatConfig.ByName["CharacterCombat_LeftLegSlot"];
-				Debug.Log($"attack {IsHoldWeapon}");
-				Attack(config, CharacterCombatAnimations.Attack_1);
+				var maxAnimCount = config.CombatAnimations.Count();
+				var randomAttackIndex = Random.Range(0, maxAnimCount);
+				var attackName = config.CombatAnimations[randomAttackIndex];
+				
+				Attack(config, attackName);
 			}
 		}
 	}
