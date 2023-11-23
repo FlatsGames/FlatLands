@@ -1,4 +1,5 @@
-﻿using FlatLands.Characters;
+﻿using FlatLands.Architecture;
+using FlatLands.Characters;
 using UnityEngine;
 
 namespace FlatLands.CharacterLocomotion
@@ -19,6 +20,7 @@ namespace FlatLands.CharacterLocomotion
         private float AnimatorWalkSpeed => 0.5f;
         private float AnimatorRunningSpeed => 1f;
         private float AnimatorSprintSpeed => 1.5f;
+        private float DeltaTime => UnityEventsProvider.DeltaTime;
         
         public CharacterLocomotionConfig LocomotionConfig { get; private set; }
         public CharacterBehaviour Behaviour { get; private set; }
@@ -207,7 +209,7 @@ namespace FlatLands.CharacterLocomotion
                     ? LocomotionConfig.StrafeMovementPair.MovementSmooth
                     : LocomotionConfig.FreeMovementPair.MovementSmooth;
                 
-                _moveDirection = Vector3.Lerp(_moveDirection, Vector3.zero, movementPair * Time.deltaTime);
+                _moveDirection = Vector3.Lerp(_moveDirection, Vector3.zero, movementPair * DeltaTime);
                 return;
             }
 
@@ -232,8 +234,8 @@ namespace FlatLands.CharacterLocomotion
                 : movementPair.RunningSpeed;
             
             _moveSpeed = movementPair.WalkByDefault 
-                ? Mathf.Lerp(_moveSpeed, firstSpeed, movementPair.MovementSmooth * Time.deltaTime)
-                : Mathf.Lerp(_moveSpeed, secondSpeed , movementPair.MovementSmooth * Time.deltaTime);
+                ? Mathf.Lerp(_moveSpeed, firstSpeed, movementPair.MovementSmooth * DeltaTime)
+                : Mathf.Lerp(_moveSpeed, secondSpeed , movementPair.MovementSmooth * DeltaTime);
         }
 
         private void MoveCharacter(Vector3 _direction)
@@ -242,7 +244,7 @@ namespace FlatLands.CharacterLocomotion
                 ? LocomotionConfig.StrafeMovementPair.MovementSmooth 
                 : LocomotionConfig.FreeMovementPair.MovementSmooth;
             
-            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, smooth * Time.deltaTime);
+            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, smooth * DeltaTime);
 
             if (!IsGrounded || IsJumping) 
                 return;
@@ -258,8 +260,8 @@ namespace FlatLands.CharacterLocomotion
                 ? Behaviour.CharacterAnimator.rootPosition
                 : Behaviour.CharacterRigidbody.position;
             
-            var targetPosition = curPos + _direction * (StopMove ? 0 : _moveSpeed) * Time.deltaTime;
-            var targetVelocity = (targetPosition - Behaviour.transform.position) / Time.deltaTime;
+            var targetPosition = curPos + _direction * (StopMove ? 0 : _moveSpeed) * DeltaTime;
+            var targetVelocity = (targetPosition - Behaviour.transform.position) / DeltaTime;
             targetVelocity.y = Behaviour.CharacterRigidbody.velocity.y;
             
             Behaviour.CharacterRigidbody.velocity = targetVelocity;
@@ -338,7 +340,7 @@ namespace FlatLands.CharacterLocomotion
                 ? LocomotionConfig.StrafeMovementPair.MovementSmooth
                 : LocomotionConfig.FreeMovementPair.MovementSmooth;
             
-            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, curSmooth * Time.deltaTime);
+            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, curSmooth * DeltaTime);
             
             
             var dir = (IsStrafing && (!IsSprinting || LocomotionConfig.SprintOnlyFree == false) || (LocomotionConfig.FreeMovementPair.RotateWithCamera && _inputAxis == Vector3.zero)) 
@@ -367,7 +369,7 @@ namespace FlatLands.CharacterLocomotion
                 return;
             
             direction.y = 0f;
-            var desiredForward = Vector3.RotateTowards( Behaviour.transform.forward, direction.normalized, rotationSpeed * Time.deltaTime, .1f);
+            var desiredForward = Vector3.RotateTowards( Behaviour.transform.forward, direction.normalized, rotationSpeed * DeltaTime, .1f);
             var rotation = Quaternion.LookRotation(desiredForward);
             
             Behaviour.transform.rotation = rotation;
@@ -407,18 +409,18 @@ namespace FlatLands.CharacterLocomotion
             if (IsStrafing)
             {
                 var horizontalSpeed = StopMove ? 0 : _horizontalSpeed;
-                animator.SetFloat(AnimatorInputHorizontal, horizontalSpeed, strafeSmooth, Time.deltaTime);
-                animator.SetFloat(AnimatorInputVertical, verticalSpeed, strafeSmooth, Time.deltaTime);
+                animator.SetFloat(AnimatorInputHorizontal, horizontalSpeed, strafeSmooth, DeltaTime);
+                animator.SetFloat(AnimatorInputVertical, verticalSpeed, strafeSmooth, DeltaTime);
             }
             else
             {
-                animator.SetFloat(AnimatorInputVertical, verticalSpeed, freeSmooth, Time.deltaTime);
+                animator.SetFloat(AnimatorInputVertical, verticalSpeed, freeSmooth, DeltaTime);
             }
 
             var magnitude = StopMove ? 0f : _inputMagnitude;
             var curSmooth = IsStrafing ? strafeSmooth : freeSmooth;
             
-            animator.SetFloat(AnimatorInputMagnitude, magnitude, curSmooth, Time.deltaTime);
+            animator.SetFloat(AnimatorInputMagnitude, magnitude, curSmooth, DeltaTime);
         }
 
         private void SetAnimatorMoveSpeed(CharacterMovementPair movementPair)
@@ -475,7 +477,7 @@ namespace FlatLands.CharacterLocomotion
             if (!IsJumping) 
                 return;
 
-            _jumpCounter -= Time.deltaTime;
+            _jumpCounter -= DeltaTime;
             if (_jumpCounter <= 0)
             {
                 _jumpCounter = 0;
@@ -499,11 +501,11 @@ namespace FlatLands.CharacterLocomotion
             if (transform.position.y > _heightReached) 
                 _heightReached = transform.position.y;
             
-            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, LocomotionConfig.AirSmooth * Time.deltaTime);
+            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, LocomotionConfig.AirSmooth * DeltaTime);
 
             if (LocomotionConfig.JumpWithRigidbodyForce && !IsGrounded)
             {
-                rigidbody.AddForce(_moveDirection * LocomotionConfig.AirSpeed * Time.deltaTime, ForceMode.VelocityChange);
+                rigidbody.AddForce(_moveDirection * LocomotionConfig.AirSpeed * DeltaTime, ForceMode.VelocityChange);
                 return;
             }
 
@@ -511,11 +513,11 @@ namespace FlatLands.CharacterLocomotion
             _moveDirection.x = Mathf.Clamp(_moveDirection.x, -1f, 1f);
             _moveDirection.z = Mathf.Clamp(_moveDirection.z, -1f, 1f);
 
-            var targetPosition = rigidbody.position + (_moveDirection * LocomotionConfig.AirSpeed) * Time.deltaTime;
-            var targetVelocity = (targetPosition - transform.position) / Time.deltaTime;
+            var targetPosition = rigidbody.position + (_moveDirection * LocomotionConfig.AirSpeed) * DeltaTime;
+            var targetVelocity = (targetPosition - transform.position) / DeltaTime;
 
             targetVelocity.y = rigidbody.velocity.y;
-            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, LocomotionConfig.AirSmooth * Time.deltaTime);
+            rigidbody.velocity = Vector3.Lerp(rigidbody.velocity, targetVelocity, LocomotionConfig.AirSmooth * DeltaTime);
         }
         
 #endregion
@@ -564,7 +566,7 @@ namespace FlatLands.CharacterLocomotion
             {
                 IsGrounded = true;
                 if (!IsJumping && _groundDistance > 0.05f)
-                    rigidbody.AddForce(transform.up * (LocomotionConfig.ExtraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
+                    rigidbody.AddForce(transform.up * (LocomotionConfig.ExtraGravity * 2 * DeltaTime), ForceMode.VelocityChange);
 
                 _heightReached = transform.position.y;
             }
@@ -576,12 +578,12 @@ namespace FlatLands.CharacterLocomotion
                     _verticalVelocity = rigidbody.velocity.y;
                     if (!IsJumping)
                     {
-                        rigidbody.AddForce(transform.up * LocomotionConfig.ExtraGravity * Time.deltaTime, ForceMode.VelocityChange);
+                        rigidbody.AddForce(transform.up * LocomotionConfig.ExtraGravity * DeltaTime, ForceMode.VelocityChange);
                     }
                 }
                 else if (!IsJumping)
                 {
-                    rigidbody.AddForce(transform.up * (LocomotionConfig.ExtraGravity * 2 * Time.deltaTime), ForceMode.VelocityChange);
+                    rigidbody.AddForce(transform.up * (LocomotionConfig.ExtraGravity * 2 * DeltaTime), ForceMode.VelocityChange);
                 }
             }
          }

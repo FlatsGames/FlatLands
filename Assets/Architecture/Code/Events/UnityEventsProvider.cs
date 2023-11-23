@@ -1,10 +1,13 @@
 using System;
 using System.Collections;
+using UnityEngine;
 
 namespace FlatLands.Architecture
 {
 	public class UnityEventsProvider : SingletonMonoBehaviour<UnityEventsProvider>
 	{
+		public static float DeltaTime => Time.deltaTime;
+		
 		public static event Action OnUpdate
 		{
 			add => Instance._OnUpdate += value;
