@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Architecture/Code/Events/UnityEventsProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Architecture/Code/Events/UnityEventsProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionProvider.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/CharacterAttributesConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/CharacterAttributesConfig.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/CharacterAttributesProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/CharacterAttributesProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/FlatLands.CharacterAttributes.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/FlatLands.CharacterAttributes.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRegeneratedHudElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRangedHudElement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRegeneratedHudElement.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRangedHudElement.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Resources/CharacterLocomotionConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Resources/CharacterLocomotionConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Holders/IGameAttributeHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Holders/IGameAttributeHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeData.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeData.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeRangedData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeRangedData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeRegeneratedData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/AttributeRegeneratedData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/BaseAttributeData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/BaseAttributeData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/BaseRangedAttributeData.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/BaseRangedAttributeData.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/GameAttributesManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/GameAttributes/Code/Main/GameAttributesManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Scenes/UIScene.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

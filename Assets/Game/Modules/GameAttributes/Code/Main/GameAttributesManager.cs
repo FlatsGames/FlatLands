@@ -13,8 +13,9 @@ namespace FlatLands.GameAttributes
             _attributeHolders = new Dictionary<string, IGameAttributeHolder>();
         }
 
-        public void RegisterHolder(string id, IGameAttributeHolder holder)
+        public void RegisterHolder(IGameAttributeHolder holder)
         {
+            var id = holder.HolderId;
             if (_attributeHolders.ContainsKey(id))
             {
                 Debug.LogError($"[GameAttributesManager] Holder with id: {id} already exist!");
@@ -30,9 +31,10 @@ namespace FlatLands.GameAttributes
             _attributeHolders[id] = holder;
         }
 
-        public void RemoveHolder(string id)
+        public void RemoveHolder(IGameAttributeHolder holder)
         {
-            if (!_attributeHolders.TryGetValue(id, out var holder))
+            var id = holder.HolderId;
+            if (!_attributeHolders.ContainsKey(id))
             {
                 Debug.LogError($"[GameAttributesManager] Holder with id: {id} not fount!");
                 return;

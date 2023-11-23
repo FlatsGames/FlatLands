@@ -101,7 +101,7 @@ MonoBehaviour:
   _groundMaxDistance: 0.5
   _slopeLimit: 75
   _mainWeight: 1
-  _bodyIkWeight: 0.3
-  _headIkWeight: 0.175
-  eyesIkWeight: 0.35
-  _clampIkWeight: 0.5
+  _bodyIkWeight: 0.239
+  _headIkWeight: 0.597
+  eyesIkWeight: 0.368
+  _clampIkWeight: 0.837

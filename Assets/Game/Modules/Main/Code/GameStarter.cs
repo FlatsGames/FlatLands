@@ -6,6 +6,7 @@ using FlatLands.Characters;
 using FlatLands.CharactersMediator;
 using FlatLands.Cursors;
 using FlatLands.EntityControllable;
+using FlatLands.GameAttributes;
 using FlatLands.GeneralCamera;
 using FlatLands.Items;
 using FlatLands.Locations;
@@ -65,6 +66,9 @@ namespace FlatLands.Main
             //ItemsManager
             _container.Add<ItemsManager>();
             
+            //GameAttributes
+            _container.Add<GameAttributesManager>();
+
             _container.ApplyDependencies();
             
             StartCoroutine(StartLoading());

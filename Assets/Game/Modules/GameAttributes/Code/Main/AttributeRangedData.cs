@@ -1,12 +1,30 @@
-﻿namespace FlatLands.GameAttributes
+﻿using System;
+using UnityEngine;
+
+namespace FlatLands.GameAttributes
 {
-    public sealed class AttributeRangedData : BaseRangedAttributeData
+    public class AttributeRangedData : AttributeData
     {
-        public AttributeRangedData(
-            GameAttributeType type, 
-            float minValue, 
-            float maxValue, 
-            float baseValue = default) 
-            : base(type, minValue, maxValue, baseValue) { }
+        [SerializeField] private float _minValue;
+        [SerializeField] private float _maxValue;
+
+        public float MaxValue => _maxValue;
+        public float MinValue => _minValue;
+
+        public bool CanAddValue(float amount)
+        {
+            if (Value + amount > MaxValue)
+                return false;
+			
+            return true;
+        }
+		
+        public bool CanRemoveValue(float amount)
+        {
+            if (Value - amount < MinValue)
+                return false;
+
+            return true;
+        }
     }
 }

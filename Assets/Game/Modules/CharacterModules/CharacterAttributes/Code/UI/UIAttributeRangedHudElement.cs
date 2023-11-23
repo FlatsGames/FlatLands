@@ -2,17 +2,19 @@
 using FlatLands.Architecture;
 using FlatLands.GameAttributes;
 using FlatLands.UI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace FlatLands.CharacterAttributes
 {
-    public sealed class UIAttributeRegeneratedHudElement : UIHudElement
+    public sealed class UIAttributeRangedHudElement : UIHudElement
     {
         [SerializeField] private Slider _mainSlider;
         [SerializeField] private Slider _internalSlider;
+        [SerializeField] private TMP_Text _valueText;
         
-        private AttributeRegeneratedData _attribute;
+        private AttributeRangedData _attribute;
         private Sequence _sliderSequence;
 
         public override void Init()
@@ -26,12 +28,14 @@ namespace FlatLands.CharacterAttributes
                 _attribute.OnValueChangedDetails -= HandleValueChanged;
         }
 
-        public void SetAttribute(AttributeRegeneratedData attributeData)
+        public void SetAttribute(AttributeData attributeData)
         {
+            var at = attributeData as AttributeRangedData;
+            
             if (_attribute != null)
                 _attribute.OnValueChangedDetails -= HandleValueChanged;
             
-            _attribute = attributeData;
+            _attribute = at;
             _mainSlider.minValue = _attribute.MinValue;
             _mainSlider.maxValue = _attribute.MaxValue;
             _mainSlider.value = _attribute.Value;
@@ -49,6 +53,7 @@ namespace FlatLands.CharacterAttributes
             _sliderSequence?.Kill();
             _sliderSequence = DOTween.Sequence();
 
+            _valueText.SetText($"{_attribute.Value}/{_attribute.MaxValue}");
             if (addValue)
             {
                 _internalSlider.value = 0;

@@ -3,8 +3,11 @@ using UnityEngine;
 
 namespace FlatLands.GameAttributes
 {
-    public sealed class AttributeRegeneratedData : BaseRangedAttributeData
+    public sealed class AttributeRegeneratedData : AttributeRangedData
     {
+        [SerializeField] private float _delayBeforeRegenerated;
+        [SerializeField] private float _regeneratedValue;
+        
         public float DelayBeforeRegenerate { get; private set; }
         public float RegeneratedValue { get; private set; }
 
@@ -37,20 +40,7 @@ namespace FlatLands.GameAttributes
                 return;
             }
 
-            _currentDelay += Time.deltaTime;
-        }
-
-        public AttributeRegeneratedData(
-            GameAttributeType type,
-            float minValue,
-            float maxValue,
-            float baseValue,
-            float delayBeforeRegenerate,
-            float regeneratedValue)
-            : base(type, minValue, maxValue, baseValue)
-        {
-            DelayBeforeRegenerate = delayBeforeRegenerate;
-            RegeneratedValue = regeneratedValue;
+            _currentDelay += UnityEventsProvider.DeltaTime;
         }
     }
 }

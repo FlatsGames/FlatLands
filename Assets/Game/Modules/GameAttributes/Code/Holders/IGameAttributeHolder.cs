@@ -4,6 +4,7 @@ namespace FlatLands.GameAttributes
 {
     public interface IGameAttributeHolder
     {
-        public IReadOnlyDictionary<GameAttributeType, BaseAttributeData> GetAttributes();
+        public string HolderId { get; }
+        public IReadOnlyDictionary<GameAttributeType, AttributeData> GetAttributes();
     }
 }
