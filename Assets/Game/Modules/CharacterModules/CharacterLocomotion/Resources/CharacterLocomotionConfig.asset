@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _freeMovementPair
       Entry: 7
-      Data: 0|FlatLands.Characters.CharacterMovementPair, FlatLands.Characters
+      Data: 0|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
       Data: 6
@@ -53,7 +53,7 @@ MonoBehaviour:
       Data: 
     - Name: _strafeMovementPair
       Entry: 7
-      Data: 1|FlatLands.Characters.CharacterMovementPair, FlatLands.Characters
+      Data: 1|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
       Data: 6
@@ -81,8 +81,6 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-  _characterPrefab: {fileID: 8511600455462435884, guid: b813e1b7b32a3514fa3a56051a84f8dc,
-    type: 3}
   _useRootMotion: 0
   _sprintOnlyFree: 1
   _jumpInput: 32
@@ -98,13 +96,12 @@ MonoBehaviour:
   _extraGravity: -10
   _groundLayer:
     serializedVersion: 2
-    m_Bits: 17
+    m_Bits: 1
   _groundMinDistance: 0.25
   _groundMaxDistance: 0.5
   _slopeLimit: 75
   _mainWeight: 1
-  _bodyIkWeight: 0.035
-  _headIkWeight: 0.178
-  eyesIkWeight: 0.352
-  _clampIkWeight: 0.531
-  _takeWeaponKey: 49
+  _bodyIkWeight: 0.3
+  _headIkWeight: 0.175
+  eyesIkWeight: 0.35
+  _clampIkWeight: 0.5
