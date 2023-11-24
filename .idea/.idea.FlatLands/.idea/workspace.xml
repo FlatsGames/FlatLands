@@ -3,27 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRangedHudElement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterAttributes/Code/UI/UIAttributeRangedHudElement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/3D/Models/CharacterModel.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/3D/Models/CharacterModel.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Resources/CharacterCombat_SpineSlot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Resources/CharacterCombat_SpineSlot.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Main_Character].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Main_Character].prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Evil Spirit Katana/3DModel/Evil_spirit_katana.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Evil Spirit Katana/3DModel/Evil_spirit_katana.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/Arrows_Arrows_AlbedoTransparency.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/Arrows_Arrows_AlbedoTransparency.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/DoubleSided_Axes_low_Axes_DS_AlbedoTransparency.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/DoubleSided_Axes_low_Axes_DS_AlbedoTransparency.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/OneSided_Axes_low_Axes_OS_AlbedoTransparency.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/OneSided_Axes_low_Axes_OS_AlbedoTransparency.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/Swords_DH_low_Sword_DH_AlbedoTransparency.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/Swords_DH_low_Sword_DH_AlbedoTransparency.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/Swords_low_Swords_OH_AlbedoTransparency.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Materials/Swords_low_Swords_OH_AlbedoTransparency.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_1024.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_1024.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_2048.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_2048.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_4096.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_4096.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_512.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Materials/SteelDagger_Material_512.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Models/dagger.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Models/dagger.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Models/dagger.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Models/dagger.zip.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Textures/2048/steeldagger_2048_Normal.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Steel Dagger/Textures/2048/steeldagger_2048_Normal.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
