@@ -17,6 +17,9 @@ namespace FlatLands.CharacterAttributes
         private AttributeRangedData _attribute;
         private Sequence _sliderSequence;
 
+        private float _lastPrevValue;
+        private bool _isActive;
+        
         public override void Init()
         {
             
@@ -52,7 +55,7 @@ namespace FlatLands.CharacterAttributes
         {
             _sliderSequence?.Kill();
             _sliderSequence = DOTween.Sequence();
-
+            
             _valueText.SetText($"{_attribute.Value}/{_attribute.MaxValue}");
             if (addValue)
             {
@@ -61,12 +64,20 @@ namespace FlatLands.CharacterAttributes
                 _sliderSequence.AppendCallback(() => _internalSlider.value = 0);
                 return;
             }
-
-            _internalSlider.value = prevValue;
+            
+            if(!_isActive)
+                _lastPrevValue = prevValue;
+            
+            _internalSlider.value = _lastPrevValue;
             _mainSlider.value = newValue;
+            _isActive = true;
             _sliderSequence.AppendInterval(0.3f);
             _sliderSequence.Append(_internalSlider.DoValue(newValue, 0.3f));
-            _sliderSequence.AppendCallback(() => _internalSlider.value = 0);
+            _sliderSequence.AppendCallback(() =>
+            {
+                _internalSlider.value = 0;
+                _isActive = false;
+            });
         }
 
         // private float _debugValue = 100;
