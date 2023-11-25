@@ -20,8 +20,58 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes: []
+    SerializationNodes:
+    - Name: _internalSettings
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[FlatLands.CombatSystem.ICombatInternalSetting,
+        FlatLands.CombatSystem]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|FlatLands.CombatSystem.CombatInternalMeleeAttackSetting, FlatLands.CombatSystem
+    - Name: _hasBlockCooldown
+      Entry: 5
+      Data: true
+    - Name: _blockCooldownSeconds
+      Entry: 4
+      Data: 0.5
+    - Name: _blockStartAnimation
+      Entry: 1
+      Data: Spine_Block_Start
+    - Name: _combatCost
+      Entry: 4
+      Data: 20
+    - Name: _attackAnimations
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 1
+      Data: Spine_Attack_1
+    - Name: 
+      Entry: 1
+      Data: Spine_Attack_2
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   _animatorSubLayer: Two Hand Weapon
+  _animCategory: 100
   _hasBlockCooldown: 1
   _blockCooldownSeconds: 0.5
   _blockStartAnimation: Spine_Block_Start
@@ -29,4 +79,3 @@ MonoBehaviour:
   _combatAnimations:
   - Spine_Attack_1
   - Spine_Attack_2
-  _animCategory: 100

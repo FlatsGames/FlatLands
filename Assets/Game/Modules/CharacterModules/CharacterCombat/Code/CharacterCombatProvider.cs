@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using FlatLands.Architecture;
@@ -23,9 +24,13 @@ namespace FlatLands.CharacterCombat
 		private Dictionary<WeaponEquipmentSlotType, CharacterCombatConfig> _equipmentToSlots;
 
 		protected override bool IsHoldWeapon => _characterEquipmentProvider?.IsHoldWeapon ?? false;
-		
+		protected bool IsBlockActive { get; private set; }
+
 		private CharacterCombatConfig _currentConfig;
 		private AttributeRegeneratedData _staminaAttribute;
+		
+		private IEnumerator _blockRoutine;
+		private IEnumerator _blockCooldownRoutine;
 		
 		public CharacterCombatProvider(
 			CharacterEquipmentProvider equipmentProvider,
@@ -82,35 +87,71 @@ namespace FlatLands.CharacterCombat
 				ApplyAttack();
 			
 			if(Input.GetMouseButton(Right_Mouse_Button))
-				ActivateBlock();
+				EnterBlock();
 			
 			if(Input.GetMouseButtonUp(Right_Mouse_Button))
-				DeactivateBlock();
+				ExitBlock();
 		}
 
 		private void ApplyAttack()
 		{
-			if(!_staminaAttribute.CanRemoveValue(_currentConfig.CombatCost))
-				return;
-			
-			var maxAnimCount = _currentConfig.CombatAnimations.Count();
-			var randomAttackIndex = Random.Range(0, maxAnimCount);
-			var animationName = _currentConfig.CombatAnimations[randomAttackIndex];
-			
-			if(!AttackInProgress)
-				_staminaAttribute.RemoveValue(_currentConfig.CombatCost);
-			
-			Attack(_currentConfig, animationName);
+			var meleeInternalConfig = _currentConfig.GetInternalSetting<CombatInternalMeleeAttackSetting>();
+			if(meleeInternalConfig != null)
+			{
+				if (!_staminaAttribute.CanRemoveValue(meleeInternalConfig.AttackCost))
+					return;
+
+				var maxAnimCount = meleeInternalConfig.AttackAnimations.Count();
+				var randomAttackIndex = Random.Range(0, maxAnimCount);
+				var animationName = meleeInternalConfig.AttackAnimations[randomAttackIndex];
+
+				if (!AttackInProgress)
+					_staminaAttribute.RemoveValue(meleeInternalConfig.AttackCost);
+
+				Attack(_currentConfig, animationName);
+			}
 		}
 
-		private void ActivateBlock()
+		private void EnterBlock()
 		{
-			EnterBlock(_currentConfig);
+			var meleeInternalConfig = _currentConfig.GetInternalSetting<CombatInternalMeleeAttackSetting>();
+			if(meleeInternalConfig != null)
+			{
+				if (IsBlockActive)
+					return;
+
+				IsBlockActive = true;
+				_blockRoutine = _animator.PlayAnimation(
+					_currentConfig.AnimatorSubLayer,
+					meleeInternalConfig.BlockStartAnimation);
+				UnityEventsProvider.CoroutineStart(_blockRoutine);
+			}
 		}
 		
-		private void DeactivateBlock()
+		private void ExitBlock()
 		{
-			ExitBlock(_currentConfig);
+			var meleeInternalConfig = _currentConfig.GetInternalSetting<CombatInternalMeleeAttackSetting>();
+			if(meleeInternalConfig != null)
+			{
+				if (!IsBlockActive)
+					return;
+
+				_animator.SetTrigger(AnimatorExitBlockHash);
+				if (!meleeInternalConfig.HasBlockCooldown)
+				{
+					IsBlockActive = false;
+					return;
+				}
+
+				_blockCooldownRoutine = BlockCooldown();
+				UnityEventsProvider.CoroutineStart(_blockCooldownRoutine);
+
+				IEnumerator BlockCooldown()
+				{
+					yield return new WaitForSeconds(meleeInternalConfig.BlockCooldownSeconds);
+					IsBlockActive = false;
+				}
+			}
 		}
 
 		private void HandleEquipmentWeaponChanged()

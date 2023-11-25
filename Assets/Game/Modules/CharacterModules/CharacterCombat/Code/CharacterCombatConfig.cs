@@ -1,4 +1,5 @@
-﻿using FlatLands.CombatSystem;
+﻿using System.Collections.Generic;
+using FlatLands.CombatSystem;
 using FlatLands.Equipments;
 using Sirenix.OdinInspector;
 using UnityEngine;

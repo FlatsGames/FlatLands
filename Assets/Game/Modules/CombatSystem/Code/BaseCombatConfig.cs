@@ -12,29 +12,40 @@ namespace FlatLands.CombatSystem
         [SerializeField, FoldoutGroup("Main Settings")] 
         private string _animatorSubLayer;
         
-        [SerializeField, FoldoutGroup("Block Settings")] 
-        private bool _hasBlockCooldown;
-
-        [SerializeField, ShowIf(nameof(_hasBlockCooldown)), FoldoutGroup("Block Settings")] 
-        private float _blockCooldownSeconds;
-        
-        [SerializeField, FoldoutGroup("Block Settings")]
-        private string _blockStartAnimation;
-
-        [SerializeField, FoldoutGroup("Combat Settings")]
-        private float _combatCost;
-        
-        [SerializeField, FoldoutGroup("Combat Settings")] 
-        private List<string> _combatAnimations;
+        [SerializeField, FoldoutGroup("Internal Settings")] 
+        private List<ICombatInternalSetting> _internalSettings 
+            = new List<ICombatInternalSetting>();
 
         public string AnimatorSubLayer => _animatorSubLayer;
-        public float CombatCost => _combatCost;
-        public bool HasBlockCooldown => _hasBlockCooldown;
-        public float BlockCooldownSeconds => _blockCooldownSeconds;
-        public string BlockStartAnimation => _blockStartAnimation;
-
-        public IReadOnlyList<string> CombatAnimations => _combatAnimations;
-        
         public abstract WeaponEquipmentSlotType Category { get; }
+
+        private Dictionary<Type, ICombatInternalSetting> _internalSettingsByTypes;
+
+        protected override void Initialize()
+        {
+            _internalSettingsByTypes = new Dictionary<Type, ICombatInternalSetting>();
+            foreach (var internalSetting in _internalSettings)
+            {
+                var type = internalSetting.GetType();
+                if (_internalSettingsByTypes.ContainsKey(type))
+                {
+                    Debug.LogError($"[BaseCombatConfig] Setting with type: {type} already exist!");
+                    continue;
+                }
+
+                _internalSettingsByTypes[type] = internalSetting;
+            }
+            
+            base.Initialize();
+        }
+        
+        public T GetInternalSetting<T>() where T : ICombatInternalSetting
+        {
+            var type = typeof(T);
+            if(!_internalSettingsByTypes.TryGetValue(type, out var setting))
+                return default;
+
+            return (T) setting;
+        }
     }
 }

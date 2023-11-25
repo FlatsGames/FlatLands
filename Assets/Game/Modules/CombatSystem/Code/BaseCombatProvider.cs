@@ -9,15 +9,13 @@ namespace FlatLands.CombatSystem
 		public int AnimatorExitBlockHash => Animator.StringToHash("ExitBlock");
 		
 		protected abstract bool IsHoldWeapon { get; }
-		protected bool IsBlockActive { get; private set; }
 		protected bool AttackInProgress { get; private set; }
 		
-		private BaseCombatBehaviour _combatBehaviour;
-		private Animator _animator;
-		private IEnumerator _attackRoutine;
-		private IEnumerator _blockRoutine;
-		private IEnumerator _blockCooldownRoutine;
+		protected Animator _animator;
 		
+		private BaseCombatBehaviour _combatBehaviour;
+		private IEnumerator _attackRoutine;
+
 		public BaseCombatProvider(BaseCombatBehaviour combatBehaviour, Animator animator)
 		{
 			_combatBehaviour = combatBehaviour;
@@ -38,40 +36,6 @@ namespace FlatLands.CombatSystem
 					AttackInProgress = false;
 				});
 			UnityEventsProvider.CoroutineStart(_attackRoutine);
-		}
-
-		protected void EnterBlock(BaseCombatConfig combatConfig)
-		{
-			if(IsBlockActive)
-				return;
-
-			IsBlockActive = true;
-			_blockRoutine = _animator.PlayAnimation(
-				combatConfig.AnimatorSubLayer, 
-				combatConfig.BlockStartAnimation);
-			UnityEventsProvider.CoroutineStart(_blockRoutine);
-		}
-		
-		protected void ExitBlock(BaseCombatConfig combatConfig)
-		{
-			if(!IsBlockActive)
-				return;
-			
-			_animator.SetTrigger(AnimatorExitBlockHash);
-			if(!combatConfig.HasBlockCooldown)
-			{
-				IsBlockActive = false;
-				return;
-			}
-
-			_blockCooldownRoutine = BlockCooldown();
-			UnityEventsProvider.CoroutineStart(_blockCooldownRoutine);
-			
-			IEnumerator BlockCooldown()
-			{
-				yield return new WaitForSeconds(combatConfig.BlockCooldownSeconds);
-				IsBlockActive = false;
-			}
 		}
 	}
 }
