@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193614984}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15993871, y: 0.011751955, z: -0.57000166, w: -0.80584097}
+  m_LocalRotation: {x: -0.15993871, y: 0.0117519405, z: -0.5700016, w: -0.80584097}
   m_LocalPosition: {x: -2.1773486, y: 2.8607786, z: 1.5000161}
   m_LocalScale: {x: 1.0000001, y: 0.9999995, z: 0.9999996}
   m_ConstrainProportionsScale: 0
@@ -415,7 +415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193614990}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0030476055, y: 0.022720508, z: 0.3007185, w: -0.95343745}
+  m_LocalRotation: {x: -0.0030475967, y: 0.022720508, z: 0.3007183, w: -0.95343745}
   m_LocalPosition: {x: 0.44791937, y: 3.0840461, z: 0.000003725294}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1056,7 +1056,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193615022}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.27993786, y: -0.017315475, z: -0.09394891, w: -0.9552531}
+  m_LocalRotation: {x: -0.27993768, y: -0.017315418, z: -0.09394908, w: -0.95525324}
   m_LocalPosition: {x: -1.0459477, y: 9.890949, z: -0.12528172}
   m_LocalScale: {x: 0.99999934, y: 0.9999995, z: 0.9999997}
   m_ConstrainProportionsScale: 0
@@ -1120,7 +1120,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193615026}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.28115362, y: -0.017753333, z: -0.017115176, w: -0.95934594}
+  m_LocalRotation: {x: -0.28115362, y: -0.01775342, z: -0.01711501, w: -0.95934594}
   m_LocalPosition: {x: 1.0770516, y: 9.615881, z: -0.044989612}
   m_LocalScale: {x: 0.9999992, y: 0.99999964, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1185,7 +1185,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193615030}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.31331593, y: -0.000035822388, z: -0.0063369265, w: -0.9496279}
+  m_LocalRotation: {x: -0.31331593, y: -0.000035822388, z: -0.006336925, w: -0.9496279}
   m_LocalPosition: {x: -0.0008458178, y: 3.4413235, z: 0.000006153463}
   m_LocalScale: {x: 0.99999994, y: 1, z: 0.9999997}
   m_ConstrainProportionsScale: 0
@@ -2660,7 +2660,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193615184}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.27898505, y: -0.015614569, z: -0.13026036, w: -0.9512917}
+  m_LocalRotation: {x: -0.278985, y: -0.015614597, z: -0.13026014, w: -0.9512917}
   m_LocalPosition: {x: -3.260994, y: 10.302801, z: 0.20425369}
   m_LocalScale: {x: 1, y: 0.9999997, z: 0.99999976}
   m_ConstrainProportionsScale: 0
@@ -2953,7 +2953,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193615202}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.31334946, y: 0.00021454689, z: 0.004657417, w: 0.9496265}
+  m_LocalRotation: {x: 0.31334966, y: 0.00021456179, z: 0.004657417, w: 0.94962645}
   m_LocalPosition: {x: -0.00396483, y: 3.2343857, z: -0.000007823767}
   m_LocalScale: {x: 1.0000001, y: 0.9999998, z: 0.9999997}
   m_ConstrainProportionsScale: 0
@@ -3272,7 +3272,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833339032193615222}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0002443929, y: 0.022534829, z: 0.32306737, w: 0.9461076}
+  m_LocalRotation: {x: 0.00024439488, y: 0.022534827, z: 0.3230674, w: 0.9461076}
   m_LocalPosition: {x: -0.49680936, y: 3.074016, z: 0.000012665994}
   m_LocalScale: {x: 1, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
@@ -3516,12 +3516,7 @@ Animator:
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
-  m_WarningMessage: "\nBinding warning: Some generic clip(s) animate transforms that
-    are already bound by a Humanoid avatar. These transforms can only be changed
-    by Humanoid clips.\n\tTransform 'VBOT_:LeftHand'\n\tTransform 'VBOT_:LeftForeArm'\n\tTransform
-    'VBOT_:Spine'\n\tTransform 'VBOT_:RightArm'\n\tTransform 'VBOT_:LeftArm'\n\tTransform
-    'VBOT_:Hips'\n\tTransform 'VBOT_:Spine2'\n\tTransform 'VBOT_:RightForeArm'\n\tTransform
-    'VBOT_:RightHand'\n\tTransform 'VBOT_:LeftHand'\n\tand more ..."
+  m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -5052,7 +5047,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &338756665232192338
 Transform:
   m_ObjectHideFlags: 0

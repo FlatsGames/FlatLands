@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes: []
   _animatorSubLayer: Attack One Hand Weapon
   _hasBlockCooldown: 1
-  _blockCooldownSeconds: 0.7
+  _blockCooldownSeconds: 0.5
   _blockStartAnimation: LeftLeg_Block_Start
   _blockIdleAnimation: LeftLeg_Block
   _combatAnimations:
