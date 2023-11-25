@@ -75,8 +75,9 @@ namespace FlatLands.CharactersMediator
 			var equipmentBehaviour = _characterGroup.GetBehaviour<CharacterEquipmentBehaviour>();
 			var combatBehaviour = _characterBehaviour.GetComponent<CharacterCombatBehaviour>();
 			var equipmentProvider = _characterGroup.GetProvider<CharacterEquipmentProvider>();
+			var attributesProvider = _characterGroup.GetProvider<CharacterAttributesProvider>();
 			
-			var combatProvider = new CharacterCombatProvider(equipmentProvider, combatBehaviour, _characterBehaviour.CharacterAnimator);
+			var combatProvider = new CharacterCombatProvider(equipmentProvider, combatBehaviour, attributesProvider, _characterBehaviour.CharacterAnimator);
 			
 			_charactersManager.CurrentCharacter.AddBehaviour(equipmentBehaviour);
 			_charactersManager.CurrentCharacter.AddProvider(combatProvider);

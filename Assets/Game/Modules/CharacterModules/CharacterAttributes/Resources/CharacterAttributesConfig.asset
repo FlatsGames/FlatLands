@@ -54,6 +54,9 @@ MonoBehaviour:
     - Name: _type
       Entry: 3
       Data: 0
+    - Name: _applyDefaultValue
+      Entry: 5
+      Data: true
     - Name: _minValue
       Entry: 4
       Data: 0
@@ -78,6 +81,9 @@ MonoBehaviour:
     - Name: _type
       Entry: 3
       Data: 10
+    - Name: _applyDefaultValue
+      Entry: 5
+      Data: true
     - Name: _minValue
       Entry: 4
       Data: 0
@@ -86,10 +92,10 @@ MonoBehaviour:
       Data: 120
     - Name: _delayBeforeRegenerated
       Entry: 4
-      Data: 1
+      Data: 3
     - Name: _regeneratedValue
       Entry: 4
-      Data: 10
+      Data: 30
     - Name: 
       Entry: 8
       Data: 

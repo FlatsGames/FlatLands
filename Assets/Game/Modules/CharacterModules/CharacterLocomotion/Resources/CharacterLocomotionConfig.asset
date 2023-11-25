@@ -82,10 +82,10 @@ MonoBehaviour:
       Entry: 8
       Data: 
   _useRootMotion: 0
-  _sprintOnlyFree: 1
   _jumpInput: 32
   _strafeInput: 9
   _sprintInput: 304
+  _sprintCost: 0.01
   _locomotionType: 0
   _jumpWithRigidbodyForce: 0
   _jumpAndRotate: 1

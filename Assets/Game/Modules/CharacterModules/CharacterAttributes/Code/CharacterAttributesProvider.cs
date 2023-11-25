@@ -8,10 +8,12 @@ namespace FlatLands.CharacterAttributes
 {
 	public sealed class CharacterAttributesProvider : ICharacterProvider, IGameAttributeHolder
 	{
+		public static string CharacterHolderId => "CharacterAttributes";
+		
 		[Inject] private GameAttributesManager _gameAttributesManager;
 		[Inject] private UIManager _uiManager;
 
-		public string HolderId => "CharacterAttributes";
+		public string HolderId => CharacterHolderId;
 
 		private CharacterAttributesConfig _config;
 

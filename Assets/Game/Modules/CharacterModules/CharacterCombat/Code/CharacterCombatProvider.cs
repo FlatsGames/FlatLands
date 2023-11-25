@@ -1,9 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
+using FlatLands.Architecture;
+using FlatLands.CharacterAttributes;
 using FlatLands.CharacterEquipment;
 using FlatLands.Characters;
 using FlatLands.CombatSystem;
 using FlatLands.Equipments;
+using FlatLands.GameAttributes;
 using UnityEngine;
 
 namespace FlatLands.CharacterCombat
@@ -13,20 +16,26 @@ namespace FlatLands.CharacterCombat
 		private const int Left_Mouse_Button = 0;
 		private const int Right_Mouse_Button = 1;
 		
+		[Inject] private GameAttributesManager _gameAttributesManager;
+
 		private readonly CharacterEquipmentProvider _characterEquipmentProvider;
+		private readonly CharacterAttributesProvider _characterAttributesProvider;
 		private Dictionary<WeaponEquipmentSlotType, CharacterCombatConfig> _equipmentToSlots;
 
 		protected override bool IsHoldWeapon => _characterEquipmentProvider?.IsHoldWeapon ?? false;
-
+		
 		private CharacterCombatConfig _currentConfig;
+		private AttributeRegeneratedData _staminaAttribute;
 		
 		public CharacterCombatProvider(
 			CharacterEquipmentProvider equipmentProvider,
 			CharacterCombatBehaviour combatBehaviour,
+			CharacterAttributesProvider characterAttributesProvider,
 			Animator animator)
 			: base(combatBehaviour, animator)
 		{
 			_characterEquipmentProvider = equipmentProvider;
+			_characterAttributesProvider = characterAttributesProvider;
 		}
 		
 		public void Init()
@@ -41,6 +50,10 @@ namespace FlatLands.CharacterCombat
 				
 				_equipmentToSlots[config.Category] = combatConfig;
 			}
+
+			_staminaAttribute = _gameAttributesManager
+				.GetAttributeHolder(CharacterAttributesProvider.CharacterHolderId)
+				.GetAttribute<AttributeRegeneratedData>(GameAttributeType.Stamina);
 
 			_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged += HandleEquipmentWeaponChanged;
 		}
@@ -77,11 +90,17 @@ namespace FlatLands.CharacterCombat
 
 		private void ApplyAttack()
 		{
+			if(!_staminaAttribute.CanRemoveValue(_currentConfig.CombatCost))
+				return;
+			
 			var maxAnimCount = _currentConfig.CombatAnimations.Count();
 			var randomAttackIndex = Random.Range(0, maxAnimCount);
-			var attackName = _currentConfig.CombatAnimations[randomAttackIndex];
-				
-			Attack(_currentConfig, attackName);
+			var animationName = _currentConfig.CombatAnimations[randomAttackIndex];
+			
+			if(!AttackInProgress)
+				_staminaAttribute.RemoveValue(_currentConfig.CombatCost);
+			
+			Attack(_currentConfig, animationName);
 		}
 
 		private void ActivateBlock()

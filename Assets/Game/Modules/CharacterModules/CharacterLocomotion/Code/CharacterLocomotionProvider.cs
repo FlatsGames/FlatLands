@@ -1,4 +1,5 @@
 ﻿using FlatLands.Architecture;
+using FlatLands.CharacterAttributes;
 using FlatLands.GameAttributes;
 using FlatLands.Characters;
 using UnityEngine;
@@ -10,8 +11,6 @@ namespace FlatLands.CharacterLocomotion
         private const string Horizontal_Input_Name = "Horizontal";
         private const string Vertical_Input_Name = "Vertical";
         
-        private const string AttributeHolderId = "CharacterAttributes";
-
         [Inject] private GameAttributesManager _gameAttributesManager;
 
         private int AnimatorInputHorizontal => Animator.StringToHash("InputHorizontal");
@@ -108,7 +107,7 @@ namespace FlatLands.CharacterLocomotion
             _colliderHeight = collider.height;
 
             _staminaAttribute = _gameAttributesManager
-                .GetAttributeHolder(AttributeHolderId)
+                .GetAttributeHolder(CharacterAttributesProvider.CharacterHolderId)
                 .GetAttribute<AttributeRegeneratedData>(GameAttributeType.Stamina);
             
             IsGrounded = true;

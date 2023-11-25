@@ -1,5 +1,6 @@
 ﻿using FlatLands.CombatSystem;
 using FlatLands.Equipments;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FlatLands.CharacterCombat
@@ -9,7 +10,8 @@ namespace FlatLands.CharacterCombat
         fileName = nameof(CharacterCombatConfig))]
     public sealed class CharacterCombatConfig : BaseCombatConfig
     {
-        [SerializeField] private WeaponEquipmentSlotType _animCategory;
+        [SerializeField, FoldoutGroup("Main Settings")] 
+        private WeaponEquipmentSlotType _animCategory;
 
         public override WeaponEquipmentSlotType Category => _animCategory;
     }

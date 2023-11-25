@@ -9,30 +9,29 @@ namespace FlatLands.CombatSystem
 {
     public abstract class BaseCombatConfig : MultitonScriptableObjectsByName<BaseCombatConfig>
     {
-        [SerializeField] 
+        [SerializeField, FoldoutGroup("Main Settings")] 
         private string _animatorSubLayer;
-
-        [SerializeField] 
+        
+        [SerializeField, FoldoutGroup("Block Settings")] 
         private bool _hasBlockCooldown;
 
-        [SerializeField, ShowIf(nameof(_hasBlockCooldown))] 
+        [SerializeField, ShowIf(nameof(_hasBlockCooldown)), FoldoutGroup("Block Settings")] 
         private float _blockCooldownSeconds;
         
-        [SerializeField]
+        [SerializeField, FoldoutGroup("Block Settings")]
         private string _blockStartAnimation;
+
+        [SerializeField, FoldoutGroup("Combat Settings")]
+        private float _combatCost;
         
-        [SerializeField]
-        private string _blockIdleAnimation;
-        
-        [SerializeField] 
+        [SerializeField, FoldoutGroup("Combat Settings")] 
         private List<string> _combatAnimations;
 
         public string AnimatorSubLayer => _animatorSubLayer;
-
+        public float CombatCost => _combatCost;
         public bool HasBlockCooldown => _hasBlockCooldown;
         public float BlockCooldownSeconds => _blockCooldownSeconds;
         public string BlockStartAnimation => _blockStartAnimation;
-        public string BlockIdleAnimation => _blockIdleAnimation;
 
         public IReadOnlyList<string> CombatAnimations => _combatAnimations;
         

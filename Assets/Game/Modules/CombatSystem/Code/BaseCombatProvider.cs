@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using FlatLands.Architecture;
 using UnityEngine;
@@ -11,9 +10,9 @@ namespace FlatLands.CombatSystem
 		
 		protected abstract bool IsHoldWeapon { get; }
 		protected bool IsBlockActive { get; private set; }
+		protected bool AttackInProgress { get; private set; }
 		
 		private BaseCombatBehaviour _combatBehaviour;
-		private bool _attackInProgress;
 		private Animator _animator;
 		private IEnumerator _attackRoutine;
 		private IEnumerator _blockRoutine;
@@ -25,18 +24,18 @@ namespace FlatLands.CombatSystem
 			_animator = animator;
 		}
 
-		protected void Attack(BaseCombatConfig combatConfig, string animAttackName)
+		protected void Attack(BaseCombatConfig combatConfig, string animName)
 		{
-			if(_attackInProgress || !IsHoldWeapon)
+			if(AttackInProgress || !IsHoldWeapon)
 				return;
 			
-			_attackInProgress = true;
+			AttackInProgress = true;
 			_attackRoutine = _animator.PlayAnimationWithAction(
 				combatConfig.AnimatorSubLayer, 
-				animAttackName, 
+				animName, 
 				completeCallback: () =>
 				{
-					_attackInProgress = false;
+					AttackInProgress = false;
 				});
 			UnityEventsProvider.CoroutineStart(_attackRoutine);
 		}
