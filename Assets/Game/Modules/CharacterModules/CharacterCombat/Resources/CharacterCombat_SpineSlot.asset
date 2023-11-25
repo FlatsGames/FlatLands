@@ -21,11 +21,11 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _animatorSubLayer: Attack Two Hand Weapon
+  _animatorSubLayer: Two Hand Weapon
   _hasBlockCooldown: 1
   _blockCooldownSeconds: 0.5
-  _blockStartAnimation: LeftLeg_Block_Start
-  _blockIdleAnimation: LeftLeg_Block
+  _blockStartAnimation: Spine_Block_Start
+  _blockIdleAnimation: Spine_Block
   _combatAnimations:
   - Spine_Attack_1
   - Spine_Attack_2

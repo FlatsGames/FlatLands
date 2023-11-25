@@ -355,8 +355,7 @@ namespace FlatLands.CharacterLocomotion
             
             _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, curSmooth * DeltaTime);
             
-            
-            var dir = (IsStrafing && (!IsSprinting || LocomotionConfig.SprintOnlyFree == false) || (LocomotionConfig.FreeMovementPair.RotateWithCamera && _inputAxis == Vector3.zero)) 
+            var dir = (IsStrafing && !IsSprinting || (LocomotionConfig.FreeMovementPair.RotateWithCamera && _inputAxis == Vector3.zero)) 
                       && _rotateTarget ? _rotateTarget.forward : _moveDirection;
             RotateToDirection(dir);
         }

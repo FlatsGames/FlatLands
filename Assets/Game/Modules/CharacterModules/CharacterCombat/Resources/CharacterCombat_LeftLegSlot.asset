@@ -21,7 +21,7 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _animatorSubLayer: Attack One Hand Weapon
+  _animatorSubLayer: One Hand Weapon
   _hasBlockCooldown: 1
   _blockCooldownSeconds: 0.5
   _blockStartAnimation: LeftLeg_Block_Start

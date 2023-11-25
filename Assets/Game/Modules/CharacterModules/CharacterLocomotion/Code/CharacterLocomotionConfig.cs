@@ -11,11 +11,7 @@ namespace FlatLands.CharacterLocomotion
     {
         [SerializeField, BoxGroup("Main Settings")]
         private bool _useRootMotion = false;
-        
-        [SerializeField, BoxGroup("Main Settings")]
-        private bool _sprintOnlyFree = true;
-        
-        
+
         [SerializeField, FoldoutGroup("Buttons Settings")]
         private KeyCode _jumpInput = KeyCode.Space;
         
@@ -87,7 +83,6 @@ namespace FlatLands.CharacterLocomotion
         private float _clampIkWeight = 0.3f;
         
         public bool UseRootMotion => _useRootMotion;
-        public bool SprintOnlyFree => _sprintOnlyFree;
 
         public KeyCode JumpInput => _jumpInput;
         public KeyCode StrafeInput => _strafeInput;
