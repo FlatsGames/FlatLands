@@ -12,7 +12,7 @@ namespace FlatLands.CombatSystem
         [SerializeField, FoldoutGroup("Main Settings")] 
         private string _animatorSubLayer;
         
-        [SerializeField, FoldoutGroup("Internal Settings")] 
+        [SerializeField] 
         private List<ICombatInternalSetting> _internalSettings 
             = new List<ICombatInternalSetting>();
 

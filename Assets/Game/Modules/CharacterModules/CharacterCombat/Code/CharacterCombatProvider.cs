@@ -84,14 +84,25 @@ namespace FlatLands.CharacterCombat
 				return;
 			
 			if(Input.GetMouseButtonDown(Left_Mouse_Button))
+			{
 				ApplyAttack();
+				ApplyShoot();
+			}
 			
 			if(Input.GetMouseButton(Right_Mouse_Button))
+			{
 				EnterBlock();
+				EnterAiming();
+			}
 			
 			if(Input.GetMouseButtonUp(Right_Mouse_Button))
+			{
 				ExitBlock();
+				ExitAiming();
+			}
 		}
+
+#region Simple Attack
 
 		private void ApplyAttack()
 		{
@@ -111,6 +122,11 @@ namespace FlatLands.CharacterCombat
 				Attack(_currentConfig, animationName);
 			}
 		}
+
+#endregion
+
+
+#region Block
 
 		private void EnterBlock()
 		{
@@ -153,6 +169,66 @@ namespace FlatLands.CharacterCombat
 				}
 			}
 		}
+		
+#endregion
+
+
+#region Ranged Attack
+
+		protected bool IsRangedAiming { get; private set; }
+
+		private void EnterAiming()
+		{
+			if(IsRangedAiming)
+				return;
+			
+			var rangedInternalConfig = _currentConfig.GetInternalSetting<CombatInternalRangedAttackSetting>();
+			if(rangedInternalConfig == null)
+				return;
+
+			IsRangedAiming = true;
+			var startAimingRoutine = _animator.PlayAnimation(
+				_currentConfig.AnimatorSubLayer, 
+				rangedInternalConfig.StartAimingAnim);
+			UnityEventsProvider.CoroutineStart(startAimingRoutine);
+		}
+		
+		private void ExitAiming()
+		{
+			if(!IsRangedAiming)
+				return;
+			
+			var rangedInternalConfig = _currentConfig.GetInternalSetting<CombatInternalRangedAttackSetting>();
+			if(rangedInternalConfig == null)
+				return;
+			
+			var endAimingRoutine = _animator.PlayAnimation(
+				_currentConfig.AnimatorSubLayer, 
+				rangedInternalConfig.EndAimingAnim, 
+				() =>
+				{
+					IsRangedAiming = false;
+				});
+			UnityEventsProvider.CoroutineStart(endAimingRoutine);
+		}
+
+		private void ApplyShoot()
+		{
+			if(!IsRangedAiming)
+				return;
+			
+			var rangedInternalConfig = _currentConfig.GetInternalSetting<CombatInternalRangedAttackSetting>();
+			if(rangedInternalConfig == null)
+				return;
+			
+			var shootRoutine = _animator.PlayAnimation(
+				_currentConfig.AnimatorSubLayer, 
+				rangedInternalConfig.ShootAnim);
+			UnityEventsProvider.CoroutineStart(shootRoutine);
+			Debug.LogError("Shoot");
+		}
+		
+#endregion
 
 		private void HandleEquipmentWeaponChanged()
 		{
