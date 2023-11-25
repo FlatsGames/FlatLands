@@ -40,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -78,6 +78,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 52
+    - Name: $v
+      Entry: 3
+      Data: 200
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -103,7 +115,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 4
     - Name: 
       Entry: 7
       Data: 
@@ -119,7 +131,10 @@ MonoBehaviour:
     - Name: _putWeaponAnimationName
       Entry: 1
       Data: Put_WeaponLower
-    - Name: _posInRightHand
+    - Name: _useRightHand
+      Entry: 5
+      Data: true
+    - Name: _posInHand
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -134,7 +149,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _rotInRightHand
+    - Name: _rotInHand
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -170,7 +185,10 @@ MonoBehaviour:
     - Name: _putWeaponAnimationName
       Entry: 1
       Data: Put_WeaponSpine
-    - Name: _posInRightHand
+    - Name: _useRightHand
+      Entry: 5
+      Data: true
+    - Name: _posInHand
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -185,7 +203,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _rotInRightHand
+    - Name: _rotInHand
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -221,7 +239,10 @@ MonoBehaviour:
     - Name: _putWeaponAnimationName
       Entry: 1
       Data: Put_WeaponBelt
-    - Name: _posInRightHand
+    - Name: _useRightHand
+      Entry: 5
+      Data: true
+    - Name: _posInHand
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -236,7 +257,7 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _rotInRightHand
+    - Name: _rotInHand
       Entry: 7
       Data: UnityEngine.Vector3, UnityEngine.CoreModule
     - Name: 
@@ -248,6 +269,60 @@ MonoBehaviour:
     - Name: 
       Entry: 4
       Data: -98.006
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 200
+    - Name: $v
+      Entry: 7
+      Data: 7|FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair, FlatLands.CharacterEquipment
+    - Name: _takeWeaponAnimationName
+      Entry: 1
+      Data: Take_WeaponBow
+    - Name: _putWeaponAnimationName
+      Entry: 1
+      Data: Put_WeaponBow
+    - Name: _useRightHand
+      Entry: 5
+      Data: false
+    - Name: _posInHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: -1.91
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _rotInHand
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 4
+      Data: -89.29
     - Name: 
       Entry: 8
       Data: 

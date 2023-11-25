@@ -2,6 +2,7 @@
 using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.Equipments;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FlatLands.CharacterEquipment
@@ -41,13 +42,16 @@ namespace FlatLands.CharacterEquipment
         [SerializeField] private string _takeWeaponAnimationName;
         [SerializeField] private string _putWeaponAnimationName;
 
-        [SerializeField] private Vector3 _posInRightHand;
-        [SerializeField] private Vector3 _rotInRightHand;
+        [SerializeField] private bool _useRightHand;
+        
+        [SerializeField] private Vector3 _posInHand;
+        [SerializeField] private Vector3 _rotInHand;
 
         public string TakeWeaponAnimationName => _takeWeaponAnimationName;
         public string PutWeaponAnimationName => _putWeaponAnimationName;
 
-        public Vector3 PosInRightHand => _posInRightHand;
-        public Vector3 RotInRightHand => _rotInRightHand;
+        public bool UseRightHand => _useRightHand;
+        public Vector3 PosInHand => _posInHand;
+        public Vector3 RotInHand => _rotInHand;
     }
 }

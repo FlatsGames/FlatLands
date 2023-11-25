@@ -120,11 +120,14 @@ namespace FlatLands.Equipments
                     0.5f, 
                     () =>
                     {
-                        var handHolder = _behaviour.RightHandHolder;
+                        var handHolder = equipmentSettings.UseRightHand 
+                            ? _behaviour.RightHandHolder 
+                            : _behaviour.LeftHandHolder;
+                        
                         var equippedWeapon = _currentSlot.PivotTrans;
                         equippedWeapon.SetParent(handHolder);
-                        equippedWeapon.DOLocalMove(equipmentSettings.PosInRightHand, 0.2f);
-                        equippedWeapon.DOLocalRotate(equipmentSettings.RotInRightHand, 0.2f);
+                        equippedWeapon.DOLocalMove(equipmentSettings.PosInHand, 0.2f);
+                        equippedWeapon.DOLocalRotate(equipmentSettings.RotInHand, 0.2f);
                     },
                     callback);
                 
