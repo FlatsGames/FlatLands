@@ -20,7 +20,9 @@ namespace FlatLands.CharacterLocomotion
         
         [SerializeField, FoldoutGroup("Buttons Settings")]
         private KeyCode _sprintInput = KeyCode.LeftShift;
-        
+
+        [SerializeField, FoldoutGroup("Movement Settings")]
+        private float _sprintCost;
         
         [SerializeField, FoldoutGroup("Movement Settings")]
         private CharacterLocomotionType _locomotionType = CharacterLocomotionType.FreeWithStrafe;
@@ -87,7 +89,8 @@ namespace FlatLands.CharacterLocomotion
         public KeyCode JumpInput => _jumpInput;
         public KeyCode StrafeInput => _strafeInput;
         public KeyCode SprintInput => _sprintInput;
-        
+
+        public float SprintCost => _sprintCost;
         public CharacterLocomotionType LocomotionType => _locomotionType;
         public CharacterMovementPair FreeMovementPair => _freeMovementPair;
         public CharacterMovementPair StrafeMovementPair => _strafeMovementPair;

@@ -16,20 +16,18 @@ namespace FlatLands.GameAttributes
 		public event Action<bool, float, float> OnValueChangedDetails;
 		public event Action OnValueChanged;
 
-		public void AddValue(float amount)
+		public virtual void AddValue(float amount)
 		{
 			var prevValue = Value;
 			Value += amount;
-			OnValueChanged?.Invoke();
-			OnValueChangedDetails?.Invoke(true, prevValue, Value);
+			InvokeValueChanged(true, prevValue);
 		}
 		
-		public void RemoveValue(float amount)
+		public virtual void RemoveValue(float amount)
 		{
 			var prevValue = Value;
 			Value -= amount;
-			OnValueChanged?.Invoke();
-			OnValueChangedDetails?.Invoke(false, prevValue, Value);
+			InvokeValueChanged(false, prevValue);
 		}
 
 		internal virtual void Init()
@@ -43,5 +41,11 @@ namespace FlatLands.GameAttributes
 		}
 		
 		protected virtual void InvokeUpdate(){ }
+
+		protected void InvokeValueChanged(bool addValue, float prevValue)
+		{
+			OnValueChanged?.Invoke();
+			OnValueChangedDetails?.Invoke(addValue, prevValue, Value);
+		}
 	}
 }

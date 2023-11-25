@@ -23,10 +23,10 @@ namespace FlatLands.CharactersMediator
 		public override void Init()
 		{
 			StartCharacterLife();
+			StartAttributeProvider();
 			LocomotionProvider();
 			EquipmentProvider();
 			CombatProvider();
-			StartAttributeProvider();
 			
 			_controllableManager.SetControllableEntity(_characterGroup, _characterBehaviour);
 			var entityTarget = _controllableManager.CurrentControllableBehaviour.EntityTransform;

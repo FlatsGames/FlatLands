@@ -9,11 +9,10 @@ namespace FlatLands.CharacterAttributes
     [CreateAssetMenu(
         menuName = "FlatLands/Characters/" + nameof(CharacterAttributesConfig),
         fileName = nameof(CharacterAttributesConfig))]
-    public sealed class CharacterAttributesConfig : SingletonScriptableObject<CharacterAttributesConfig>, IGameAttributeHolder
+    public sealed class CharacterAttributesConfig : SingletonScriptableObject<CharacterAttributesConfig>
     {
         [SerializeField] private Dictionary<GameAttributeType, AttributeData> _attributes;
-        public string HolderId => nameof(CharacterAttributesConfig);
 
-        public IReadOnlyDictionary<GameAttributeType, AttributeData> GetAttributes() => _attributes;
+        public IReadOnlyDictionary<GameAttributeType, AttributeData> Attributes => _attributes;
     }
 }

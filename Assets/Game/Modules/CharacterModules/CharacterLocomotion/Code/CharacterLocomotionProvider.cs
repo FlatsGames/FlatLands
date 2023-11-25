@@ -1,4 +1,5 @@
 ﻿using FlatLands.Architecture;
+using FlatLands.GameAttributes;
 using FlatLands.Characters;
 using UnityEngine;
 
@@ -8,6 +9,10 @@ namespace FlatLands.CharacterLocomotion
     {
         private const string Horizontal_Input_Name = "Horizontal";
         private const string Vertical_Input_Name = "Vertical";
+        
+        private const string AttributeHolderId = "CharacterAttributes";
+
+        [Inject] private GameAttributesManager _gameAttributesManager;
 
         private int AnimatorInputHorizontal => Animator.StringToHash("InputHorizontal");
         private int AnimatorInputVertical => Animator.StringToHash("InputVertical");
@@ -31,6 +36,7 @@ namespace FlatLands.CharacterLocomotion
         public bool IsStrafing { get; private set; }
         public bool IsGrounded { get; private set; }
         public bool IsSprinting { get; private set; }
+        public bool CanSprinting { get; private set; }
         public bool StopMove { get; private set; }
         
         public bool IsActive { get; set; }
@@ -63,6 +69,7 @@ namespace FlatLands.CharacterLocomotion
         private Vector3 _inputSmooth;       
         private Vector3 _moveDirection;
 
+        private AttributeRegeneratedData _staminaAttribute;
         
 #region Main
 
@@ -100,6 +107,10 @@ namespace FlatLands.CharacterLocomotion
             _colliderCenter = collider.center;
             _colliderHeight = collider.height;
 
+            _staminaAttribute = _gameAttributesManager
+                .GetAttributeHolder(AttributeHolderId)
+                .GetAttribute<AttributeRegeneratedData>(GameAttributeType.Stamina);
+            
             IsGrounded = true;
             IsActive = true;
         }
@@ -165,6 +176,11 @@ namespace FlatLands.CharacterLocomotion
 
         private void SprintInput()
         {
+            UpdateSprint();
+            
+            if(Input.GetKey(LocomotionConfig.SprintInput))
+                ApplySprintingCost();
+            
             if (Input.GetKeyDown(LocomotionConfig.SprintInput))
                 Sprint(true);
             else if (Input.GetKeyUp(LocomotionConfig.SprintInput))
@@ -306,11 +322,31 @@ namespace FlatLands.CharacterLocomotion
             
             StopMove = false;
         }
+
+        private void ApplySprintingCost()
+        {
+            if(!CanSprinting || !IsSprinting)
+                return;
+            
+            _staminaAttribute?.RemoveValue(LocomotionConfig.SprintCost);
+        }
+
+        private void UpdateSprint()
+        {
+            if(_staminaAttribute == null)
+                return;
+            
+            CanSprinting = _staminaAttribute.CanRemoveValue(LocomotionConfig.SprintCost);
+            _staminaAttribute.SetCanRegenerated(!IsSprinting);
+            
+            if (!CanSprinting)
+                Sprint(false);
+        }
         
         private void Sprint(bool value)
         {
-            var sprintConditions = _inputAxis.sqrMagnitude > 0.1f && IsGrounded &&
-                                    !(IsStrafing && !LocomotionConfig.StrafeMovementPair.WalkByDefault && (_horizontalSpeed >= 0.5 || _horizontalSpeed <= -0.5 || _verticalSpeed <= 0.1f));
+            var sprintConditions = _inputAxis.sqrMagnitude > 0.1f && IsGrounded 
+                                                                  && !(IsStrafing && !LocomotionConfig.StrafeMovementPair.WalkByDefault && (_horizontalSpeed >= 0.5 || _horizontalSpeed <= -0.5 || _verticalSpeed <= 0.1f));
 
             if (value && sprintConditions)
             {

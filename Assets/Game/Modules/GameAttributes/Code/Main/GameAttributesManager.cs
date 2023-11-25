@@ -48,5 +48,19 @@ namespace FlatLands.GameAttributes
             
             _attributeHolders.Remove(id);
         }
+
+        public T GetAttributeHolder<T>(string holderId) where T: IGameAttributeHolder
+        {
+            var holder = GetAttributeHolder(holderId);
+            return (T) holder;
+        }
+        
+        public IGameAttributeHolder GetAttributeHolder(string holderId)
+        {
+            if (!_attributeHolders.TryGetValue(holderId, out var holder))
+                return default;
+
+            return holder;
+        }
     }
 }

@@ -7,11 +7,17 @@ namespace FlatLands.GameAttributes
     {
         [SerializeField] private float _delayBeforeRegenerated;
         [SerializeField] private float _regeneratedValue;
-        
+
+        public bool CanRegenerated { get; private set; } = true;
         public float DelayBeforeRegenerate { get; private set; }
         public float RegeneratedValue { get; private set; }
 
         private float _currentDelay;
+
+        public void SetCanRegenerated(bool canRegenerated)
+        {
+            CanRegenerated = canRegenerated;
+        }
         
         public void SetRegeneratedDelay(float delay)
         {
@@ -28,9 +34,20 @@ namespace FlatLands.GameAttributes
             RegeneratedValue = MaxValue * percent / 100;
         }
 
+        internal override void Init()
+        {
+            DelayBeforeRegenerate = _delayBeforeRegenerated;
+            RegeneratedValue = _regeneratedValue;
+            
+            base.Init();
+        }
+
         protected override void InvokeUpdate()
         {
-            if (!CanAddValue(RegeneratedValue))
+            if(!CanRegenerated)
+                return;
+            
+            if (MaxValue <= Value)
                 return;
             
             if (_currentDelay > DelayBeforeRegenerate)

@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace FlatLands.CharacterAttributes
 {
-    public sealed class UIAttributeRangedHudElement : UIHudElement
+    public sealed class UIHealthHudElement : UIHudElement
     {
         [SerializeField] private Slider _mainSlider;
         [SerializeField] private Slider _internalSlider;
@@ -47,6 +47,8 @@ namespace FlatLands.CharacterAttributes
             _internalSlider.maxValue = _attribute.MaxValue;
             _internalSlider.value = _attribute.Value;
             
+            _valueText.SetText($"{_attribute.Value}/{_attribute.MaxValue}");
+            
             if (_attribute != null)
                 _attribute.OnValueChangedDetails += HandleValueChanged;
         }
@@ -56,7 +58,7 @@ namespace FlatLands.CharacterAttributes
             _sliderSequence?.Kill();
             _sliderSequence = DOTween.Sequence();
             
-            _valueText.SetText($"{_attribute.Value}/{_attribute.MaxValue}");
+            _valueText.SetText($"{(int)_attribute.Value}/{(int)_attribute.MaxValue}");
             if (addValue)
             {
                 _internalSlider.value = 0;
@@ -79,32 +81,5 @@ namespace FlatLands.CharacterAttributes
                 _isActive = false;
             });
         }
-
-        // private float _debugValue = 100;
-        //
-        // private void Start()
-        // {
-        //     _mainSlider.minValue = 0;
-        //     _mainSlider.maxValue = 100;
-        //     _mainSlider.value = _debugValue;
-        //     
-        //     _internalSlider.minValue = 0;
-        //     _internalSlider.maxValue = 100;
-        //     _internalSlider.value = _debugValue;
-        // }
-        //
-        // [Button]
-        // private void AddValue()
-        // {
-        //     HandleValueChanged(true, _debugValue, _debugValue + 10);
-        //     _debugValue += 10;
-        // }
-        //
-        // [Button]
-        // private void RemoveValue()
-        // {
-        //     HandleValueChanged(false, _debugValue, _debugValue - 10);
-        //     _debugValue -= 10;
-        // }
     }
 }
