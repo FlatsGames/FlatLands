@@ -24,6 +24,8 @@ namespace FlatLands.CharacterLocomotion
         
         public CharacterLocomotionConfig LocomotionConfig { get; private set; }
         public CharacterBehaviour Behaviour { get; private set; }
+
+        public CharacterLocomotionType LocomotionType => _locomotionType;
         
         public bool IsJumping { get; private set; }
         public bool IsStrafing { get; private set; }
@@ -33,6 +35,8 @@ namespace FlatLands.CharacterLocomotion
         
         public bool IsActive { get; set; }
 
+        private CharacterLocomotionType _locomotionType;
+        
         private PhysicMaterial _frictionPhysics;
         private PhysicMaterial _maxFrictionPhysics;
         private PhysicMaterial _slippyPhysics;
@@ -88,6 +92,7 @@ namespace FlatLands.CharacterLocomotion
         {
             LocomotionConfig = CharacterLocomotionConfig.Instance;
             Behaviour.CharacterAnimator.updateMode = AnimatorUpdateMode.AnimatePhysics;
+            _locomotionType = LocomotionConfig.LocomotionType;
 
             CreatePhysicsMaterials();
 
@@ -178,19 +183,27 @@ namespace FlatLands.CharacterLocomotion
 
 #region Movement
 
+        public void SwitchLocomotionType(CharacterLocomotionType locomotionType)
+        {
+            if(LocomotionType == locomotionType)
+                return;
+            
+            _locomotionType = locomotionType;
+        }
+
         private void ControlLocomotionType()
         {
             if (_lockMovement) 
                 return;
 
-            if (LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && !IsStrafing 
-                || LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.OnlyFree))
+            if (LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && !IsStrafing 
+                || LocomotionType.Equals(CharacterLocomotionType.OnlyFree))
             {
                 SetControllerMovementSpeed(LocomotionConfig.FreeMovementPair);
                 SetAnimatorMoveSpeed(LocomotionConfig.FreeMovementPair);
             }
-            else if (LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.OnlyStrafe) 
-                     || LocomotionConfig.LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && IsStrafing)
+            else if (LocomotionType.Equals(CharacterLocomotionType.OnlyStrafe) 
+                     || LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && IsStrafing)
             {
                 IsStrafing = true;
                 SetControllerMovementSpeed(LocomotionConfig.StrafeMovementPair);

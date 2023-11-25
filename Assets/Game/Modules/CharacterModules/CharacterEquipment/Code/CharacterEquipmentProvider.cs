@@ -1,4 +1,5 @@
 ﻿using FlatLands.Architecture;
+using FlatLands.CharacterLocomotion;
 using FlatLands.Characters;
 using FlatLands.Equipments;
 using UnityEngine;
@@ -10,12 +11,18 @@ namespace FlatLands.CharacterEquipment
         protected override string WeaponAnimatorLayerName => "EquipmentLayer";
 
         private CharacterEquipmentConfig _config;
-        
-        public CharacterEquipmentProvider(BaseEquipmentBehaviour behaviour, Animator animator) : base(behaviour, animator) { }
+        private CharacterLocomotionProvider _characterLocomotionProvider;
+
+        public CharacterEquipmentProvider(CharacterLocomotionProvider characterLocomotionProvider, BaseEquipmentBehaviour behaviour, Animator animator)
+            : base(behaviour, animator)
+        {
+            _characterLocomotionProvider = characterLocomotionProvider;
+        }
 
         public void Init()
         { 
             _config = CharacterEquipmentConfig.Instance;
+            
         }
 
         public void Dispose() 
@@ -53,6 +60,15 @@ namespace FlatLands.CharacterEquipment
         private void TakeWeapon(WeaponEquipmentSlotType slotType)
         {
             TakeWeaponToHands(slotType);
+        }
+
+        protected override void HandleEquipmentWeaponChanged()
+        {
+            var newLocomotionType = IsHoldWeapon 
+                    ? CharacterLocomotionType.OnlyStrafe 
+                    : CharacterLocomotionType.FreeWithStrafe;
+
+            _characterLocomotionProvider.SwitchLocomotionType(newLocomotionType);
         }
     }
 }

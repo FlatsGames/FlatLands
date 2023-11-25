@@ -62,8 +62,10 @@ namespace FlatLands.CharactersMediator
 
 		private void EquipmentProvider()
 		{
+			var locomotionProvider = _characterGroup.GetProvider<CharacterLocomotionProvider>();
+			
 			var equipmentBehaviour = _characterBehaviour.GetComponent<CharacterEquipmentBehaviour>();
-			var equipmentProvider = new CharacterEquipmentProvider(equipmentBehaviour, _characterBehaviour.CharacterAnimator);
+			var equipmentProvider = new CharacterEquipmentProvider(locomotionProvider, equipmentBehaviour, _characterBehaviour.CharacterAnimator);
 			_charactersManager.CurrentCharacter.AddBehaviour(equipmentBehaviour);
 			_charactersManager.CurrentCharacter.AddProvider(equipmentProvider);
 		}

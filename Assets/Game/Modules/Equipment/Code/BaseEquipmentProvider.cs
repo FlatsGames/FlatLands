@@ -15,7 +15,6 @@ namespace FlatLands.Equipments
 
         public bool IsHoldWeapon => _currentSlot != null;
         public WeaponEquipmentSlotType CurrentEquipmentWeapon => _currentSlot.SlotType;
-
         public event Action OnCurrentEquipmentWeaponChanged;
         
         //private readonly Dictionary<WeaponEquipmentSlotType, Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>> _weaponEquipmentAnimations;
@@ -105,6 +104,7 @@ namespace FlatLands.Equipments
                 var slotBehaviour = _behaviour.GetBehaviour(slotType);
                 _currentSlot = slotBehaviour;
                 OnCurrentEquipmentWeaponChanged?.Invoke();
+                HandleEquipmentWeaponChanged();
                 
                 if (_currentSlot == null)
                 {
@@ -138,6 +138,7 @@ namespace FlatLands.Equipments
             {
                 _currentSlot = null;
                 OnCurrentEquipmentWeaponChanged?.Invoke();
+                HandleEquipmentWeaponChanged();
                 callback?.Invoke();
                 return;
             }
@@ -159,11 +160,14 @@ namespace FlatLands.Equipments
                 {
                     _currentSlot = null;
                     OnCurrentEquipmentWeaponChanged?.Invoke();
+                    HandleEquipmentWeaponChanged();
                     callback?.Invoke();
                 });
             
             UnityEventsProvider.CoroutineStart(_handsCoroutine);
         }
+
+        protected virtual void HandleEquipmentWeaponChanged() { }
         
 #endregion
 
