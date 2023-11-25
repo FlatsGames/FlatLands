@@ -39,29 +39,8 @@ namespace FlatLands.Architecture
             return list;
         }
 
-        public static IEnumerator PlayCoroutine(this Animator animator, string animName, string layer = "Base Layer", Action callback = null)
+        public static float GetAnimationDuration(this Animator animator, string animName)
         {
-            animator.Play(layer + '.' + animName);
-        
-            var duration = 0f;
-            var animations = animator.runtimeAnimatorController.animationClips;
-            foreach (var anim in animations)
-            {
-                if (anim.name == animName)
-                    duration = Mathf.Max(duration, anim.length);
-            }
-
-            if (duration>0) 
-                yield return new WaitForSeconds(duration);
-
-            callback?.Invoke();
-        }
-        
-        public static IEnumerator PlayAnimationWithAction(this Animator animator, string animLayer, string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
-        {
-            var hashAnim = Animator.StringToHash(animLayer + "." + animName);
-            animator.Play(hashAnim);
-            
             var duration = 0f;
             var animations = animator.runtimeAnimatorController.animationClips;
             foreach (var anim in animations)
@@ -73,6 +52,27 @@ namespace FlatLands.Architecture
                 break;
             }
 
+            return duration;
+        }
+
+        public static IEnumerator PlayAnimation(this Animator animator, string animLayer, string animName, Action callback = null)
+        {
+            var duration = animator.GetAnimationDuration(animName);
+            var hashAnim = Animator.StringToHash(animLayer + "." + animName);
+            animator.Play(hashAnim);
+
+            if (duration > 0) 
+                yield return new WaitForSeconds(duration);
+
+            callback?.Invoke();
+        }
+        
+        public static IEnumerator PlayAnimationWithAction(this Animator animator, string animLayer, string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
+        {
+            var duration = animator.GetAnimationDuration(animName);
+            var hashAnim = Animator.StringToHash(animLayer + "." + animName);
+            animator.Play(hashAnim);
+
             if(actionTime.HasValue)
             {
                 var actionDuration = duration * actionTime.Value;
@@ -81,12 +81,12 @@ namespace FlatLands.Architecture
 
                 var remainedDuration = duration - actionDuration;
                 yield return new WaitForSeconds(remainedDuration);
+                completeCallback?.Invoke();
+                yield break;
             }
-            else
-            {
-                if (duration > 0)
-                    yield return new WaitForSeconds(duration);
-            }
+
+            if (duration > 0)
+                yield return new WaitForSeconds(duration);
 
             completeCallback?.Invoke();
         }

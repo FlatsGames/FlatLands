@@ -7,7 +7,7 @@ namespace FlatLands.CharacterCombat
     [CreateAssetMenu(
         menuName = "FlatLands/Characters/" + nameof(CharacterCombatConfig), 
         fileName = nameof(CharacterCombatConfig))]
-    public sealed class CharacterCombatConfig : BaseCombatConfig<CharacterCombatAnimations>
+    public sealed class CharacterCombatConfig : BaseCombatConfig
     {
         [SerializeField] private WeaponEquipmentSlotType _animCategory;
 

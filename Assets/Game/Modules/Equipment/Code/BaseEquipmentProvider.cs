@@ -10,14 +10,15 @@ namespace FlatLands.Equipments
     public abstract class BaseEquipmentProvider
     {
         protected abstract string WeaponAnimatorLayerName { get; }
-        protected abstract string WeaponAnimatorSubMachineName { get; }
         
         protected int WeaponAnimatorLayerIndex => _animator.GetLayerIndex(WeaponAnimatorLayerName);
 
         public bool IsHoldWeapon => _currentSlot != null;
         public WeaponEquipmentSlotType CurrentEquipmentWeapon => _currentSlot.SlotType;
 
-        private readonly Dictionary<WeaponEquipmentSlotType, Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>> _weaponEquipmentAnimations;
+        public event Action OnCurrentEquipmentWeaponChanged;
+        
+        //private readonly Dictionary<WeaponEquipmentSlotType, Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>> _weaponEquipmentAnimations;
         protected readonly BaseEquipmentBehaviour _behaviour;
         protected readonly Animator _animator;
 
@@ -29,48 +30,48 @@ namespace FlatLands.Equipments
             _behaviour = behaviour;
             _animator = animator;
 
-            _weaponEquipmentAnimations =
-                new Dictionary<WeaponEquipmentSlotType,
-                    Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>>();
-
-            ApplyWeaponAnimationStates();
+            // _weaponEquipmentAnimations =
+            //     new Dictionary<WeaponEquipmentSlotType,
+            //         Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>>();
+            //
+            // ApplyWeaponAnimationStates();
         }
 
 #region Animator
 
         public abstract IWeaponEquipmentSetting GetEquipmentSettings(WeaponEquipmentSlotType slotType);
 
-        private void ApplyWeaponAnimationStates()
-        {
-            var behaviours = _animator.GetBehaviours<WeaponEquipmentStateBehaviour>();
-            foreach (var equipmentBehaviour in behaviours)
-            {
-                if (!_weaponEquipmentAnimations.ContainsKey(equipmentBehaviour.SlotType))
-                {
-                    _weaponEquipmentAnimations[equipmentBehaviour.SlotType] =
-                        new Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>();
-                }
-                
-                _weaponEquipmentAnimations[equipmentBehaviour.SlotType]
-                    .Add(equipmentBehaviour.AnimationType, equipmentBehaviour);
-            }
-        }
-
-        private WeaponEquipmentStateBehaviour GetAnimatorStateBehaviour(WeaponEquipmentSlotType slotType, WeaponAnimationType animationType)
-        {
-            if (!_weaponEquipmentAnimations.TryGetValue(slotType, out var slotPairs))
-                return default;
-
-            if (!slotPairs.TryGetValue(animationType, out var stateBehaviour))
-                return default;
-
-            return stateBehaviour;
-        }
+        // private void ApplyWeaponAnimationStates()
+        // {
+        //     var behaviours = _animator.GetBehaviours<WeaponEquipmentStateBehaviour>();
+        //     foreach (var equipmentBehaviour in behaviours)
+        //     {
+        //         if (!_weaponEquipmentAnimations.ContainsKey(equipmentBehaviour.SlotType))
+        //         {
+        //             _weaponEquipmentAnimations[equipmentBehaviour.SlotType] =
+        //                 new Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>();
+        //         }
+        //         
+        //         _weaponEquipmentAnimations[equipmentBehaviour.SlotType]
+        //             .Add(equipmentBehaviour.AnimationType, equipmentBehaviour);
+        //     }
+        // }
+        //
+        // private WeaponEquipmentStateBehaviour GetAnimatorStateBehaviour(WeaponEquipmentSlotType slotType, WeaponAnimationType animationType)
+        // {
+        //     if (!_weaponEquipmentAnimations.TryGetValue(slotType, out var slotPairs))
+        //         return default;
+        //
+        //     if (!slotPairs.TryGetValue(animationType, out var stateBehaviour))
+        //         return default;
+        //
+        //     return stateBehaviour;
+        // }
 
         //ActionTime range 0 to 1
         private IEnumerator PlayEquipmentAnimation(string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
         {
-            yield return _animator.PlayAnimationWithAction(WeaponAnimatorSubMachineName, animName, actionTime, action,
+            yield return _animator.PlayAnimationWithAction(WeaponAnimatorLayerName, animName, actionTime, action,
                 completeCallback);
         }
         
@@ -103,6 +104,7 @@ namespace FlatLands.Equipments
             {
                 var slotBehaviour = _behaviour.GetBehaviour(slotType);
                 _currentSlot = slotBehaviour;
+                OnCurrentEquipmentWeaponChanged?.Invoke();
                 
                 if (_currentSlot == null)
                 {
@@ -135,6 +137,7 @@ namespace FlatLands.Equipments
             if(!IsHoldWeapon)
             {
                 _currentSlot = null;
+                OnCurrentEquipmentWeaponChanged?.Invoke();
                 callback?.Invoke();
                 return;
             }
@@ -155,6 +158,7 @@ namespace FlatLands.Equipments
                 () =>
                 {
                     _currentSlot = null;
+                    OnCurrentEquipmentWeaponChanged?.Invoke();
                     callback?.Invoke();
                 });
             

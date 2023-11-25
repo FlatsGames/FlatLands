@@ -7,8 +7,7 @@ namespace FlatLands.CharacterEquipment
 {
     public sealed class CharacterEquipmentProvider : BaseEquipmentProvider, ICharacterProvider
     {
-        protected override string WeaponAnimatorLayerName => "WeaponLayer";
-        protected override string WeaponAnimatorSubMachineName => "Take Put Weapon";
+        protected override string WeaponAnimatorLayerName => "EquipmentLayer";
 
         private CharacterEquipmentConfig _config;
         

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace FlatLands.CharacterCombat
 {
-	public sealed class CharacterCombatProvider : BaseCombatProvider<CharacterCombatAnimations>, ICharacterProvider
+	public sealed class CharacterCombatProvider : BaseCombatProvider, ICharacterProvider
 	{
 		private const int Left_Mouse_Button = 0;
 		private const int Right_Mouse_Button = 1;
@@ -18,6 +18,8 @@ namespace FlatLands.CharacterCombat
 
 		protected override bool IsHoldWeapon => _characterEquipmentProvider?.IsHoldWeapon ?? false;
 
+		private CharacterCombatConfig _currentConfig;
+		
 		public CharacterCombatProvider(
 			CharacterEquipmentProvider equipmentProvider,
 			CharacterCombatBehaviour combatBehaviour,
@@ -39,11 +41,13 @@ namespace FlatLands.CharacterCombat
 				
 				_equipmentToSlots[config.Category] = combatConfig;
 			}
+
+			_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged += HandleEquipmentWeaponChanged;
 		}
 		
 		public void Dispose()
 		{
-			
+			_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged -= HandleEquipmentWeaponChanged;
 		}
 		
 		public void HandleUpdate()
@@ -65,24 +69,37 @@ namespace FlatLands.CharacterCombat
 				ApplyAttack();
 			
 			if(Input.GetMouseButton(Right_Mouse_Button))
-				ApplyBlock();
+				ActivateBlock();
+			
+			if(Input.GetMouseButtonUp(Right_Mouse_Button))
+				DeactivateBlock();
 		}
 
 		private void ApplyAttack()
 		{
-			if(!_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentWeapon, out var combatConfig))
-				return;
-			
-			var maxAnimCount = combatConfig.CombatAnimations.Count();
+			var maxAnimCount = _currentConfig.CombatAnimations.Count();
 			var randomAttackIndex = Random.Range(0, maxAnimCount);
-			var attackName = combatConfig.CombatAnimations[randomAttackIndex];
+			var attackName = _currentConfig.CombatAnimations[randomAttackIndex];
 				
-			Attack(combatConfig, attackName);
+			Attack(_currentConfig, attackName);
 		}
 
-		private void ApplyBlock()
+		private void ActivateBlock()
 		{
-			
+			EnterBlock(_currentConfig);
+		}
+		
+		private void DeactivateBlock()
+		{
+			ExitBlock(_currentConfig);
+		}
+
+		private void HandleEquipmentWeaponChanged()
+		{
+			if(!IsHoldWeapon)
+				return;
+
+			_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentWeapon, out _currentConfig);
 		}
 	}
 }

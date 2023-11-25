@@ -22,5 +22,13 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _animatorSubLayer: Attack One Hand Weapon
-  _combatAnimations: 01000000020000000300000004000000
+  _hasBlockCooldown: 1
+  _blockCooldownSeconds: 0.5
+  _blockStartAnimation: LeftLeg_Block_Start
+  _blockIdleAnimation: LeftLeg_Block
+  _combatAnimations:
+  - LeftLeg_Attack_1
+  - LeftLeg_Attack_2
+  - LeftLeg_Attack_3
+  - LeftLeg_Attack_4
   _animCategory: 50

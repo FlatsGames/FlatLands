@@ -22,5 +22,9 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   _animatorSubLayer: Attack Two Hand Weapon
-  _combatAnimations: 01000000020000000300000004000000
+  _combatAnimations:
+  - Spine_Attack_1
+  - Spine_Attack_2
+  - Spine_Attack_3
+  - Spine_Attack_4
   _animCategory: 100
