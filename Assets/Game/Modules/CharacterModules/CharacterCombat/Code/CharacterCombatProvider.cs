@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ using FlatLands.Conditions;
 using FlatLands.Equipments;
 using FlatLands.GameAttributes;
 using UnityEngine;
+using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace FlatLands.CharacterCombat
 {
@@ -29,6 +32,10 @@ namespace FlatLands.CharacterCombat
 		protected bool IsBlockActive { get; private set; }
 
 		private CharacterCombatConfig _currentConfig;
+		private BaseEquipmentWeaponBehaviour _currentWeaponBehaviour;
+		private EquipmentMeleeWeaponBehaviour _meleeWeaponBehaviour;
+		private EquipmentRangedWeaponBehaviour _rangedWeaponBehaviour;
+		
 		private AttributeRegeneratedData _staminaAttribute;
 		
 		private IEnumerator _blockRoutine;
@@ -179,6 +186,8 @@ namespace FlatLands.CharacterCombat
 
 		protected bool IsRangedAiming { get; private set; }
 
+		private WeaponProjectile _currentProjectile;
+
 		private void EnterAiming()
 		{
 			if(IsRangedAiming)
@@ -189,13 +198,37 @@ namespace FlatLands.CharacterCombat
 				return;
 
 			IsRangedAiming = true;
-			var startAimingRoutine = _animator.PlayAnimation(
-				_currentConfig.AnimatorSubLayer, 
-				rangedInternalConfig.StartAimingAnim);
-
+			CharacterAiming(() =>
+			{
+				GetOrCreateProjectile(rangedInternalConfig.ProjectilePrefab, _rangedWeaponBehaviour.ProjectileContainer);
+				WeaponAiming();
+			});
+			
 			_conditionsController.ApplyConditions(rangedInternalConfig.StartConditions);
 			
-			UnityEventsProvider.CoroutineStart(startAimingRoutine);
+			void CharacterAiming(Action action)
+			{
+				var startCharacterAimingRoutine = _animator.PlayAnimationWithAction(
+					_currentConfig.AnimatorSubLayer, 
+					rangedInternalConfig.StartAimingAnim,
+					0.33f, action);
+				
+				UnityEventsProvider.CoroutineStart(startCharacterAimingRoutine);
+			}
+
+			void WeaponAiming()
+			{
+				var layerIndex = 0;
+				var animator = _currentWeaponBehaviour.WeaponAnimator;
+				if(animator == null)
+					return;
+				
+				var startAimingRoutine = animator.PlayAnimation(
+					layerIndex, 
+					rangedInternalConfig.WeaponStartAimingAnim);
+				
+				UnityEventsProvider.CoroutineStart(startAimingRoutine);
+			}
 		}
 		
 		private void ExitAiming()
@@ -206,18 +239,39 @@ namespace FlatLands.CharacterCombat
 			var rangedInternalConfig = _currentConfig.GetInternalSetting<CombatInternalRangedAttackSetting>();
 			if(rangedInternalConfig == null)
 				return;
-			
-			var endAimingRoutine = _animator.PlayAnimation(
-				_currentConfig.AnimatorSubLayer, 
-				rangedInternalConfig.EndAimingAnim, 
-				() =>
-				{
-					IsRangedAiming = false;
-				});
-			
+
+			CharacterEndAiming();
+			WeaponEndAiming();
+		
 			_conditionsController.ApplyConditions(rangedInternalConfig.EndConditions);
+
+			void CharacterEndAiming()
+			{
+				var endCharacterAimingRoutine = _animator.PlayAnimation(
+					_currentConfig.AnimatorSubLayer, 
+					rangedInternalConfig.EndAimingAnim, 
+					() =>
+					{
+						IsRangedAiming = false;
+					});
+
+				UnityEventsProvider.CoroutineStart(endCharacterAimingRoutine);
+			}
+
+			void WeaponEndAiming()
+			{
+				var layerIndex = 0;
+				var animator = _currentWeaponBehaviour.WeaponAnimator;
+				if(animator == null)
+					return;
+				
+				var startAimingRoutine = animator.PlayAnimation(
+					layerIndex, 
+					rangedInternalConfig.WeaponEndAimingAnim);
+				
+				UnityEventsProvider.CoroutineStart(startAimingRoutine);
+			}
 			
-			UnityEventsProvider.CoroutineStart(endAimingRoutine);
 		}
 
 		private void ApplyShoot()
@@ -228,12 +282,54 @@ namespace FlatLands.CharacterCombat
 			var rangedInternalConfig = _currentConfig.GetInternalSetting<CombatInternalRangedAttackSetting>();
 			if(rangedInternalConfig == null)
 				return;
+
+			var projectileObject = GetOrCreateProjectile(rangedInternalConfig.ProjectilePrefab, _rangedWeaponBehaviour.ProjectileContainer);
 			
-			var shootRoutine = _animator.PlayAnimation(
-				_currentConfig.AnimatorSubLayer, 
-				rangedInternalConfig.ShootAnim);
-			UnityEventsProvider.CoroutineStart(shootRoutine);
-			Debug.LogError("Shoot");
+			CharacterShoot();
+			WeaponShoot(ShootProjectile);
+
+			void CharacterShoot()
+			{
+				var shootRoutine = _animator.PlayAnimation(
+					_currentConfig.AnimatorSubLayer, 
+					rangedInternalConfig.ShootAnim);
+				UnityEventsProvider.CoroutineStart(shootRoutine);
+			}
+			
+			void WeaponShoot(Action callback)
+			{
+				var layerIndex = 0;
+				var animator = _currentWeaponBehaviour.WeaponAnimator;
+				if(animator == null)
+					return;
+				
+				var shootRoutine = animator.PlayAnimation(
+					layerIndex, 
+					rangedInternalConfig.WeaponShootAnim, 
+					callback);
+				
+				UnityEventsProvider.CoroutineStart(shootRoutine);
+			}
+
+			void ShootProjectile()
+			{
+				projectileObject.transform.SetParent(null);
+				projectileObject.SetActive(true);
+				projectileObject.RigidbodyComponent.velocity =
+					projectileObject.ProjectileDirection * rangedInternalConfig.ProjectileForce;
+
+				_currentProjectile = null;
+			}
+		}
+
+		private WeaponProjectile GetOrCreateProjectile(WeaponProjectile prefab, Transform container)
+		{
+			if (_currentProjectile != null)
+				return _currentProjectile;
+			
+			_currentProjectile = Object.Instantiate(prefab, container);
+			_currentProjectile.SetActive(false);
+			return _currentProjectile;
 		}
 		
 #endregion
@@ -243,7 +339,14 @@ namespace FlatLands.CharacterCombat
 			if(!IsHoldWeapon)
 				return;
 
-			_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentWeapon, out _currentConfig);
+			_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentWeaponType, out _currentConfig);
+			_currentWeaponBehaviour = _characterEquipmentProvider.CurrentEquipmentWeaponBehaviour;
+			
+			if (_currentWeaponBehaviour is EquipmentRangedWeaponBehaviour rangedWeaponBehaviour)
+				_rangedWeaponBehaviour = rangedWeaponBehaviour;
+			
+			if (_currentWeaponBehaviour is EquipmentMeleeWeaponBehaviour meleeWeaponBehaviour)
+				_meleeWeaponBehaviour = meleeWeaponBehaviour;
 		}
 	}
 }

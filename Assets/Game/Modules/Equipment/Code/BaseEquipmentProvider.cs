@@ -14,7 +14,8 @@ namespace FlatLands.Equipments
         protected int WeaponAnimatorLayerIndex => _animator.GetLayerIndex(WeaponAnimatorLayerName);
 
         public bool IsHoldWeapon => _currentSlot != null;
-        public WeaponEquipmentSlotType CurrentEquipmentWeapon => _currentSlot.SlotType;
+        public WeaponEquipmentSlotType CurrentEquipmentWeaponType => _currentSlot.SlotType;
+        public BaseEquipmentWeaponBehaviour CurrentEquipmentWeaponBehaviour => _currentSlot.WeaponBehaviour;
         public event Action OnCurrentEquipmentWeaponChanged;
         
         //private readonly Dictionary<WeaponEquipmentSlotType, Dictionary<WeaponAnimationType, WeaponEquipmentStateBehaviour>> _weaponEquipmentAnimations;

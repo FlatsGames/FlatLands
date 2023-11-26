@@ -15,6 +15,9 @@ namespace FlatLands.Characters
         
         [SerializeField, BoxGroup("Main Components")]
         private CapsuleCollider _capsuleCollider;
+
+        [SerializeField, BoxGroup("Main Components")]
+        private Transform _lookAiming;
         
         public string Name => "MainCharacter";
         public Transform EntityTransform => transform;
@@ -22,6 +25,7 @@ namespace FlatLands.Characters
         public Animator CharacterAnimator => _animator;
         public Rigidbody CharacterRigidbody => _rigidbody;
         public CapsuleCollider CharacterCollider => _capsuleCollider;
+        public Transform LookAiming => _lookAiming;
         
         public event Action OnAnimatorMoved;
         public event Action<int> OnAnimatorIks;

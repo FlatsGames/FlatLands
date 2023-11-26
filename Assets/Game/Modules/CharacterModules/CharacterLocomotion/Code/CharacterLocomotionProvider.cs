@@ -1,4 +1,5 @@
-﻿using FlatLands.Architecture;
+﻿using System;
+using FlatLands.Architecture;
 using FlatLands.CharacterAttributes;
 using FlatLands.GameAttributes;
 using FlatLands.Characters;
@@ -29,7 +30,15 @@ namespace FlatLands.CharacterLocomotion
         public CharacterLocomotionConfig LocomotionConfig { get; private set; }
         public CharacterBehaviour Behaviour { get; private set; }
 
-        public CharacterLocomotionType LocomotionType => _locomotionType;
+        public CharacterLocomotionType LocomotionType
+        {
+            get => _locomotionType;
+            set
+            {
+                _locomotionType = value;
+                OnLocomotionTypeChanged?.Invoke();
+            }
+        }
         
         public bool IsJumping { get; private set; }
         public bool IsStrafing { get; private set; }
@@ -39,6 +48,8 @@ namespace FlatLands.CharacterLocomotion
         public bool StopMove { get; private set; }
         
         public bool IsActive { get; set; }
+
+        public event Action OnLocomotionTypeChanged;
 
         private CharacterLocomotionType _locomotionType;
         
@@ -198,14 +209,6 @@ namespace FlatLands.CharacterLocomotion
 
 #region Movement
 
-        public void SwitchLocomotionType(CharacterLocomotionType locomotionType)
-        {
-            if(LocomotionType == locomotionType)
-                return;
-            
-            _locomotionType = locomotionType;
-        }
-
         private void ControlLocomotionType()
         {
             if (_lockMovement) 
@@ -231,6 +234,8 @@ namespace FlatLands.CharacterLocomotion
         
         private void UpdateMoveDirection(Transform referenceTransform = null)
         {
+            Behaviour.LookAiming.position = _rotateTarget.position;
+            
             if (_inputAxis.magnitude <= 0.01)
             {
                 var movementPair = IsStrafing

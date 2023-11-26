@@ -68,7 +68,7 @@ MonoBehaviour:
       Data: false
     - Name: _rotateWithCamera
       Entry: 5
-      Data: false
+      Data: true
     - Name: _walkSpeed
       Entry: 4
       Data: 2

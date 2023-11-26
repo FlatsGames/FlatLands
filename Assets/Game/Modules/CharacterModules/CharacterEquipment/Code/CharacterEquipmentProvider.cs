@@ -1,5 +1,4 @@
-﻿using FlatLands.Architecture;
-using FlatLands.CharacterLocomotion;
+﻿using FlatLands.CharacterLocomotion;
 using FlatLands.Characters;
 using FlatLands.Equipments;
 using UnityEngine;
@@ -66,9 +65,9 @@ namespace FlatLands.CharacterEquipment
         {
             var newLocomotionType = IsHoldWeapon 
                     ? CharacterLocomotionType.OnlyStrafe 
-                    : CharacterLocomotionType.FreeWithStrafe;
+                    : CharacterLocomotionType.OnlyFree;
 
-            _characterLocomotionProvider.SwitchLocomotionType(newLocomotionType);
+            _characterLocomotionProvider.LocomotionType = newLocomotionType;
         }
     }
 }

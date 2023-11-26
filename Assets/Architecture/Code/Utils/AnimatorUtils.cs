@@ -54,11 +54,23 @@ namespace FlatLands.Architecture
 
             return duration;
         }
-
-        public static IEnumerator PlayAnimation(this Animator animator, string animLayer, string animName, Action callback = null)
+        
+        public static IEnumerator PlayAnimation(this Animator animator, int layerIndex, string animName, Action callback = null)
         {
             var duration = animator.GetAnimationDuration(animName);
-            var hashAnim = Animator.StringToHash(animLayer + "." + animName);
+            var hashAnim = Animator.StringToHash(animName);
+            animator.Play(hashAnim, layerIndex);
+
+            if (duration > 0) 
+                yield return new WaitForSeconds(duration);
+
+            callback?.Invoke();
+        }
+
+        public static IEnumerator PlayAnimation(this Animator animator, string subStateMachine, string animName, Action callback = null)
+        {
+            var duration = animator.GetAnimationDuration(animName);
+            var hashAnim = Animator.StringToHash(subStateMachine + "." + animName);
             animator.Play(hashAnim);
 
             if (duration > 0) 
@@ -67,10 +79,10 @@ namespace FlatLands.Architecture
             callback?.Invoke();
         }
         
-        public static IEnumerator PlayAnimationWithAction(this Animator animator, string animLayer, string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
+        public static IEnumerator PlayAnimationWithAction(this Animator animator, string subStateMachine, string animName, float? actionTime = null, Action action = null, Action completeCallback = null)
         {
             var duration = animator.GetAnimationDuration(animName);
-            var hashAnim = Animator.StringToHash(animLayer + "." + animName);
+            var hashAnim = Animator.StringToHash(subStateMachine + "." + animName);
             animator.Play(hashAnim);
 
             if(actionTime.HasValue)

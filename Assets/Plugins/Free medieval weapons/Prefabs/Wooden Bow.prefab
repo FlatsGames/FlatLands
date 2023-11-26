@@ -723,6 +723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4620178347958848}
   - component: {fileID: 95329518231908724}
+  - component: {fileID: 2397581073903333761}
   m_Layer: 0
   m_Name: Wooden Bow
   m_TagString: Untagged
@@ -757,7 +758,7 @@ Animator:
   m_GameObject: {fileID: 1717406733745140}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 0be2ba322dd85494db39a44ee439af41, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 71962d08f6ac3744aa910e0f3149ff71, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -768,6 +769,29 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2397581073903333761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717406733745140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3243ee3415f84e9daf81587875546bfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _animator: {fileID: 95329518231908724}
+  _projectileContainer: {fileID: 7483165966651817951}
 --- !u!1 &1793173729035202
 GameObject:
   m_ObjectHideFlags: 0
@@ -830,6 +854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4745981596198912}
+  - {fileID: 7483165966651817951}
   m_Father: {fileID: 4162163098961802}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1826644952604714
@@ -1055,3 +1080,34 @@ Transform:
   - {fileID: 4162163098961802}
   m_Father: {fileID: 4620178347958848}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3613669508793431758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7483165966651817951}
+  m_Layer: 0
+  m_Name: ArrowContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7483165966651817951
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3613669508793431758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.000000021073424, y: -0.00000002107342, z: 0.9993688, w: -0.035524633}
+  m_LocalPosition: {x: 0.00119, y: -0.01079, z: 0}
+  m_LocalScale: {x: 0.11056981, y: 0.110569835, z: 0.110569835}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4429432022911190}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 184.072}

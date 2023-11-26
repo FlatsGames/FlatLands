@@ -40,6 +40,15 @@ MonoBehaviour:
     - Name: _shootAnim
       Entry: 1
       Data: Bow_Shoot
+    - Name: _startWeaponAimingAnim
+      Entry: 1
+      Data: Weapon_Bow_StartAiming
+    - Name: _endWeaponAimingAnim
+      Entry: 1
+      Data: Weapon_Bow_EndAiming
+    - Name: _shootWeaponAnim
+      Entry: 1
+      Data: Weapon_Bow_Shoot
     - Name: _startConditions
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[FlatLands.Conditions.BaseCondition,
@@ -85,7 +94,7 @@ MonoBehaviour:
       Data: 10
     - Name: _newCameraFollowSpeed
       Entry: 4
-      Data: 0.01
+      Data: 0
     - Name: 
       Entry: 8
       Data: 
