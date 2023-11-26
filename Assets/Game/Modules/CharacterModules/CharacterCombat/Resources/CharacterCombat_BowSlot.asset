@@ -15,7 +15,8 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 4937594946595940123, guid: 99a5ddbb9e935e24e8672c63995698e1, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -49,6 +50,12 @@ MonoBehaviour:
     - Name: _shootWeaponAnim
       Entry: 1
       Data: Weapon_Bow_Shoot
+    - Name: _projectilePrefab
+      Entry: 10
+      Data: 0
+    - Name: _projectileForce
+      Entry: 4
+      Data: 20
     - Name: _startConditions
       Entry: 7
       Data: 2|System.Collections.Generic.List`1[[FlatLands.Conditions.BaseCondition,
