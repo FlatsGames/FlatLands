@@ -46,7 +46,7 @@ MonoBehaviour:
         FlatLands.Conditions]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 3|FlatLands.GeneralCamera.ChangeCameraOffsetCondition, FlatLands.GeneralCamera
@@ -78,6 +78,18 @@ MonoBehaviour:
       Entry: 8
       Data: 
     - Name: 
+      Entry: 7
+      Data: 5|FlatLands.GeneralCamera.ChangeCameraFollowSpeedCondition, FlatLands.GeneralCamera
+    - Name: _changeType
+      Entry: 3
+      Data: 10
+    - Name: _newCameraFollowSpeed
+      Entry: 4
+      Data: 0.01
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 13
       Data: 
     - Name: 
@@ -85,14 +97,14 @@ MonoBehaviour:
       Data: 
     - Name: _endConditions
       Entry: 7
-      Data: 5|System.Collections.Generic.List`1[[FlatLands.Conditions.BaseCondition,
+      Data: 6|System.Collections.Generic.List`1[[FlatLands.Conditions.BaseCondition,
         FlatLands.Conditions]], mscorlib
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
-      Data: 6|FlatLands.GeneralCamera.ChangeCameraOffsetCondition, FlatLands.GeneralCamera
+      Data: 7|FlatLands.GeneralCamera.ChangeCameraOffsetCondition, FlatLands.GeneralCamera
     - Name: _offsetType
       Entry: 3
       Data: 0
@@ -107,7 +119,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 7
-      Data: 7|FlatLands.GeneralCamera.ChangeCameraZoomCondition, FlatLands.GeneralCamera
+      Data: 8|FlatLands.GeneralCamera.ChangeCameraZoomCondition, FlatLands.GeneralCamera
     - Name: _zoomType
       Entry: 3
       Data: 0
@@ -115,6 +127,18 @@ MonoBehaviour:
       Entry: 4
       Data: 0
     - Name: _newCameraZoomDuration
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|FlatLands.GeneralCamera.ChangeCameraFollowSpeedCondition, FlatLands.GeneralCamera
+    - Name: _changeType
+      Entry: 3
+      Data: 0
+    - Name: _newCameraFollowSpeed
       Entry: 4
       Data: 0
     - Name: 

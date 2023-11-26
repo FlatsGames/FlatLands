@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
 using FlatLands.Architecture;
 using FlatLands.Cursors;
@@ -36,6 +35,8 @@ namespace FlatLands.GeneralCamera
 
         private float _lookAngle;
         private float _titleAngle;
+
+        private float _currentFollowSpeed;
         
         private Sequence _pivotSequence;
         private Sequence _zoomSequence;
@@ -57,6 +58,7 @@ namespace FlatLands.GeneralCamera
             UnityEventsProvider.OnFixedUpdate += OnFixedUpdate;
             SetDefaultXOffset();
             SetDefaultZoom();
+            SetDefaultFollowSpeed();
             IsActive = true;
         }
 
@@ -110,16 +112,11 @@ namespace FlatLands.GeneralCamera
             IsActive = active;
         }
 
-        public void ChangeCameraFollowSpeed(float newSpeed)
-        {
-            
-        }
-
 #endregion
 
 
 #region Movements
-        
+
         private void UpdateCameraMovement()
         {
             if(_cameraTarget == null)
@@ -142,7 +139,7 @@ namespace FlatLands.GeneralCamera
         private void UpdateCameraPosition()
         {
             var newCameraPos = Vector3.SmoothDamp(Hierarchy.transform.position, _cameraTarget.transform.position,
-                ref _cameraFollowVelocity, _config.FollowSpeed);
+                ref _cameraFollowVelocity, _currentFollowSpeed);
             
             Hierarchy.transform.position = newCameraPos;
         }
@@ -196,13 +193,23 @@ namespace FlatLands.GeneralCamera
 #endregion
 
 
-#region X Offset
+#region Changes by Conditions
+
+        internal void SetCustomFollowSpeed(float newSpeed)
+        {
+            _currentFollowSpeed = newSpeed;
+        }
+                
+        internal void SetDefaultFollowSpeed()
+        {
+            _currentFollowSpeed = _config.FollowSpeed;
+        }
 
         internal void SetCustomXOffset(float xOffsetPos, float duration, Action completed = null)
         {
             SetXOffset(xOffsetPos, duration, completed);
         }
-        
+                
         internal void SetDefaultXOffset()
         {
             SetXOffset(_config.PivotXOffset, _config.PivotXOffsetDuration);
@@ -219,17 +226,12 @@ namespace FlatLands.GeneralCamera
                 completed?.Invoke();
             });
         }
-        
-#endregion
-
-
-#region Zoom
 
         internal void SetCustomZoom(float newZoom, float duration, Action completed = null)
         {
             SetZoom(newZoom, duration, completed);
         }
-                
+                        
         internal void SetDefaultZoom()
         {
             SetZoom(_config.ZoomDefault, _config.ZoomDuration);
