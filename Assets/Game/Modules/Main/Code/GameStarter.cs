@@ -4,6 +4,7 @@ using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.Characters;
 using FlatLands.CharactersMediator;
+using FlatLands.Conditions;
 using FlatLands.Cursors;
 using FlatLands.EntityControllable;
 using FlatLands.GameAttributes;
@@ -36,6 +37,9 @@ namespace FlatLands.Main
 
             _container.Add<LoaderManager>();
 
+            //Conditions
+            _container.Add<ConditionsController>();
+            
             //UI
             _container.Add<PrimaryUIService>();
             _container.Add<UIManager>();

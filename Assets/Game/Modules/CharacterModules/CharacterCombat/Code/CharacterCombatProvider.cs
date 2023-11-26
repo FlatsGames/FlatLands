@@ -6,6 +6,7 @@ using FlatLands.CharacterAttributes;
 using FlatLands.CharacterEquipment;
 using FlatLands.Characters;
 using FlatLands.CombatSystem;
+using FlatLands.Conditions;
 using FlatLands.Equipments;
 using FlatLands.GameAttributes;
 using UnityEngine;
@@ -18,6 +19,7 @@ namespace FlatLands.CharacterCombat
 		private const int Right_Mouse_Button = 1;
 		
 		[Inject] private GameAttributesManager _gameAttributesManager;
+		[Inject] private ConditionsController _conditionsController;
 
 		private readonly CharacterEquipmentProvider _characterEquipmentProvider;
 		private readonly CharacterAttributesProvider _characterAttributesProvider;
@@ -190,6 +192,9 @@ namespace FlatLands.CharacterCombat
 			var startAimingRoutine = _animator.PlayAnimation(
 				_currentConfig.AnimatorSubLayer, 
 				rangedInternalConfig.StartAimingAnim);
+
+			_conditionsController.ApplyConditions(rangedInternalConfig.StartConditions);
+			
 			UnityEventsProvider.CoroutineStart(startAimingRoutine);
 		}
 		
@@ -209,6 +214,9 @@ namespace FlatLands.CharacterCombat
 				{
 					IsRangedAiming = false;
 				});
+			
+			_conditionsController.ApplyConditions(rangedInternalConfig.EndConditions);
+			
 			UnityEventsProvider.CoroutineStart(endAimingRoutine);
 		}
 

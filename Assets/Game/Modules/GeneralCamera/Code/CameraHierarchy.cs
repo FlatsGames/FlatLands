@@ -11,6 +11,9 @@ namespace FlatLands.GeneralCamera
         [SerializeField] 
         private Transform _pivot;
 
+        [SerializeField] 
+        private Transform _xOffset;
+
         [SerializeField]
         private Transform _cameraLook;
 
@@ -19,8 +22,9 @@ namespace FlatLands.GeneralCamera
 
         public Camera CameraComponent => _camera;
         public Transform Pivot => _pivot;
+        public Transform XOffset => _xOffset;
         public Transform CameraLook => _cameraLook;
-        
+
 #if UNITY_EDITOR
 
         private float _debugDistance;
@@ -36,14 +40,16 @@ namespace FlatLands.GeneralCamera
                 return;
 
             Gizmos.color = Color.red;
-            Gizmos.DrawSphere(_camera.transform.position, 0.1f);
+            Gizmos.DrawSphere(_camera.transform.position, 0.05f);
             
             Gizmos.color = Color.magenta;
-            Gizmos.DrawSphere(_cameraLook.transform.position, 0.1f);
+            Gizmos.DrawSphere(_cameraLook.transform.position, 0.05f);
             
             Gizmos.color = Color.blue;
             Gizmos.DrawLine(_camera.transform.position, _cameraLook.transform.position);
             Gizmos.DrawLine(_pivot.transform.position, transform.position);
+            
+            Gizmos.DrawSphere(_pivot.transform.position, 0.05f);
 
             Gizmos.color = Color.red;
             Gizmos.DrawRay(_camera.transform.position, _camera.transform.forward * _debugDistance);
