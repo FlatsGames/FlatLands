@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using FlatLands.Architecture;
+﻿using FlatLands.Architecture;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -26,11 +25,14 @@ namespace FlatLands.CharacterLocomotion
         private float _sprintCost;
         
         [SerializeField, FoldoutGroup("Movement Settings")]
-        private CharacterLocomotionType _locomotionType = CharacterLocomotionType.OnlyFree;
+        private CharacterLocomotionType _locomotionType = CharacterLocomotionType.FreeWithStrafe;
 
-        [SerializeField, FoldoutGroup("Movement Settings")]
-        private Dictionary<CharacterLocomotionType, CharacterMovementPair> _movementPairs =
-            new Dictionary<CharacterLocomotionType, CharacterMovementPair>();
+        [SerializeField, FoldoutGroup("Movement Settings"), HideIf("@_locomotionType == CharacterLocomotionType.OnlyStrafe")]
+        private CharacterMovementPair _freeMovementPair = new CharacterMovementPair();
+        
+        [SerializeField, FoldoutGroup("Movement Settings"), HideIf("@_locomotionType == CharacterLocomotionType.OnlyFree")]
+        private CharacterMovementPair _strafeMovementPair = new CharacterMovementPair();
+        
         
         [SerializeField, FoldoutGroup("Jump Settings")]
         private bool _jumpWithRigidbodyForce = false;
@@ -65,6 +67,22 @@ namespace FlatLands.CharacterLocomotion
         
         [SerializeField, FoldoutGroup("Ground Settings"), Range(30, 80)]
         private float _slopeLimit = 75f;
+
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _mainWeight = 1f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _bodyIkWeight = 0.3f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _headIkWeight = 0.4f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float eyesIkWeight = 0.3f;
+        
+        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
+        private float _clampIkWeight = 0.3f;
         
         public bool UseRootMotion => _useRootMotion;
 
@@ -74,6 +92,8 @@ namespace FlatLands.CharacterLocomotion
 
         public float SprintCost => _sprintCost;
         public CharacterLocomotionType LocomotionType => _locomotionType;
+        public CharacterMovementPair FreeMovementPair => _freeMovementPair;
+        public CharacterMovementPair StrafeMovementPair => _strafeMovementPair;
 
         public bool JumpWithRigidbodyForce => _jumpWithRigidbodyForce;
         public bool JumpAndRotate => _jumpAndRotate;
@@ -88,13 +108,12 @@ namespace FlatLands.CharacterLocomotion
         public float GroundMaxDistance => _groundMaxDistance;
         public float SlopeLimit => _slopeLimit;
 
-        public CharacterMovementPair GetMovementPair(CharacterLocomotionType type)
-        {
-            if (!_movementPairs.TryGetValue(type, out var pair))
-                return default;
 
-            return pair;
-        }
+        public float MainWeight => _mainWeight;
+        public float BodyIkWeight => _bodyIkWeight;
+        public float HeadIkWeight => _headIkWeight;
+        public float EyesIkWeight => eyesIkWeight;
+        public float ClampIkWeight => _clampIkWeight;
     }
     
     [HideReferenceObjectPicker]
@@ -123,25 +142,6 @@ namespace FlatLands.CharacterLocomotion
         
         [SerializeField, BoxGroup]
         private float _sprintSpeed = 6f;
-
-        [Space]
-        [SerializeField, BoxGroup]
-        private bool _useIk;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1), ShowIf(nameof(_useIk))]
-        private float _mainWeight = 1f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1), ShowIf(nameof(_useIk))]
-        private float _bodyIkWeight = 0.3f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1), ShowIf(nameof(_useIk))]
-        private float _headIkWeight = 0.4f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1), ShowIf(nameof(_useIk))]
-        private float eyesIkWeight = 0.3f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1), ShowIf(nameof(_useIk))]
-        private float _clampIkWeight = 0.3f;
         
         public float MovementSmooth => _movementSmooth;
         public float AnimationSmooth => _animationSmooth;
@@ -151,20 +151,12 @@ namespace FlatLands.CharacterLocomotion
         public float WalkSpeed => _walkSpeed;
         public float RunningSpeed => _runningSpeed;
         public float SprintSpeed => _sprintSpeed;
-        
-        public bool UseIk => _useIk;
-        public float MainWeight => _mainWeight;
-        public float BodyIkWeight => _bodyIkWeight;
-        public float HeadIkWeight => _headIkWeight;
-        public float EyesIkWeight => eyesIkWeight;
-        public float ClampIkWeight => _clampIkWeight;
     }
-
+    
     public enum CharacterLocomotionType
     {
-//        FreeWithStrafe = 0,
-        OnlyStrafe = 1,
-        OnlyFree = 2,
-        CombatStrafe = 3,
+        FreeWithStrafe,
+        OnlyStrafe,
+        OnlyFree,
     }
 }
