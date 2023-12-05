@@ -8,11 +8,4 @@ namespace FlatLands.EntityControllable
 
         public void EntityFixedUpdate();
     }
-
-    public interface IEntityControllableBehaviour
-    {
-        public string Name { get; }
-
-        public Transform EntityTransform { get; }
-    }
 }

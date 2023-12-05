@@ -1,0 +1,240 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dc4efa1bdde49d5ad201e3e4abca70d, type: 3}
+  m_Name: CharacterLocomotionConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _movementPairs
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[FlatLands.CharacterLocomotion.CharacterLocomotionType,
+        FlatLands.CharacterLocomotion],[FlatLands.CharacterLocomotion.CharacterMovementPair,
+        FlatLands.CharacterLocomotion]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.CharacterLocomotion.CharacterLocomotionType,
+        FlatLands.CharacterLocomotion]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 1
+    - Name: $v
+      Entry: 7
+      Data: 2|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+    - Name: _movementSmooth
+      Entry: 4
+      Data: 6
+    - Name: _animationSmooth
+      Entry: 4
+      Data: 0.2
+    - Name: _rotationSpeed
+      Entry: 4
+      Data: 16
+    - Name: _walkByDefault
+      Entry: 5
+      Data: false
+    - Name: _rotateWithCamera
+      Entry: 5
+      Data: false
+    - Name: _walkSpeed
+      Entry: 4
+      Data: 2
+    - Name: _runningSpeed
+      Entry: 4
+      Data: 4
+    - Name: _sprintSpeed
+      Entry: 4
+      Data: 6
+    - Name: _useIk
+      Entry: 5
+      Data: false
+    - Name: _mainWeight
+      Entry: 4
+      Data: 0
+    - Name: _bodyIkWeight
+      Entry: 4
+      Data: 0
+    - Name: _headIkWeight
+      Entry: 4
+      Data: 0
+    - Name: eyesIkWeight
+      Entry: 4
+      Data: 0
+    - Name: _clampIkWeight
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 2
+    - Name: $v
+      Entry: 7
+      Data: 3|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+    - Name: _movementSmooth
+      Entry: 4
+      Data: 6
+    - Name: _animationSmooth
+      Entry: 4
+      Data: 0.2
+    - Name: _rotationSpeed
+      Entry: 4
+      Data: 16
+    - Name: _walkByDefault
+      Entry: 5
+      Data: false
+    - Name: _rotateWithCamera
+      Entry: 5
+      Data: false
+    - Name: _walkSpeed
+      Entry: 4
+      Data: 2
+    - Name: _runningSpeed
+      Entry: 4
+      Data: 4
+    - Name: _sprintSpeed
+      Entry: 4
+      Data: 6
+    - Name: _useIk
+      Entry: 5
+      Data: false
+    - Name: _mainWeight
+      Entry: 4
+      Data: 0
+    - Name: _bodyIkWeight
+      Entry: 4
+      Data: 0
+    - Name: _headIkWeight
+      Entry: 4
+      Data: 0
+    - Name: eyesIkWeight
+      Entry: 4
+      Data: 0
+    - Name: _clampIkWeight
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 3
+    - Name: $v
+      Entry: 7
+      Data: 4|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+    - Name: _movementSmooth
+      Entry: 4
+      Data: 6
+    - Name: _animationSmooth
+      Entry: 4
+      Data: 0.2
+    - Name: _rotationSpeed
+      Entry: 4
+      Data: 16
+    - Name: _walkByDefault
+      Entry: 5
+      Data: true
+    - Name: _rotateWithCamera
+      Entry: 5
+      Data: true
+    - Name: _walkSpeed
+      Entry: 4
+      Data: 2
+    - Name: _runningSpeed
+      Entry: 4
+      Data: 2
+    - Name: _sprintSpeed
+      Entry: 4
+      Data: 2
+    - Name: _useIk
+      Entry: 5
+      Data: false
+    - Name: _mainWeight
+      Entry: 4
+      Data: 0
+    - Name: _bodyIkWeight
+      Entry: 4
+      Data: 0
+    - Name: _headIkWeight
+      Entry: 4
+      Data: 0
+    - Name: eyesIkWeight
+      Entry: 4
+      Data: 0
+    - Name: _clampIkWeight
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _useRootMotion: 0
+  _jumpInput: 32
+  _strafeInput: 9
+  _sprintInput: 304
+  _sprintCost: 0.01
+  _locomotionType: 2
+  _jumpWithRigidbodyForce: 0
+  _jumpAndRotate: 1
+  _jumpTimer: 0.3
+  _jumpHeight: 4
+  _airSpeed: 5
+  _airSmooth: 6
+  _extraGravity: -10
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  _groundMinDistance: 0.25
+  _groundMaxDistance: 0.5
+  _slopeLimit: 75

@@ -1,0 +1,21 @@
+{
+    "name": "FlatLands.Characters",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:56a9d80c140e7d84eba4f4798e936dd3",
+        "GUID:380b05146d450034b9ad9a2676a76931",
+        "GUID:15fc0a57446b3144c949da3e2b9737a9",
+        "GUID:7f7d1af65c2641843945d409d28f2e20",
+        "GUID:af4a3ceb227b8f94cb8375f40e156398"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

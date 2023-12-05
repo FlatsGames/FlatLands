@@ -9,12 +9,12 @@
             _model = model as ExampleWindowModel;
         }
 
-        internal override void Init()
+        public override void Init()
         {
             
         }
 
-        internal override void Dispose()
+        public override void Dispose()
         {
             
         }

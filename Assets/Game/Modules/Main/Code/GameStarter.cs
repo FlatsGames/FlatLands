@@ -4,8 +4,10 @@ using System.Linq;
 using FlatLands.Architecture;
 using FlatLands.Characters;
 using FlatLands.CharactersMediator;
+using FlatLands.Conditions;
 using FlatLands.Cursors;
 using FlatLands.EntityControllable;
+using FlatLands.GameAttributes;
 using FlatLands.GeneralCamera;
 using FlatLands.Items;
 using FlatLands.Locations;
@@ -36,6 +38,9 @@ namespace FlatLands.Main
 
             _container.Add<LoaderManager>();
 
+            //Conditions
+            _container.Add<ConditionsController>();
+            
             //UI
             _container.Add<PrimaryUIService>();
             _container.Add<UIManager>();
@@ -70,6 +75,9 @@ namespace FlatLands.Main
             //UseObjects
             _container.Add<LocationObjectsUseManager>();
             
+            //GameAttributes
+            _container.Add<GameAttributesManager>();
+
             _container.ApplyDependencies();
             
             StartCoroutine(StartLoading());

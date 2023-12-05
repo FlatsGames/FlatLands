@@ -15,14 +15,17 @@ namespace FlatLands.GeneralCamera
         [SerializeField, BoxGroup("Layers")]
         private LayerMask _ignoreHitLayers;
         
-        [SerializeField, BoxGroup("Pivot")]
-        private CameraPivotType _defaultPivotType;
+        [SerializeField, BoxGroup("Pivot")] 
+        private float _pivotXOffset;
 
         [SerializeField, BoxGroup("Pivot")] 
-        private float _pivotOffset;
+        private float _pivotXOffsetDuration;
         
-        [SerializeField, BoxGroup("Pivot")] 
-        private float _pivotOffsetSpeed;
+        [SerializeField, BoxGroup("Zoom")] 
+        private float _zoomDefault;
+        
+        [SerializeField, BoxGroup("Zoom")] 
+        private float _zoomDuration;
 
         [SerializeField, BoxGroup("Settings")] 
         private float _followSpeed = 0.1f;
@@ -42,9 +45,10 @@ namespace FlatLands.GeneralCamera
         public CameraHierarchy CameraPrefab => _cameraPrefab;
         public LayerMask IgnoreHitLayers => _ignoreHitLayers;
         
-        public CameraPivotType DefaultPivotType => _defaultPivotType;
-        public float PivotOffset => _pivotOffset;
-        public float PivotOffsetSpeed => _pivotOffsetSpeed;
+        public float PivotXOffset => _pivotXOffset;
+        public float PivotXOffsetDuration => _pivotXOffsetDuration;
+        public float ZoomDefault => _zoomDefault;
+        public float ZoomDuration => _zoomDuration;
         
         public float FollowSpeed => _followSpeed;
         public float TurnSmooth => _turnSmooth;
@@ -53,11 +57,5 @@ namespace FlatLands.GeneralCamera
         public float VerticalRotationSpeed => _verticalRotationSpeed;
 
         public Vector2 AngleLimit => _angelLimit;
-    }
-
-    public enum CameraPivotType
-    {
-        Left,
-        Right
     }
 }

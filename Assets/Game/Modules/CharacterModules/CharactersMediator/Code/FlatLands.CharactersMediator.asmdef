@@ -1,0 +1,27 @@
+{
+    "name": "FlatLands.CharactersMediator",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:56a9d80c140e7d84eba4f4798e936dd3",
+        "GUID:efa35b636d20f6b4c9c5fb8274b1388e",
+        "GUID:0f23418212482c94983a1cb5b1a6b845",
+        "GUID:343918e9d6f022740918d5e36787fcd2",
+        "GUID:700f64dacfe35ce41a25b6b73ccc89eb",
+        "GUID:9978d14fb67f2b0409a68ec884e3a4be",
+        "GUID:821e53eaa4752134cb51eff0b7237133",
+        "GUID:5b84fd589aa036d4b9790d983dd362fe",
+        "GUID:eabfee633b57da942bd53f536dc65490",
+        "GUID:2ebdc253e19eab5448fb7f0da8ac915a",
+        "GUID:380b05146d450034b9ad9a2676a76931"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

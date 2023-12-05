@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using FlatLands.Architecture;
 using FlatLands.Cursors;
 using UnityEngine;
@@ -12,10 +13,9 @@ namespace FlatLands.GeneralCamera
         [Inject] private CursorManager _cursorManager;
 
         private Dictionary<string, Camera> _overlayCameras;
-        
+
         public CameraHierarchy Hierarchy { get; private set; }
         public bool IsActive { get; private set; }
-
         public event Action<RaycastHit> OnHit;
 
         private Transform _cameraTarget;
@@ -36,6 +36,11 @@ namespace FlatLands.GeneralCamera
         private float _lookAngle;
         private float _titleAngle;
 
+        private float _currentFollowSpeed;
+        
+        private Sequence _pivotSequence;
+        private Sequence _zoomSequence;
+
         internal void InvokeCameraCreated(CameraHierarchy hierarchy)
         {
             Hierarchy = hierarchy;
@@ -51,6 +56,9 @@ namespace FlatLands.GeneralCamera
 
             _cursorManager.OnCursorStateChanged += HandleCursorStateChanged;
             UnityEventsProvider.OnFixedUpdate += OnFixedUpdate;
+            SetDefaultXOffset();
+            SetDefaultZoom();
+            SetDefaultFollowSpeed();
             IsActive = true;
         }
 
@@ -108,7 +116,7 @@ namespace FlatLands.GeneralCamera
 
 
 #region Movements
-        
+
         private void UpdateCameraMovement()
         {
             if(_cameraTarget == null)
@@ -117,7 +125,6 @@ namespace FlatLands.GeneralCamera
             UpdateInput();
             UpdateCameraPosition();
             UpdateCameraRotation();
-            UpdatePivot();
         }
 
         private void UpdateInput()
@@ -128,24 +135,11 @@ namespace FlatLands.GeneralCamera
             _mouseX = Input.GetAxis("Mouse X");
             _mouseY = Input.GetAxis("Mouse Y");
         }
-
-        private void UpdatePivot()
-        {
-            var pivotSide = _config.DefaultPivotType == CameraPivotType.Right
-                ? _config.PivotOffset
-                : -_config.PivotOffset;
-
-            var localPosition = Hierarchy.Pivot.localPosition;
-            var newSmoothPos = Mathf.SmoothDamp(localPosition.x, pivotSide, ref _pivotFollowVelocity, _config.PivotOffsetSpeed);
-            
-            localPosition = new Vector3(newSmoothPos, localPosition.y, localPosition.z);
-            Hierarchy.Pivot.localPosition = localPosition;
-        }
-
+        
         private void UpdateCameraPosition()
         {
             var newCameraPos = Vector3.SmoothDamp(Hierarchy.transform.position, _cameraTarget.transform.position,
-                ref _cameraFollowVelocity, _config.FollowSpeed);
+                ref _cameraFollowVelocity, _currentFollowSpeed);
             
             Hierarchy.transform.position = newCameraPos;
         }
@@ -194,6 +188,65 @@ namespace FlatLands.GeneralCamera
             Hierarchy.SetDebugHit(10);
 #endif
             
+        }
+
+#endregion
+
+
+#region Changes by Conditions
+
+        internal void SetCustomFollowSpeed(float newSpeed)
+        {
+            _currentFollowSpeed = newSpeed;
+        }
+                
+        internal void SetDefaultFollowSpeed()
+        {
+            _currentFollowSpeed = _config.FollowSpeed;
+        }
+
+        internal void SetCustomXOffset(float xOffsetPos, float duration, Action completed = null)
+        {
+            SetXOffset(xOffsetPos, duration, completed);
+        }
+                
+        internal void SetDefaultXOffset()
+        {
+            SetXOffset(_config.PivotXOffset, _config.PivotXOffsetDuration);
+        }
+
+        private void SetXOffset(float xOffsetPos, float duration, Action completed = null)
+        {
+            _pivotSequence?.Kill();
+            _pivotSequence = DOTween.Sequence();
+            _pivotSequence.Append(Hierarchy.XOffset.DOLocalMove(new Vector3(xOffsetPos, 0, 0), duration));
+            _pivotSequence.OnComplete(() =>
+            {
+                _pivotSequence?.Kill();
+                completed?.Invoke();
+            });
+        }
+
+        internal void SetCustomZoom(float newZoom, float duration, Action completed = null)
+        {
+            SetZoom(newZoom, duration, completed);
+        }
+                        
+        internal void SetDefaultZoom()
+        {
+            SetZoom(_config.ZoomDefault, _config.ZoomDuration);
+        }
+
+        private void SetZoom(float newZoom, float duration, Action completed = null)
+        {
+            _zoomSequence?.Kill();
+            _zoomSequence = DOTween.Sequence();
+            _zoomSequence.Append(Hierarchy.CameraComponent.transform.DOLocalMove(new Vector3(0, 0, newZoom), duration));
+            _zoomSequence.OnComplete(() =>
+            {
+                _zoomSequence?.Kill();
+                completed?.Invoke();
+            });
         }
 
 #endregion

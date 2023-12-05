@@ -3,31 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/CameraHierarchy.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/CameraHierarchy.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/FlatLands.GeneralCamera.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/FlatLands.GeneralCamera.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraConfig.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraConfig.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/GeneralCameraManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/PrimaryCameraManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Code/PrimaryCameraManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs/[GeneralCamera].prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Prefabs/[GeneralCamera].prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Resources/GeneralCameraConfig.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Camera/Resources/GeneralCameraConfig.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharacterProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Characters/Code/CharactersManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/FlatLands.Main.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Main/Code/GameStarter.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/FlatLands.UI.asmdef" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/FlatLands.UI.asmdef" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/GeneralUIConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/GeneralUIConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/UI/Code/Main/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Resources/CharacterCombat_SpineSlot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Resources/CharacterCombat_SpineSlot.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Main_Character].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Main_Character].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,6 +24,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../LegacyProjects/merge-expedition-develop/merge-expedition-develop/Packages/com.geekyhouse.architecture.utils/Runtime/AnimatorUtils.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a0f19b0e419485eafaaec7c95c00afb27800/01/ae8ed85b/AnimatorControllerPlayable.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/IL/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/b1/0f74cb3b/02000507.il" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LoadingSceen/Code/LoadingScreenManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Game/Code/GameStarter.cs" root0="SKIP_HIGHLIGHTING" />
@@ -51,9 +32,15 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/836aea33117647b388cc5f48bed669c47000/f5/0f63c19a/CanvasGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/10871f9e312b442cb78b9b97db88fdcb172a00/fa/9db8b8c7/LoadSceneMode.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LocationCamera/Code/CameraController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/95/3c41a72a/DOTween.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LegacyProjects/merge-expedition-develop/merge-expedition-develop/Assets/GeekyHouse/General/Code/GameStarter.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/2ed3dae649e648f7a159faaaa24538931fe00/fc/db7bdee1/CharacterController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a0f19b0e419485eafaaec7c95c00afb27800/ce/32e9601d/StateMachineBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Downloads/MyArchitecture-main/MyArchitecture-main/Assets/Modules/Subsystem.LocationCamera/Code/CameraBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.animation.rigging@1.2.1/Runtime/AnimationRig/Constraints/TwoBoneIKConstraint.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/fcc0bbf6bf4e430c91d4aa05736fc5c62ac00/4a/6e6344b7/ShortcutExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/62e5378dafa04b578167b1824529a48c7c00/84/dc41279e/Input.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8a0f19b0e419485eafaaec7c95c00afb27800/5a/7d156213/Animator.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../LegacyProjects/merge-expedition-develop/merge-expedition-develop/Packages/com.geekyhouse.submodule.location.interactive/Runtime/LocationInteractiveObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Game/Modules/ScenesLoader/Code/ProgressAggregator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@14.0.8/Runtime/TemporalAA.cs" root0="SKIP_HIGHLIGHTING" />
@@ -115,6 +102,10 @@
       <workItem from="1698244618880" duration="4643000" />
       <workItem from="1698515556647" duration="8595000" />
       <workItem from="1698585672122" duration="8622000" />
+      <workItem from="1699087454939" duration="2358000" />
+      <workItem from="1699091075923" duration="12577000" />
+      <workItem from="1699258736146" duration="15590000" />
+      <workItem from="1700577225858" duration="4099000" />
     </task>
     <servers />
   </component>

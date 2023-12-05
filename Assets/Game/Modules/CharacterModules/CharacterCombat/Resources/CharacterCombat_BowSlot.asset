@@ -1,0 +1,179 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cdd9875f4d84db5b376fca3e70f4487, type: 3}
+  m_Name: CharacterCombat_BowSlot
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 4937594946595940123, guid: 99a5ddbb9e935e24e8672c63995698e1, type: 3}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: _internalSettings
+      Entry: 7
+      Data: 0|System.Collections.Generic.List`1[[FlatLands.CombatSystem.ICombatInternalSetting,
+        FlatLands.CombatSystem]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 1
+    - Name: 
+      Entry: 7
+      Data: 1|FlatLands.CombatSystem.CombatInternalRangedAttackSetting, FlatLands.CombatSystem
+    - Name: _startAimingAnim
+      Entry: 1
+      Data: Bow_StartAiming
+    - Name: _endAimingAnim
+      Entry: 1
+      Data: Bow_EndAiming
+    - Name: _shootAnim
+      Entry: 1
+      Data: Bow_Shoot
+    - Name: _startWeaponAimingAnim
+      Entry: 1
+      Data: Weapon_Bow_StartAiming
+    - Name: _endWeaponAimingAnim
+      Entry: 1
+      Data: Weapon_Bow_EndAiming
+    - Name: _shootWeaponAnim
+      Entry: 1
+      Data: Weapon_Bow_Shoot
+    - Name: _projectilePrefab
+      Entry: 10
+      Data: 0
+    - Name: _projectileForce
+      Entry: 4
+      Data: 20
+    - Name: _startConditions
+      Entry: 7
+      Data: 2|System.Collections.Generic.List`1[[FlatLands.Conditions.BaseCondition,
+        FlatLands.Conditions]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 3|FlatLands.GeneralCamera.ChangeCameraOffsetCondition, FlatLands.GeneralCamera
+    - Name: _offsetType
+      Entry: 3
+      Data: 10
+    - Name: _newCameraXOffset
+      Entry: 4
+      Data: 0.3
+    - Name: _newCameraXOffsetDuration
+      Entry: 4
+      Data: 0.1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 4|FlatLands.GeneralCamera.ChangeCameraZoomCondition, FlatLands.GeneralCamera
+    - Name: _zoomType
+      Entry: 3
+      Data: 10
+    - Name: _newCameraZoom
+      Entry: 4
+      Data: -1
+    - Name: _newCameraZoomDuration
+      Entry: 4
+      Data: 0.2
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 5|FlatLands.GeneralCamera.ChangeCameraFollowSpeedCondition, FlatLands.GeneralCamera
+    - Name: _changeType
+      Entry: 3
+      Data: 10
+    - Name: _newCameraFollowSpeed
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _endConditions
+      Entry: 7
+      Data: 6|System.Collections.Generic.List`1[[FlatLands.Conditions.BaseCondition,
+        FlatLands.Conditions]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 3
+    - Name: 
+      Entry: 7
+      Data: 7|FlatLands.GeneralCamera.ChangeCameraOffsetCondition, FlatLands.GeneralCamera
+    - Name: _offsetType
+      Entry: 3
+      Data: 0
+    - Name: _newCameraXOffset
+      Entry: 4
+      Data: 0
+    - Name: _newCameraXOffsetDuration
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 8|FlatLands.GeneralCamera.ChangeCameraZoomCondition, FlatLands.GeneralCamera
+    - Name: _zoomType
+      Entry: 3
+      Data: 0
+    - Name: _newCameraZoom
+      Entry: 4
+      Data: 0
+    - Name: _newCameraZoomDuration
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 9|FlatLands.GeneralCamera.ChangeCameraFollowSpeedCondition, FlatLands.GeneralCamera
+    - Name: _changeType
+      Entry: 3
+      Data: 0
+    - Name: _newCameraFollowSpeed
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+  _animatorSubLayer: Bow Weapon
+  _animCategory: 200

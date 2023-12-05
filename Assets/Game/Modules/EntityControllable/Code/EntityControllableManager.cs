@@ -31,6 +31,7 @@ namespace FlatLands.EntityControllable
         {
             CurrentControllableProvider?.EntityFixedUpdate();
         }
+        
 
         public void SetControllableEntity(IEntityControllableProvider provider, IEntityControllableBehaviour behaviour)
         {

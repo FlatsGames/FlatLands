@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FlatLands.UI
@@ -9,16 +10,25 @@ namespace FlatLands.UI
         private Camera _uiCamera;
 
         [SerializeField] 
-        private Canvas _canvas;
+        private Canvas _uiCanvas;
 
         [SerializeField] 
-        private Transform _windowsLayer;
-        
-        [SerializeField] 
-        private Transform _hudLayer;
+        private Dictionary<UILayerGroupType, UILayerGroup> _layerGroups;
 
         public Camera UICamera => _uiCamera;
+        public Canvas UICanvas => _uiCanvas;
+        public IReadOnlyDictionary<UILayerGroupType, UILayerGroup> LayerGroups => _layerGroups;
 
-        public Transform WindowsLayer => _windowsLayer;
+        [Button]
+        private void GetGroupElements()
+        {
+            _layerGroups = new Dictionary<UILayerGroupType, UILayerGroup>();
+            var layerGroups = gameObject.GetComponentsInChildren<UILayerGroup>();
+            foreach (var group in layerGroups)
+            {
+                group.GetLayerElements();
+                _layerGroups[group.LayerGroupType] = group;
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FlatLands.UI
 {
-    public abstract class UIWindow : SerializedMonoBehaviour
+    public abstract class UIWindow : UIElement
     {
         [SerializeField, BoxGroup("Main Settings")] 
         private GameObject _root;
@@ -19,10 +19,6 @@ namespace FlatLands.UI
         public event Action<UIWindow> OnWindowShow;
         public event Action<UIWindow> OnWindowHide;
 
-        internal virtual void Init() { }
-
-        internal virtual void Dispose() { }
-        
         internal virtual void SetModel(IUIModel model) { }
 
         internal void SetWindowType(UIWindowType type)
