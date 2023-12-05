@@ -11,6 +11,7 @@ using FlatLands.Items;
 using FlatLands.Locations;
 using FlatLands.Loader;
 using FlatLands.LocationsCamera;
+using FlatLands.LocationsObjects;
 using FlatLands.UI;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -65,6 +66,9 @@ namespace FlatLands.Main
             //Items
             _container.Add<ItemsManager>();
             _container.Add<ItemsSpawnManager>();
+            
+            //UseObjects
+            _container.Add<LocationObjectsUseManager>();
             
             _container.ApplyDependencies();
             
