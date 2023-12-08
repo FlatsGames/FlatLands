@@ -1,5 +1,6 @@
 ﻿using System;
 using FlatLands.Architecture;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace FlatLands.Items
@@ -20,7 +21,7 @@ namespace FlatLands.Items
         [SerializeField] private ItemsType _itemType;
         public ItemsType ItemType => _itemType;
         
-        [SerializeField] private Sprite _icon;
+        [SerializeField, PreviewField(64)]  private Sprite _icon;
         public Sprite Icon => _icon;
 
         [SerializeField] private int _maxCount;

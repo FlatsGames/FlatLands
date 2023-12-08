@@ -1,7 +1,7 @@
 ﻿using System;
 using FlatLands.LocationsObjects;
 
-namespace FlatLands.Items
+namespace FlatLands.Inventory
 {
     public class ItemUseLocationObject : BaseUseLocationObject
     {

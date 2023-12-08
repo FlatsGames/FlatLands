@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccbff591a42b4d139c1083d99391ee80, type: 3}
-  m_Name: ItemSphere
+  m_Name: Pink_Cube
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -21,10 +21,10 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _name: 
-  _itemPrefab: {fileID: 6586340825197826522, guid: b08436bef36d4394f96ff2876efe0a7e,
+  _name: Pink_Cube
+  _itemPrefab: {fileID: 1754732497579250474, guid: ba67903eb6cc4594c8692a8b456fc2a9,
     type: 3}
-  _itemType: 33
-  _icon: {fileID: 0}
+  _itemType: 0
+  _icon: {fileID: 21300000, guid: e270e78bb278c1d4b89c9cbf788bfec6, type: 3}
   _maxCount: 0
   _description: 

@@ -9,6 +9,7 @@ using FlatLands.Cursors;
 using FlatLands.EntityControllable;
 using FlatLands.GameAttributes;
 using FlatLands.GeneralCamera;
+using FlatLands.Inventory;
 using FlatLands.Items;
 using FlatLands.Locations;
 using FlatLands.Loader;
@@ -77,7 +78,11 @@ namespace FlatLands.Main
             
             //GameAttributes
             _container.Add<GameAttributesManager>();
-
+            
+            //Inventory
+            _container.Add<InventoryManager>();
+            _container.Add<InventoryModel>();
+            
             _container.ApplyDependencies();
             
             StartCoroutine(StartLoading());

@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using FlatLands.Architecture;
 using FlatLands.Locations;
 using FlatLands.LocationsCamera;
-using FlatLands.LocationsObjects;
 using UnityEngine;
 
 namespace FlatLands.Items
 {
-    public class ItemsManager : SharedObject, IObjectUseHandler
+    public class ItemsManager : SharedObject
     {
         [Inject] private LocationsManager _locationsManager;
         [Inject] private LocationsCameraManager _locationsCameraManager;
@@ -35,6 +34,9 @@ namespace FlatLands.Items
 
         private void GetItemsDataOnScene()
         {
+            if (_itemsViewsOnScene == null)
+                return;
+            
             foreach (var view in _itemsViewsOnScene)
             {
                 var config = view.Config;
@@ -70,11 +72,6 @@ namespace FlatLands.Items
             GameObject.Destroy(itemData.ItemView.gameObject);
             itemData.ItemView = null;
         }
-
-        public Type UseType => typeof(ItemUseLocationObject);
-        public void ObjetUse(ILocationObject locationObject)
-        {
-            Debug.Log("Item Use: " + locationObject.LocationObject.name);
-        }
+        
     }
 }
