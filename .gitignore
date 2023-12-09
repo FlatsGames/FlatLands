@@ -72,3 +72,5 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 .idea/.idea.FlatLands/.idea/workspace.xml
 
+UMotionData/Temp/EditorUndoStack.dat
+UMotionData/Temp/EditorUndoTable.dat
