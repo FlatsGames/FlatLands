@@ -26,7 +26,7 @@ MonoBehaviour:
     - Name: _windows
       Entry: 7
       Data: 0|System.Collections.Generic.Dictionary`2[[FlatLands.UI.UIWindowType,
-        FlatLands.UI],[FlatLands.UI.UIWindowPair, FlatLands.UI]], mscorlib
+        FlatLands.UI],[FlatLands.UI.UIWindowGroup, FlatLands.UI]], mscorlib
     - Name: comparer
       Entry: 7
       Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.UI.UIWindowType,
@@ -51,12 +51,15 @@ MonoBehaviour:
       Data: 0
     - Name: $v
       Entry: 7
-      Data: 2|FlatLands.UI.UIWindowPair, FlatLands.UI
+      Data: 2|FlatLands.UI.UIWindowGroup, FlatLands.UI
     - Name: _preload
       Entry: 5
       Data: true
     - Name: _prefab
       Entry: 10
+      Data: 0
+    - Name: _windowKey
+      Entry: 3
       Data: 0
     - Name: 
       Entry: 8
@@ -72,13 +75,16 @@ MonoBehaviour:
       Data: 100
     - Name: $v
       Entry: 7
-      Data: 3|FlatLands.UI.UIWindowPair, FlatLands.UI
+      Data: 3|FlatLands.UI.UIWindowGroup, FlatLands.UI
     - Name: _preload
       Entry: 5
       Data: true
     - Name: _prefab
       Entry: 10
       Data: 1
+    - Name: _windowKey
+      Entry: 3
+      Data: 9
     - Name: 
       Entry: 8
       Data: 

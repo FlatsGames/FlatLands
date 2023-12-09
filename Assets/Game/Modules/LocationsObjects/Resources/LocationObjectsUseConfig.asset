@@ -30,7 +30,7 @@ MonoBehaviour:
       Data: 1
     - Name: 
       Entry: 7
-      Data: 1|FlatLands.Items.ItemUseLocationObject, FlatLands.Items
+      Data: 1|FlatLands.Inventory.ItemUseLocationObject, FlatLands.Inventory
     - Name: _useKey
       Entry: 3
       Data: 101

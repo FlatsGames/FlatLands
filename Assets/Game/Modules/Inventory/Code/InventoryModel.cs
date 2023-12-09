@@ -7,11 +7,12 @@ namespace FlatLands.Inventory
     public class InventoryModel : SharedObject
     {
 
-        private Dictionary<int, ItemData> _inventoryDatas;
+        private Dictionary<int, ItemData> _inventoryDatas = new Dictionary<int, ItemData>();
+        
 
         public override void Init()
         {
-            _inventoryDatas = new Dictionary<int, ItemData>();
+            
         }
 
         public override void Dispose()

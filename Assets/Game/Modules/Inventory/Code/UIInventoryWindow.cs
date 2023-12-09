@@ -5,9 +5,9 @@ using UnityEngine;
 
 namespace FlatLands.Inventory
 {
-    public class InventoryWindow : UIWindow
+    public class UIInventoryWindow : UIWindow
     {
-   
+        
         
     }
 }

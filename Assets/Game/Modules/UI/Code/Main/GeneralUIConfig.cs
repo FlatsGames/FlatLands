@@ -12,12 +12,12 @@ namespace FlatLands.UI
     internal sealed class GeneralUIConfig : SingletonScriptableObject<GeneralUIConfig>
     {
         [SerializeField] 
-        private Dictionary<UIWindowType, UIWindowPair> _windows;
+        private Dictionary<UIWindowType, UIWindowGroup> _windows;
 
-        public IReadOnlyDictionary<UIWindowType, UIWindowPair> Windows => _windows;
+        public IReadOnlyDictionary<UIWindowType, UIWindowGroup> Windows => _windows;
     }
 
-    public sealed class UIWindowPair
+    public sealed class UIWindowGroup
     {
         [SerializeField] 
         private bool _preload = true;
@@ -25,8 +25,12 @@ namespace FlatLands.UI
         [SerializeField] 
         private UIWindow _prefab;
 
+        [SerializeField] 
+        private KeyCode _windowKey;
+        
         public bool PreloadPrefab => _preload;
         public UIWindow Prefab => _prefab;
         public Type PrefabType => _prefab != null ? _prefab.GetType() : default;
+        public KeyCode WindowKey => _windowKey;
     }
 }
