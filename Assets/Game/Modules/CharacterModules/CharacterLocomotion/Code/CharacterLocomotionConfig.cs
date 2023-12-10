@@ -67,22 +67,6 @@ namespace FlatLands.CharacterLocomotion
         
         [SerializeField, FoldoutGroup("Ground Settings"), Range(30, 80)]
         private float _slopeLimit = 75f;
-
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _mainWeight = 1f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _bodyIkWeight = 0.3f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _headIkWeight = 0.4f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float eyesIkWeight = 0.3f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _clampIkWeight = 0.3f;
         
         public bool UseRootMotion => _useRootMotion;
 
@@ -107,13 +91,6 @@ namespace FlatLands.CharacterLocomotion
         public float GroundMinDistance => _groundMinDistance;
         public float GroundMaxDistance => _groundMaxDistance;
         public float SlopeLimit => _slopeLimit;
-
-
-        public float MainWeight => _mainWeight;
-        public float BodyIkWeight => _bodyIkWeight;
-        public float HeadIkWeight => _headIkWeight;
-        public float EyesIkWeight => eyesIkWeight;
-        public float ClampIkWeight => _clampIkWeight;
     }
     
     [HideReferenceObjectPicker]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace FlatLands.Equipments
 {
-    public abstract class BaseEquipmentWeaponBehaviour : SerializedMonoBehaviour
+    public abstract class BaseEquipmentWeaponBehaviour : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
 

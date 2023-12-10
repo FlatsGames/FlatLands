@@ -40,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -73,18 +73,6 @@ MonoBehaviour:
       Data: 51
     - Name: $v
       Entry: 3
-      Data: 150
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 52
-    - Name: $v
-      Entry: 3
       Data: 200
     - Name: 
       Entry: 8
@@ -115,7 +103,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 4
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -229,70 +217,16 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 150
+      Data: 200
     - Name: $v
       Entry: 7
       Data: 6|FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair, FlatLands.CharacterEquipment
     - Name: _takeWeaponAnimationName
       Entry: 1
-      Data: Take_WeaponBelt
+      Data: Bow_Take
     - Name: _putWeaponAnimationName
       Entry: 1
-      Data: Put_WeaponBelt
-    - Name: _useRightHand
-      Entry: 5
-      Data: true
-    - Name: _posInHand
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -15.21
-    - Name: 
-      Entry: 4
-      Data: 1.42
-    - Name: 
-      Entry: 4
-      Data: -3.52
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _rotInHand
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: 12.181
-    - Name: 
-      Entry: 4
-      Data: -0.492
-    - Name: 
-      Entry: 4
-      Data: -98.006
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 200
-    - Name: $v
-      Entry: 7
-      Data: 7|FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair, FlatLands.CharacterEquipment
-    - Name: _takeWeaponAnimationName
-      Entry: 1
-      Data: Take_WeaponBow
-    - Name: _putWeaponAnimationName
-      Entry: 1
-      Data: Put_WeaponBow
+      Data: Bow_Put
     - Name: _useRightHand
       Entry: 5
       Data: false

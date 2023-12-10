@@ -21,36 +21,9 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _movementPairs
+    - Name: _freeMovementPair
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FlatLands.CharacterLocomotion.CharacterLocomotionType,
-        FlatLands.CharacterLocomotion],[FlatLands.CharacterLocomotion.CharacterMovementPair,
-        FlatLands.CharacterLocomotion]], mscorlib
-    - Name: comparer
-      Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.CharacterLocomotion.CharacterLocomotionType,
-        FlatLands.CharacterLocomotion]], mscorlib
-    - Name: 
-      Entry: 12
-      Data: 0
-    - Name: 
-      Entry: 13
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 12
-      Data: 3
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 1
-    - Name: $v
-      Entry: 7
-      Data: 2|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+      Data: 0|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
       Data: 6
@@ -75,39 +48,12 @@ MonoBehaviour:
     - Name: _sprintSpeed
       Entry: 4
       Data: 6
-    - Name: _useIk
-      Entry: 5
-      Data: false
-    - Name: _mainWeight
-      Entry: 4
-      Data: 0
-    - Name: _bodyIkWeight
-      Entry: 4
-      Data: 0
-    - Name: _headIkWeight
-      Entry: 4
-      Data: 0
-    - Name: eyesIkWeight
-      Entry: 4
-      Data: 0
-    - Name: _clampIkWeight
-      Entry: 4
-      Data: 0
     - Name: 
       Entry: 8
       Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
+    - Name: _strafeMovementPair
       Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 2
-    - Name: $v
-      Entry: 7
-      Data: 3|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+      Data: 1|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
       Data: 6
@@ -132,90 +78,6 @@ MonoBehaviour:
     - Name: _sprintSpeed
       Entry: 4
       Data: 6
-    - Name: _useIk
-      Entry: 5
-      Data: false
-    - Name: _mainWeight
-      Entry: 4
-      Data: 0
-    - Name: _bodyIkWeight
-      Entry: 4
-      Data: 0
-    - Name: _headIkWeight
-      Entry: 4
-      Data: 0
-    - Name: eyesIkWeight
-      Entry: 4
-      Data: 0
-    - Name: _clampIkWeight
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 3
-    - Name: $v
-      Entry: 7
-      Data: 4|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
-    - Name: _movementSmooth
-      Entry: 4
-      Data: 6
-    - Name: _animationSmooth
-      Entry: 4
-      Data: 0.2
-    - Name: _rotationSpeed
-      Entry: 4
-      Data: 16
-    - Name: _walkByDefault
-      Entry: 5
-      Data: true
-    - Name: _rotateWithCamera
-      Entry: 5
-      Data: true
-    - Name: _walkSpeed
-      Entry: 4
-      Data: 2
-    - Name: _runningSpeed
-      Entry: 4
-      Data: 2
-    - Name: _sprintSpeed
-      Entry: 4
-      Data: 2
-    - Name: _useIk
-      Entry: 5
-      Data: false
-    - Name: _mainWeight
-      Entry: 4
-      Data: 0
-    - Name: _bodyIkWeight
-      Entry: 4
-      Data: 0
-    - Name: _headIkWeight
-      Entry: 4
-      Data: 0
-    - Name: eyesIkWeight
-      Entry: 4
-      Data: 0
-    - Name: _clampIkWeight
-      Entry: 4
-      Data: 0
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 13
-      Data: 
     - Name: 
       Entry: 8
       Data: 

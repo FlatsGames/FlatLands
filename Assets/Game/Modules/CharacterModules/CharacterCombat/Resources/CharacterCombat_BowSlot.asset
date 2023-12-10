@@ -34,13 +34,16 @@ MonoBehaviour:
       Data: 1|FlatLands.CombatSystem.CombatInternalRangedAttackSetting, FlatLands.CombatSystem
     - Name: _startAimingAnim
       Entry: 1
-      Data: Bow_StartAiming
+      Data: Bow_EnableAiming
     - Name: _endAimingAnim
       Entry: 1
-      Data: Bow_EndAiming
+      Data: Bow_DisableAiming
     - Name: _shootAnim
       Entry: 1
       Data: Bow_Shoot
+    - Name: _reloadAnim
+      Entry: 1
+      Data: Bow_TakeArrow
     - Name: _startWeaponAimingAnim
       Entry: 1
       Data: Weapon_Bow_StartAiming

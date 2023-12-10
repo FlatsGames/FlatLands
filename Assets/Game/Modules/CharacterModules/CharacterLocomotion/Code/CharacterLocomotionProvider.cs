@@ -88,7 +88,6 @@ namespace FlatLands.CharacterLocomotion
             if(Behaviour != null)
             {
                 Behaviour.OnAnimatorMoved -= HandleAnimatorMoved;
-                Behaviour.OnAnimatorIks -= HandleAnimatorIk;
             }
             
             Behaviour = behaviour;
@@ -96,7 +95,6 @@ namespace FlatLands.CharacterLocomotion
             if(Behaviour != null)
             {
                 Behaviour.OnAnimatorMoved += HandleAnimatorMoved;
-                Behaviour.OnAnimatorIks += HandleAnimatorIk;
             }
         }
 
@@ -499,14 +497,14 @@ namespace FlatLands.CharacterLocomotion
                 : Mathf.Clamp(curMagnitude, 0, runAnimSpeed);
         }
 
-        private void HandleAnimatorIk(int layer)
-        {
-            if(_rotateTarget == null)
-                return;
-            
-            Behaviour.CharacterAnimator.SetLookAtWeight(LocomotionConfig.MainWeight, LocomotionConfig.BodyIkWeight, LocomotionConfig.HeadIkWeight, LocomotionConfig.EyesIkWeight, LocomotionConfig.ClampIkWeight);
-            Behaviour.CharacterAnimator.SetLookAtPosition(_rotateTarget.position);
-        }
+        // private void HandleAnimatorIk(int layer)
+        // {
+        //     if(_rotateTarget == null)
+        //         return;
+        //     
+        //     Behaviour.CharacterAnimator.SetLookAtWeight(LocomotionConfig.MainWeight, LocomotionConfig.BodyIkWeight, LocomotionConfig.HeadIkWeight, LocomotionConfig.EyesIkWeight, LocomotionConfig.ClampIkWeight);
+        //     Behaviour.CharacterAnimator.SetLookAtPosition(_rotateTarget.position);
+        // }
 
 #endregion
 
