@@ -59,22 +59,19 @@ MonoBehaviour:
       Data: 0.2
     - Name: _rotationSpeed
       Entry: 4
-      Data: 16
-    - Name: _walkByDefault
-      Entry: 5
-      Data: true
+      Data: 10
     - Name: _rotateWithCamera
       Entry: 5
       Data: false
-    - Name: _walkSpeed
+    - Name: _canSprinting
+      Entry: 5
+      Data: true
+    - Name: _mainSpeed
       Entry: 4
       Data: 2
-    - Name: _runningSpeed
-      Entry: 4
-      Data: 4
     - Name: _sprintSpeed
       Entry: 4
-      Data: 6
+      Data: 4
     - Name: 
       Entry: 8
       Data: 
@@ -86,7 +83,7 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 10
+      Data: 50
     - Name: $v
       Entry: 7
       Data: 3|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
@@ -99,16 +96,13 @@ MonoBehaviour:
     - Name: _rotationSpeed
       Entry: 4
       Data: 16
-    - Name: _walkByDefault
-      Entry: 5
-      Data: true
     - Name: _rotateWithCamera
       Entry: 5
       Data: false
-    - Name: _walkSpeed
-      Entry: 4
-      Data: 2
-    - Name: _runningSpeed
+    - Name: _canSprinting
+      Entry: 5
+      Data: true
+    - Name: _mainSpeed
       Entry: 4
       Data: 4
     - Name: _sprintSpeed
@@ -128,10 +122,9 @@ MonoBehaviour:
       Data: 
   _useRootMotion: 0
   _jumpInput: 32
-  _strafeInput: 9
   _sprintInput: 304
   _sprintCost: 0.01
-  _defaultLocomotionType: 10
+  _defaultLocomotionType: 0
   _jumpWithRigidbodyForce: 0
   _jumpAndRotate: 1
   _jumpTimer: 0.3
