@@ -17,14 +17,13 @@ namespace FlatLands.CharacterLocomotion
         private int AnimatorInputHorizontal => Animator.StringToHash("InputHorizontal");
         private int AnimatorInputVertical => Animator.StringToHash("InputVertical");
         private int AnimatorInputMagnitude => Animator.StringToHash("InputMagnitude");
+        private int AnimatorMovementType => Animator.StringToHash("MovementType");
         private int AnimatorIsGrounded => Animator.StringToHash("IsGrounded");
-        private int AnimatorIsStrafing => Animator.StringToHash("IsStrafing");
         private int AnimatorIsSprinting => Animator.StringToHash("IsSprinting");
         private int AnimatorGroundDistance => Animator.StringToHash("GroundDistance");
 
-        private float AnimatorWalkSpeed => 0.5f;
-        private float AnimatorRunningSpeed => 1f;
-        private float AnimatorSprintSpeed => 1.5f;
+        private float AnimatorSimpleThreshold => 1f;
+        private float AnimatorSprintThreshold => 1.5f;
         private float DeltaTime => UnityEventsProvider.DeltaTime;
         
         public CharacterLocomotionConfig LocomotionConfig { get; private set; }
@@ -36,12 +35,14 @@ namespace FlatLands.CharacterLocomotion
             set
             {
                 _locomotionType = value;
+                _prevMovementPair = _currentMovementPair;
+                LocomotionConfig.MovementPairs.TryGetValue(_locomotionType, out _currentMovementPair);
+                
                 OnLocomotionTypeChanged?.Invoke();
             }
         }
-        
+
         public bool IsJumping { get; private set; }
-        public bool IsStrafing { get; private set; }
         public bool IsGrounded { get; private set; }
         public bool IsSprinting { get; private set; }
         public bool CanSprinting { get; private set; }
@@ -52,6 +53,8 @@ namespace FlatLands.CharacterLocomotion
         public event Action OnLocomotionTypeChanged;
 
         private CharacterLocomotionType _locomotionType;
+        private CharacterMovementPair _prevMovementPair;
+        private CharacterMovementPair _currentMovementPair;
         
         private PhysicMaterial _frictionPhysics;
         private PhysicMaterial _maxFrictionPhysics;
@@ -107,7 +110,7 @@ namespace FlatLands.CharacterLocomotion
         {
             LocomotionConfig = CharacterLocomotionConfig.Instance;
             Behaviour.CharacterAnimator.updateMode = AnimatorUpdateMode.AnimatePhysics;
-            _locomotionType = LocomotionConfig.LocomotionType;
+            LocomotionType = LocomotionConfig.DefaultLocomotionType;
 
             CreatePhysicsMaterials();
 
@@ -160,7 +163,6 @@ namespace FlatLands.CharacterLocomotion
             MoveInput();
             UpdateMoveDirection(_rotateTarget);
             SprintInput();
-            StrafeInput();
             JumpInput();
         }
         
@@ -174,12 +176,6 @@ namespace FlatLands.CharacterLocomotion
             
             _inputAxis.x = Input.GetAxis(Horizontal_Input_Name);
             _inputAxis.z = Input.GetAxis(Vertical_Input_Name);
-        }
-
-        private void StrafeInput()
-        {
-            if (Input.GetKeyDown(LocomotionConfig.StrafeInput))
-                Strafe();
         }
 
         private void SprintInput()
@@ -211,21 +207,10 @@ namespace FlatLands.CharacterLocomotion
         {
             if (_lockMovement) 
                 return;
-
-            if (LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && !IsStrafing 
-                || LocomotionType.Equals(CharacterLocomotionType.OnlyFree))
-            {
-                SetControllerMovementSpeed(LocomotionConfig.FreeMovementPair);
-                SetAnimatorMoveSpeed(LocomotionConfig.FreeMovementPair);
-            }
-            else if (LocomotionType.Equals(CharacterLocomotionType.OnlyStrafe) 
-                     || LocomotionType.Equals(CharacterLocomotionType.FreeWithStrafe) && IsStrafing)
-            {
-                IsStrafing = true;
-                SetControllerMovementSpeed(LocomotionConfig.StrafeMovementPair);
-                SetAnimatorMoveSpeed(LocomotionConfig.StrafeMovementPair);
-            }
-
+            
+            SetControllerMovementSpeed(_currentMovementPair);
+            UpdateAnimatorMoveSpeed();
+            
             if (!LocomotionConfig.UseRootMotion)
                 MoveCharacter(_moveDirection);
         }
@@ -236,11 +221,9 @@ namespace FlatLands.CharacterLocomotion
             
             if (_inputAxis.magnitude <= 0.01)
             {
-                var movementPair = IsStrafing
-                    ? LocomotionConfig.StrafeMovementPair.MovementSmooth
-                    : LocomotionConfig.FreeMovementPair.MovementSmooth;
+                var movementSmooth = _currentMovementPair.MovementSmooth;
                 
-                _moveDirection = Vector3.Lerp(_moveDirection, Vector3.zero, movementPair * DeltaTime);
+                _moveDirection = Vector3.Lerp(_moveDirection, Vector3.zero, movementSmooth * DeltaTime);
                 return;
             }
 
@@ -256,26 +239,18 @@ namespace FlatLands.CharacterLocomotion
 
         private void SetControllerMovementSpeed(CharacterMovementPair movementPair)
         {
-            var firstSpeed = IsSprinting 
-                ? movementPair.RunningSpeed 
-                : movementPair.WalkSpeed;
-            
             var secondSpeed = IsSprinting 
                 ? movementPair.SprintSpeed 
-                : movementPair.RunningSpeed;
+                : movementPair.MainSpeed;
             
-            _moveSpeed = movementPair.WalkByDefault 
-                ? Mathf.Lerp(_moveSpeed, firstSpeed, movementPair.MovementSmooth * DeltaTime)
-                : Mathf.Lerp(_moveSpeed, secondSpeed , movementPair.MovementSmooth * DeltaTime);
+            _moveSpeed = Mathf.Lerp(_moveSpeed, secondSpeed , movementPair.MovementSmooth * DeltaTime);
         }
 
         private void MoveCharacter(Vector3 _direction)
         {
-            var smooth = IsStrafing 
-                ? LocomotionConfig.StrafeMovementPair.MovementSmooth 
-                : LocomotionConfig.FreeMovementPair.MovementSmooth;
+            var movementSmooth = _currentMovementPair.MovementSmooth;
             
-            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, smooth * DeltaTime);
+            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, movementSmooth * DeltaTime);
 
             if (!IsGrounded || IsJumping) 
                 return;
@@ -347,9 +322,7 @@ namespace FlatLands.CharacterLocomotion
         
         private void Sprint(bool value)
         {
-            var sprintConditions = _inputAxis.sqrMagnitude > 0.1f && IsGrounded 
-                                                                  && !(IsStrafing && !LocomotionConfig.StrafeMovementPair.WalkByDefault && (_horizontalSpeed >= 0.5 || _horizontalSpeed <= -0.5 || _verticalSpeed <= 0.1f));
-
+            var sprintConditions = _inputAxis.sqrMagnitude > 0.1f && IsGrounded && _currentMovementPair.CanSprinting;
             if (value && sprintConditions)
             {
                 if (_inputAxis.sqrMagnitude > 0.1f && !IsSprinting)
@@ -363,11 +336,6 @@ namespace FlatLands.CharacterLocomotion
             }
         }
 
-        private void Strafe()
-        {
-            IsStrafing = !IsStrafing;
-        }
-        
 #endregion
 
 
@@ -378,22 +346,16 @@ namespace FlatLands.CharacterLocomotion
             if (_lockRotation) 
                 return;
 
-            var rotationWithCamera = IsStrafing
-                ? LocomotionConfig.StrafeMovementPair.RotateWithCamera
-                : LocomotionConfig.FreeMovementPair.RotateWithCamera;
-            
+            var rotationWithCamera = _currentMovementPair.RotateWithCamera;
             var validInput = _inputAxis != Vector3.zero || rotationWithCamera;
 
             if (!validInput)
                 return;
 
-            var curSmooth = IsStrafing
-                ? LocomotionConfig.StrafeMovementPair.MovementSmooth
-                : LocomotionConfig.FreeMovementPair.MovementSmooth;
+            var movementSmooth = _currentMovementPair.MovementSmooth;
+            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, movementSmooth * DeltaTime);
             
-            _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, curSmooth * DeltaTime);
-            
-            var dir = (IsStrafing && !IsSprinting || (LocomotionConfig.FreeMovementPair.RotateWithCamera && _inputAxis == Vector3.zero)) 
+            var dir = (!IsSprinting || (rotationWithCamera && _inputAxis == Vector3.zero)) 
                       && _rotateTarget ? _rotateTarget.forward : _moveDirection;
             RotateToDirection(dir);
         }
@@ -406,11 +368,8 @@ namespace FlatLands.CharacterLocomotion
 
         private void RotateToDirection(Vector3 direction)
         {
-            var movementPair = IsStrafing 
-                ? LocomotionConfig.StrafeMovementPair.RotationSpeed 
-                : LocomotionConfig.FreeMovementPair.RotationSpeed;
-            
-            RotateToDirection(direction, movementPair);
+            var rotationSpeed = _currentMovementPair.RotationSpeed;
+            RotateToDirection(direction, rotationSpeed);
         }
 
         private void RotateToDirection(Vector3 direction, float rotationSpeed)
@@ -447,64 +406,41 @@ namespace FlatLands.CharacterLocomotion
         {
             var animator = Behaviour.CharacterAnimator;
             
-            animator.SetBool(AnimatorIsStrafing, IsStrafing);
             animator.SetBool(AnimatorIsSprinting, IsSprinting);
             animator.SetBool(AnimatorIsGrounded, IsGrounded);
             animator.SetFloat(AnimatorGroundDistance, _groundDistance);
+            animator.SetInteger(AnimatorMovementType, (int)LocomotionType);
 
             var verticalSpeed = StopMove ? 0 : _verticalSpeed;
-            var strafeSmooth = LocomotionConfig.StrafeMovementPair.AnimationSmooth;
-            var freeSmooth = LocomotionConfig.FreeMovementPair.AnimationSmooth;
+            var horizontalSpeed = StopMove ? 0 : _horizontalSpeed;
 
-            if (IsStrafing)
-            {
-                var horizontalSpeed = StopMove ? 0 : _horizontalSpeed;
-                animator.SetFloat(AnimatorInputHorizontal, horizontalSpeed, strafeSmooth, DeltaTime);
-                animator.SetFloat(AnimatorInputVertical, verticalSpeed, strafeSmooth, DeltaTime);
-            }
-            else
-            {
-                animator.SetFloat(AnimatorInputVertical, verticalSpeed, freeSmooth, DeltaTime);
-            }
+            var animationSmooth = _currentMovementPair.AnimationSmooth;
+            
+            animator.SetFloat(AnimatorInputVertical, verticalSpeed, animationSmooth, DeltaTime);
+            animator.SetFloat(AnimatorInputHorizontal, horizontalSpeed, animationSmooth, DeltaTime);
 
             var magnitude = StopMove ? 0f : _inputMagnitude;
-            var curSmooth = IsStrafing ? strafeSmooth : freeSmooth;
             
-            animator.SetFloat(AnimatorInputMagnitude, magnitude, curSmooth, DeltaTime);
+            animator.SetFloat(AnimatorInputMagnitude, magnitude, animationSmooth, DeltaTime);
         }
 
-        private void SetAnimatorMoveSpeed(CharacterMovementPair movementPair)
+        private void UpdateAnimatorMoveSpeed()
         {
             var relativeInput = Behaviour.transform.InverseTransformDirection(_moveDirection);
-            _verticalSpeed = relativeInput.z;
-            _horizontalSpeed = relativeInput.x;
+            _verticalSpeed = Mathf.Clamp(relativeInput.z, -1, 1);
+            _horizontalSpeed = Mathf.Clamp(relativeInput.x, -1, 1);
 
             var newInput = new Vector2(_verticalSpeed, _horizontalSpeed);
-            var walkAnimSpeed = IsSprinting 
-                ? AnimatorRunningSpeed 
-                : AnimatorWalkSpeed;
-
-            var curMagnitude = IsSprinting 
+            var curThreshold =  IsSprinting 
                 ? newInput.magnitude + 0.5f 
                 : newInput.magnitude;
 
-            var runAnimSpeed = IsSprinting 
-                ? AnimatorSprintSpeed 
-                : AnimatorRunningSpeed;
+            var maxThreshold = IsSprinting 
+                ? AnimatorSprintThreshold 
+                : AnimatorSimpleThreshold;
 
-            _inputMagnitude = movementPair.WalkByDefault 
-                ? Mathf.Clamp(newInput.magnitude, 0, walkAnimSpeed) 
-                : Mathf.Clamp(curMagnitude, 0, runAnimSpeed);
+            _inputMagnitude = Mathf.Clamp(curThreshold, 0, maxThreshold);
         }
-
-        // private void HandleAnimatorIk(int layer)
-        // {
-        //     if(_rotateTarget == null)
-        //         return;
-        //     
-        //     Behaviour.CharacterAnimator.SetLookAtWeight(LocomotionConfig.MainWeight, LocomotionConfig.BodyIkWeight, LocomotionConfig.HeadIkWeight, LocomotionConfig.EyesIkWeight, LocomotionConfig.ClampIkWeight);
-        //     Behaviour.CharacterAnimator.SetLookAtPosition(_rotateTarget.position);
-        // }
 
 #endregion
 
@@ -691,7 +627,7 @@ namespace FlatLands.CharacterLocomotion
          {
             var transform = Behaviour.transform;
              
-            var dir = IsStrafing && _inputAxis.magnitude > 0 ? (transform.right * _inputAxis.x + transform.forward * _inputAxis.z).normalized : transform.forward;
+            var dir =  _inputAxis.magnitude > 0 ? (transform.right * _inputAxis.x + transform.forward * _inputAxis.z).normalized : transform.forward;
             var movementAngle = Vector3.Angle(dir, _groundHit.normal) - 90;
             return movementAngle;
          }

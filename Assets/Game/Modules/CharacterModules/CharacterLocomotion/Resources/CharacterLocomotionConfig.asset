@@ -21,9 +21,36 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
-    - Name: _freeMovementPair
+    - Name: _movementPairs
       Entry: 7
-      Data: 0|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+      Data: 0|System.Collections.Generic.Dictionary`2[[FlatLands.CharacterLocomotion.CharacterLocomotionType,
+        FlatLands.CharacterLocomotion],[FlatLands.CharacterLocomotion.CharacterMovementPair,
+        FlatLands.CharacterLocomotion]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.CharacterLocomotion.CharacterLocomotionType,
+        FlatLands.CharacterLocomotion]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 0
+    - Name: $v
+      Entry: 7
+      Data: 2|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
       Data: 6
@@ -35,7 +62,7 @@ MonoBehaviour:
       Data: 16
     - Name: _walkByDefault
       Entry: 5
-      Data: false
+      Data: true
     - Name: _rotateWithCamera
       Entry: 5
       Data: false
@@ -51,9 +78,18 @@ MonoBehaviour:
     - Name: 
       Entry: 8
       Data: 
-    - Name: _strafeMovementPair
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
       Entry: 7
-      Data: 1|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 10
+    - Name: $v
+      Entry: 7
+      Data: 3|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
       Data: 6
@@ -65,7 +101,7 @@ MonoBehaviour:
       Data: 16
     - Name: _walkByDefault
       Entry: 5
-      Data: false
+      Data: true
     - Name: _rotateWithCamera
       Entry: 5
       Data: false
@@ -78,6 +114,15 @@ MonoBehaviour:
     - Name: _sprintSpeed
       Entry: 4
       Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -86,7 +131,7 @@ MonoBehaviour:
   _strafeInput: 9
   _sprintInput: 304
   _sprintCost: 0.01
-  _locomotionType: 2
+  _defaultLocomotionType: 10
   _jumpWithRigidbodyForce: 0
   _jumpAndRotate: 1
   _jumpTimer: 0.3

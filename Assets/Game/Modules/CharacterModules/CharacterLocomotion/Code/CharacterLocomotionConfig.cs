@@ -1,4 +1,5 @@
-﻿using FlatLands.Architecture;
+﻿using System.Collections.Generic;
+using FlatLands.Architecture;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -16,24 +17,17 @@ namespace FlatLands.CharacterLocomotion
         private KeyCode _jumpInput = KeyCode.Space;
         
         [SerializeField, FoldoutGroup("Buttons Settings")]
-        private KeyCode _strafeInput = KeyCode.Tab;
-        
-        [SerializeField, FoldoutGroup("Buttons Settings")]
         private KeyCode _sprintInput = KeyCode.LeftShift;
 
         [SerializeField, FoldoutGroup("Movement Settings")]
         private float _sprintCost;
         
         [SerializeField, FoldoutGroup("Movement Settings")]
-        private CharacterLocomotionType _locomotionType = CharacterLocomotionType.FreeWithStrafe;
+        private CharacterLocomotionType _defaultLocomotionType = CharacterLocomotionType.Strafe;
 
-        [SerializeField, FoldoutGroup("Movement Settings"), HideIf("@_locomotionType == CharacterLocomotionType.OnlyStrafe")]
-        private CharacterMovementPair _freeMovementPair = new CharacterMovementPair();
-        
-        [SerializeField, FoldoutGroup("Movement Settings"), HideIf("@_locomotionType == CharacterLocomotionType.OnlyFree")]
-        private CharacterMovementPair _strafeMovementPair = new CharacterMovementPair();
-        
-        
+        [SerializeField, FoldoutGroup("Movement Settings")]
+        private Dictionary<CharacterLocomotionType, CharacterMovementPair> _movementPairs;
+
         [SerializeField, FoldoutGroup("Jump Settings")]
         private bool _jumpWithRigidbodyForce = false;
         
@@ -71,13 +65,13 @@ namespace FlatLands.CharacterLocomotion
         public bool UseRootMotion => _useRootMotion;
 
         public KeyCode JumpInput => _jumpInput;
-        public KeyCode StrafeInput => _strafeInput;
         public KeyCode SprintInput => _sprintInput;
 
         public float SprintCost => _sprintCost;
-        public CharacterLocomotionType LocomotionType => _locomotionType;
-        public CharacterMovementPair FreeMovementPair => _freeMovementPair;
-        public CharacterMovementPair StrafeMovementPair => _strafeMovementPair;
+        public CharacterLocomotionType DefaultLocomotionType => _defaultLocomotionType;
+        public IReadOnlyDictionary<CharacterLocomotionType, CharacterMovementPair> MovementPairs => _movementPairs;
+        // public CharacterMovementPair FreeMovementPair => _freeMovementPair;
+        // public CharacterMovementPair StrafeMovementPair => _strafeMovementPair;
 
         public bool JumpWithRigidbodyForce => _jumpWithRigidbodyForce;
         public bool JumpAndRotate => _jumpAndRotate;
@@ -98,7 +92,7 @@ namespace FlatLands.CharacterLocomotion
     {
         [SerializeField, BoxGroup, Range(1f, 20f)]
         private float _movementSmooth = 6f;
-        
+
         [SerializeField, BoxGroup, Range(0f, 1f)]
         private float _animationSmooth = 0.2f;
         
@@ -106,34 +100,32 @@ namespace FlatLands.CharacterLocomotion
         private float _rotationSpeed = 16f;
         
         [SerializeField, BoxGroup]
-        private bool _walkByDefault = false;
-        
-        [SerializeField, BoxGroup]
         private bool _rotateWithCamera = false;
         
         [SerializeField, BoxGroup]
-        private float _walkSpeed = 2f;
-        
+        private bool _canSprinting;
+
         [SerializeField, BoxGroup]
-        private float _runningSpeed = 4f;
-        
-        [SerializeField, BoxGroup]
+        private float _mainSpeed = 4f;
+
+        [SerializeField, BoxGroup, ShowIf(nameof(_canSprinting))]
         private float _sprintSpeed = 6f;
-        
+
         public float MovementSmooth => _movementSmooth;
         public float AnimationSmooth => _animationSmooth;
         public float RotationSpeed => _rotationSpeed;
-        public bool WalkByDefault => _walkByDefault;
         public bool RotateWithCamera => _rotateWithCamera;
-        public float WalkSpeed => _walkSpeed;
-        public float RunningSpeed => _runningSpeed;
+        public bool CanSprinting => _canSprinting;
+        public float MainSpeed => _mainSpeed;
         public float SprintSpeed => _sprintSpeed;
     }
     
     public enum CharacterLocomotionType
     {
-        FreeWithStrafe,
-        OnlyStrafe,
-        OnlyFree,
+        Walk = 0,
+        WalkBattle = 1,
+        
+        Strafe = 50,
+        StrafeBattle = 51
     }
 }
