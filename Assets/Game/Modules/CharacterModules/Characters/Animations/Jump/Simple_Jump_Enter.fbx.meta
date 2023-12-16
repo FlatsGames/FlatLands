@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4cf790fb9be83a4698f2fece7fb5fc1
+guid: 800e0fc7acd9d3e4cbc212eca6cbf9f5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -437,7 +437,7 @@ ModelImporter:
     second: root
   - first:
       74: 7400000
-    second: Sprint_Fwd
+    second: JumpStart_Simple
   - first:
       95: 9500000
     second: //RootNode
@@ -481,30 +481,37 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sprint_Fwd
+      name: JumpStart_Simple
       takeName: Scene
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 13
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
+      loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.26923075
+        functionName: Jump_StartJump
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}

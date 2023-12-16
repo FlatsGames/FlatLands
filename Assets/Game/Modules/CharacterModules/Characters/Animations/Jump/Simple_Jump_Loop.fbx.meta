@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4cf790fb9be83a4698f2fece7fb5fc1
+guid: fad4ac5b5f424574084fe5a99108943b
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -437,7 +437,7 @@ ModelImporter:
     second: root
   - first:
       74: 7400000
-    second: Sprint_Fwd
+    second: Jump_Loop
   - first:
       95: 9500000
     second: //RootNode
@@ -462,12 +462,11 @@ ModelImporter:
     animationImportErrors: 
     animationImportWarnings: "\nClip 'Scene' has import animation warnings that might
       lower retargeting quality:\nNote: Activate translation DOF on avatar to improve
-      retargeting quality.\n\t'neck_02' is inbetween humanoid transforms and has
-      rotation animation that will be discarded.\n\t'thigh_l' has scale animation
-      that will be discarded.\n\t'calf_l' has scale animation that will be discarded.\n\t'foot_l'
-      has scale animation that will be discarded.\n\t'thigh_r' has scale animation
-      that will be discarded.\n\t'calf_r' has scale animation that will be discarded.\n\t'foot_r'
-      has scale animation that will be discarded.\n"
+      retargeting quality.\n\t'thigh_l' has scale animation that will be discarded.\n\t'calf_l'
+      has scale animation that will be discarded.\n\t'foot_l' has scale animation
+      that will be discarded.\n\t'thigh_r' has scale animation that will be discarded.\n\t'calf_r'
+      has scale animation that will be discarded.\n\t'foot_r' has scale animation
+      that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -481,11 +480,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sprint_Fwd
+      name: Jump_Loop
       takeName: Scene
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 30
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -495,7 +494,7 @@ ModelImporter:
       loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
-      loopBlendPositionY: 1
+      loopBlendPositionY: 0
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1

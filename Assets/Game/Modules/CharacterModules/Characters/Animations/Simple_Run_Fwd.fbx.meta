@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4cf790fb9be83a4698f2fece7fb5fc1
+guid: b6d1aa417b392224281f422ba384a907
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -437,7 +437,7 @@ ModelImporter:
     second: root
   - first:
       74: 7400000
-    second: Sprint_Fwd
+    second: Run_Fwd
   - first:
       95: 9500000
     second: //RootNode
@@ -481,11 +481,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sprint_Fwd
+      name: Run_Fwd
       takeName: Scene
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 19
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -499,7 +499,7 @@ ModelImporter:
       loopBlendPositionXZ: 0
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b4cf790fb9be83a4698f2fece7fb5fc1
+guid: a57a25a2b10b10c4c9394001c56455f6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable:
@@ -437,7 +437,7 @@ ModelImporter:
     second: root
   - first:
       74: 7400000
-    second: Sprint_Fwd
+    second: Simple_Walk_Fwd
   - first:
       95: 9500000
     second: //RootNode
@@ -481,11 +481,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Sprint_Fwd
+      name: Simple_Walk_Fwd
       takeName: Scene
       internalID: 0
       firstFrame: 0
-      lastFrame: 18
+      lastFrame: 28
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
