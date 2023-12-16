@@ -104,7 +104,7 @@ MonoBehaviour:
       Data: true
     - Name: _mainSpeed
       Entry: 4
-      Data: 4
+      Data: 2.5
     - Name: _sprintSpeed
       Entry: 4
       Data: 6
@@ -124,7 +124,7 @@ MonoBehaviour:
   _jumpInput: 32
   _sprintInput: 304
   _sprintCost: 0.01
-  _defaultLocomotionType: 0
+  _defaultLocomotionType: 50
   _jumpWithRigidbodyForce: 0
   _jumpAndRotate: 1
   _jumpTimer: 0.3
