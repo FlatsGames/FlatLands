@@ -41,7 +41,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -108,6 +108,42 @@ MonoBehaviour:
     - Name: _sprintSpeed
       Entry: 4
       Data: 6
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 100
+    - Name: $v
+      Entry: 7
+      Data: 4|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
+    - Name: _movementSmooth
+      Entry: 4
+      Data: 6
+    - Name: _animationSmooth
+      Entry: 4
+      Data: 0.2
+    - Name: _rotationSpeed
+      Entry: 4
+      Data: 16
+    - Name: _rotateWithCamera
+      Entry: 5
+      Data: false
+    - Name: _canSprinting
+      Entry: 5
+      Data: true
+    - Name: _mainSpeed
+      Entry: 4
+      Data: 2
+    - Name: _sprintSpeed
+      Entry: 4
+      Data: 3
     - Name: 
       Entry: 8
       Data: 

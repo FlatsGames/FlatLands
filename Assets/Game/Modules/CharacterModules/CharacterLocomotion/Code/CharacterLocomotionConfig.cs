@@ -18,6 +18,9 @@ namespace FlatLands.CharacterLocomotion
         
         [SerializeField, FoldoutGroup("Buttons Settings")]
         private KeyCode _sprintInput = KeyCode.LeftShift;
+        
+        [SerializeField, FoldoutGroup("Buttons Settings")]
+        private KeyCode _crouchInput = KeyCode.C;
 
         [SerializeField, FoldoutGroup("Movement Settings")]
         private float _sprintCost;
@@ -66,12 +69,11 @@ namespace FlatLands.CharacterLocomotion
 
         public KeyCode JumpInput => _jumpInput;
         public KeyCode SprintInput => _sprintInput;
+        public KeyCode CrouchInput => _crouchInput;
 
         public float SprintCost => _sprintCost;
         public CharacterLocomotionType DefaultLocomotionType => _defaultLocomotionType;
         public IReadOnlyDictionary<CharacterLocomotionType, CharacterMovementPair> MovementPairs => _movementPairs;
-        // public CharacterMovementPair FreeMovementPair => _freeMovementPair;
-        // public CharacterMovementPair StrafeMovementPair => _strafeMovementPair;
 
         public bool JumpWithRigidbodyForce => _jumpWithRigidbodyForce;
         public bool JumpAndRotate => _jumpAndRotate;
@@ -126,6 +128,9 @@ namespace FlatLands.CharacterLocomotion
         WalkBattle = 1,
         
         Strafe = 50,
-        StrafeBattle = 51
+        StrafeBattle = 51,
+        
+        Crouch = 100,
+        CrouchBattle = 101,
     }
 }

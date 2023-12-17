@@ -13,8 +13,8 @@ namespace FlatLands.CharacterLocomotion
         private const string Vertical_Input_Name = "Vertical";
         
         private const string Jumping_SubMachine_Name = "Jumping";
-        private const string Jumping_Start_Simple = "JumpingStart_Simple";
-        private const string Jumping_Start_Run = "JumpingStart_Run";
+        private const string Jumping_Start_Simple = "JumpStart_Simple";
+        private const string Jumping_Start_Run = "JumpStart_Run";
 
         [Inject] private GameAttributesManager _gameAttributesManager;
 
@@ -41,6 +41,7 @@ namespace FlatLands.CharacterLocomotion
             get => _locomotionType;
             set
             {
+                _prevLocomotionType = _locomotionType;
                 _locomotionType = value;
                 _prevMovementPair = _currentMovementPair;
                 LocomotionConfig.MovementPairs.TryGetValue(_locomotionType, out _currentMovementPair);
@@ -52,6 +53,7 @@ namespace FlatLands.CharacterLocomotion
         public bool IsJumping { get; private set; }
         public bool IsGrounded { get; private set; }
         public bool IsSprinting { get; private set; }
+        public bool IsCrouching { get; private set; }
         public bool CanSprinting { get; private set; }
         public bool StopMove { get; private set; }
         
@@ -59,6 +61,7 @@ namespace FlatLands.CharacterLocomotion
 
         public event Action OnLocomotionTypeChanged;
 
+        private CharacterLocomotionType _prevLocomotionType;
         private CharacterLocomotionType _locomotionType;
         private CharacterMovementPair _prevMovementPair;
         private CharacterMovementPair _currentMovementPair;
@@ -171,6 +174,7 @@ namespace FlatLands.CharacterLocomotion
             UpdateMoveDirection(_rotateTarget);
             SprintInput();
             JumpInput();
+            CrouchInput();
         }
         
         private void MoveInput()
@@ -203,6 +207,12 @@ namespace FlatLands.CharacterLocomotion
             var canJump = IsGrounded && GroundAngle() < LocomotionConfig.SlopeLimit && !IsJumping && !StopMove;
             if (Input.GetKeyDown(LocomotionConfig.JumpInput) && canJump)
                 Jump();
+        }
+        
+        private void CrouchInput()
+        {
+            if(Input.GetKeyDown(LocomotionConfig.CrouchInput))
+                Crouch();
         }
 
 #endregion
@@ -639,6 +649,18 @@ namespace FlatLands.CharacterLocomotion
             return movementAngle;
          }
         
+#endregion
+
+#region Crouch
+
+        private void Crouch()
+        {
+            IsCrouching = !IsCrouching;
+            LocomotionType = IsCrouching 
+                ? CharacterLocomotionType.Crouch 
+                : _prevLocomotionType;
+        }
+
 #endregion
 
     }

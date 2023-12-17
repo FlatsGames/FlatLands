@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator_New.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator_New.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Resources/CharacterLocomotionConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Resources/CharacterLocomotionConfig.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Simple_Run_Fwd.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Simple_Run_Fwd.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator_New.controller" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator_New.controller.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
