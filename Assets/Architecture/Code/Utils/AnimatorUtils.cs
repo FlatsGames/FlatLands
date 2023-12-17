@@ -102,5 +102,10 @@ namespace FlatLands.Architecture
 
             completeCallback?.Invoke();
         }
+
+        public static void PlayCrossFadeInFixedTime(this Animator animator, int layerIndex, string animName, float fixedTransitionDuration)
+        {
+            animator.CrossFadeInFixedTime(animName, fixedTransitionDuration, layerIndex);
+        }
     }
 }

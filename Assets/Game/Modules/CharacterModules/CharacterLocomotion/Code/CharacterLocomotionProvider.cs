@@ -12,6 +12,10 @@ namespace FlatLands.CharacterLocomotion
         private const string Horizontal_Input_Name = "Horizontal";
         private const string Vertical_Input_Name = "Vertical";
         
+        private const string Jumping_SubMachine_Name = "Jumping";
+        private const string Jumping_Start_Simple = "JumpingStart_Simple";
+        private const string Jumping_Start_Run = "JumpingStart_Run";
+
         [Inject] private GameAttributesManager _gameAttributesManager;
 
         private int AnimatorInputHorizontal => Animator.StringToHash("InputHorizontal");
@@ -21,6 +25,9 @@ namespace FlatLands.CharacterLocomotion
         private int AnimatorIsGrounded => Animator.StringToHash("IsGrounded");
         private int AnimatorIsSprinting => Animator.StringToHash("IsSprinting");
         private int AnimatorGroundDistance => Animator.StringToHash("GroundDistance");
+
+        private int LocomotionLayerIndex => 0;
+        private string LocomotionLayerName => Behaviour.CharacterAnimator.GetLayerName(LocomotionLayerIndex);
 
         private float AnimatorSimpleThreshold => 1f;
         private float AnimatorSprintThreshold => 1.5f;
@@ -453,9 +460,9 @@ namespace FlatLands.CharacterLocomotion
             IsJumping = true;
 
             if (_inputAxis.sqrMagnitude < 0.1f)
-                Behaviour.CharacterAnimator.CrossFadeInFixedTime("JumpStart_Simple", 0.1f);
+                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,"JumpStart_Simple", 0.1f);
             else
-                Behaviour.CharacterAnimator.CrossFadeInFixedTime("JumpStart_Run", .2f);
+                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,"JumpStart_Run", 0.2f);
         }
 
         private void ControlJumpBehaviour()
