@@ -137,10 +137,10 @@ MonoBehaviour:
       Data: false
     - Name: _canSprinting
       Entry: 5
-      Data: true
+      Data: false
     - Name: _mainSpeed
       Entry: 4
-      Data: 2
+      Data: 3
     - Name: _sprintSpeed
       Entry: 4
       Data: 3
@@ -159,6 +159,7 @@ MonoBehaviour:
   _useRootMotion: 0
   _jumpInput: 32
   _sprintInput: 304
+  _crouchInput: 99
   _sprintCost: 0.01
   _defaultLocomotionType: 50
   _jumpWithRigidbodyForce: 0
