@@ -21,5 +21,5 @@ MonoBehaviour:
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes: []
-  _defaultCharacterPrefab: {fileID: 8511600455462435884, guid: b813e1b7b32a3514fa3a56051a84f8dc,
+  _defaultCharacterPrefab: {fileID: 2255983783793598051, guid: 2004c3b7fabc457448542327f8055f00,
     type: 3}
