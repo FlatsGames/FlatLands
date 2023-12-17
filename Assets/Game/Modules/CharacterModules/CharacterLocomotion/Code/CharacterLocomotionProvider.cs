@@ -460,9 +460,9 @@ namespace FlatLands.CharacterLocomotion
             IsJumping = true;
 
             if (_inputAxis.sqrMagnitude < 0.1f)
-                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,"JumpStart_Simple", 0.1f);
+                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,Jumping_Start_Simple, 0.1f);
             else
-                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,"JumpStart_Run", 0.2f);
+                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,Jumping_Start_Run, 0.2f);
         }
 
         private void ControlJumpBehaviour()
