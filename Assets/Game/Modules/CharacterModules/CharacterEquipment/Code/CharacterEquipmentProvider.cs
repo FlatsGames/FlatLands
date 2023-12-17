@@ -63,11 +63,11 @@ namespace FlatLands.CharacterEquipment
 
         protected override void HandleEquipmentWeaponChanged()
         {
-            var newLocomotionType = IsHoldWeapon 
-                    ? CharacterLocomotionType.OnlyStrafe 
-                    : CharacterLocomotionType.OnlyFree;
+            // var newLocomotionType = IsHoldWeapon 
+            //         ? CharacterLocomotionType.OnlyStrafe 
+            //         : CharacterLocomotionType.OnlyFree;
 
-            _characterLocomotionProvider.LocomotionType = newLocomotionType;
+            //_characterLocomotionProvider.LocomotionType = newLocomotionType;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FlatLands.Architecture;
+﻿using System.Collections.Generic;
+using FlatLands.Architecture;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -16,24 +17,20 @@ namespace FlatLands.CharacterLocomotion
         private KeyCode _jumpInput = KeyCode.Space;
         
         [SerializeField, FoldoutGroup("Buttons Settings")]
-        private KeyCode _strafeInput = KeyCode.Tab;
+        private KeyCode _sprintInput = KeyCode.LeftShift;
         
         [SerializeField, FoldoutGroup("Buttons Settings")]
-        private KeyCode _sprintInput = KeyCode.LeftShift;
+        private KeyCode _crouchInput = KeyCode.C;
 
         [SerializeField, FoldoutGroup("Movement Settings")]
         private float _sprintCost;
         
         [SerializeField, FoldoutGroup("Movement Settings")]
-        private CharacterLocomotionType _locomotionType = CharacterLocomotionType.FreeWithStrafe;
+        private CharacterLocomotionType _defaultLocomotionType = CharacterLocomotionType.Strafe;
 
-        [SerializeField, FoldoutGroup("Movement Settings"), HideIf("@_locomotionType == CharacterLocomotionType.OnlyStrafe")]
-        private CharacterMovementPair _freeMovementPair = new CharacterMovementPair();
-        
-        [SerializeField, FoldoutGroup("Movement Settings"), HideIf("@_locomotionType == CharacterLocomotionType.OnlyFree")]
-        private CharacterMovementPair _strafeMovementPair = new CharacterMovementPair();
-        
-        
+        [SerializeField, FoldoutGroup("Movement Settings")]
+        private Dictionary<CharacterLocomotionType, CharacterMovementPair> _movementPairs;
+
         [SerializeField, FoldoutGroup("Jump Settings")]
         private bool _jumpWithRigidbodyForce = false;
         
@@ -67,33 +64,16 @@ namespace FlatLands.CharacterLocomotion
         
         [SerializeField, FoldoutGroup("Ground Settings"), Range(30, 80)]
         private float _slopeLimit = 75f;
-
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _mainWeight = 1f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _bodyIkWeight = 0.3f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _headIkWeight = 0.4f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float eyesIkWeight = 0.3f;
-        
-        [SerializeField, FoldoutGroup("IK Settings"), Range(0, 1)]
-        private float _clampIkWeight = 0.3f;
         
         public bool UseRootMotion => _useRootMotion;
 
         public KeyCode JumpInput => _jumpInput;
-        public KeyCode StrafeInput => _strafeInput;
         public KeyCode SprintInput => _sprintInput;
+        public KeyCode CrouchInput => _crouchInput;
 
         public float SprintCost => _sprintCost;
-        public CharacterLocomotionType LocomotionType => _locomotionType;
-        public CharacterMovementPair FreeMovementPair => _freeMovementPair;
-        public CharacterMovementPair StrafeMovementPair => _strafeMovementPair;
+        public CharacterLocomotionType DefaultLocomotionType => _defaultLocomotionType;
+        public IReadOnlyDictionary<CharacterLocomotionType, CharacterMovementPair> MovementPairs => _movementPairs;
 
         public bool JumpWithRigidbodyForce => _jumpWithRigidbodyForce;
         public bool JumpAndRotate => _jumpAndRotate;
@@ -107,13 +87,6 @@ namespace FlatLands.CharacterLocomotion
         public float GroundMinDistance => _groundMinDistance;
         public float GroundMaxDistance => _groundMaxDistance;
         public float SlopeLimit => _slopeLimit;
-
-
-        public float MainWeight => _mainWeight;
-        public float BodyIkWeight => _bodyIkWeight;
-        public float HeadIkWeight => _headIkWeight;
-        public float EyesIkWeight => eyesIkWeight;
-        public float ClampIkWeight => _clampIkWeight;
     }
     
     [HideReferenceObjectPicker]
@@ -121,7 +94,7 @@ namespace FlatLands.CharacterLocomotion
     {
         [SerializeField, BoxGroup, Range(1f, 20f)]
         private float _movementSmooth = 6f;
-        
+
         [SerializeField, BoxGroup, Range(0f, 1f)]
         private float _animationSmooth = 0.2f;
         
@@ -129,34 +102,35 @@ namespace FlatLands.CharacterLocomotion
         private float _rotationSpeed = 16f;
         
         [SerializeField, BoxGroup]
-        private bool _walkByDefault = false;
-        
-        [SerializeField, BoxGroup]
         private bool _rotateWithCamera = false;
         
         [SerializeField, BoxGroup]
-        private float _walkSpeed = 2f;
-        
+        private bool _canSprinting;
+
         [SerializeField, BoxGroup]
-        private float _runningSpeed = 4f;
-        
-        [SerializeField, BoxGroup]
+        private float _mainSpeed = 4f;
+
+        [SerializeField, BoxGroup, ShowIf(nameof(_canSprinting))]
         private float _sprintSpeed = 6f;
-        
+
         public float MovementSmooth => _movementSmooth;
         public float AnimationSmooth => _animationSmooth;
         public float RotationSpeed => _rotationSpeed;
-        public bool WalkByDefault => _walkByDefault;
         public bool RotateWithCamera => _rotateWithCamera;
-        public float WalkSpeed => _walkSpeed;
-        public float RunningSpeed => _runningSpeed;
+        public bool CanSprinting => _canSprinting;
+        public float MainSpeed => _mainSpeed;
         public float SprintSpeed => _sprintSpeed;
     }
     
     public enum CharacterLocomotionType
     {
-        FreeWithStrafe,
-        OnlyStrafe,
-        OnlyFree,
+        Walk = 0,
+        WalkBattle = 1,
+        
+        Strafe = 50,
+        StrafeBattle = 51,
+        
+        Crouch = 100,
+        CrouchBattle = 101,
     }
 }

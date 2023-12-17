@@ -16,6 +16,9 @@ namespace FlatLands.CombatSystem
         [SerializeField, BoxGroup("Character Settings")] 
         private string _shootAnim;
         
+        [SerializeField, BoxGroup("Character Settings")] 
+        private string _reloadAnim;
+        
         [SerializeField, BoxGroup("Weapon Settings")] 
         private string _startWeaponAimingAnim;
         
@@ -40,6 +43,7 @@ namespace FlatLands.CombatSystem
         public string StartAimingAnim => _startAimingAnim;
         public string EndAimingAnim => _endAimingAnim;
         public string ShootAnim => _shootAnim;
+        public string ReloadAnim => _reloadAnim;
 
         public string WeaponStartAimingAnim => _startWeaponAimingAnim;
         public string WeaponEndAimingAnim => _endWeaponAimingAnim;
