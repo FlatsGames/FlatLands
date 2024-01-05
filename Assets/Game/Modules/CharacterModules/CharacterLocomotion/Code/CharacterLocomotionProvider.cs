@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using FlatLands.Architecture;
 using FlatLands.CharacterAttributes;
 using FlatLands.GameAttributes;
@@ -22,6 +23,7 @@ namespace FlatLands.CharacterLocomotion
         private int AnimatorInputVertical => Animator.StringToHash("InputVertical");
         private int AnimatorInputMagnitude => Animator.StringToHash("InputMagnitude");
         private int AnimatorMovementType => Animator.StringToHash("MovementType");
+        private int AnimatorLocomotionTypeMagnitude => Animator.StringToHash("LocomotionTypeMagnitude");
         private int AnimatorIsGrounded => Animator.StringToHash("IsGrounded");
         private int AnimatorIsSprinting => Animator.StringToHash("IsSprinting");
         private int AnimatorGroundDistance => Animator.StringToHash("GroundDistance");
@@ -36,19 +38,7 @@ namespace FlatLands.CharacterLocomotion
         public CharacterLocomotionConfig LocomotionConfig { get; private set; }
         public CharacterBehaviour Behaviour { get; private set; }
 
-        public CharacterLocomotionType LocomotionType
-        {
-            get => _locomotionType;
-            set
-            {
-                _prevLocomotionType = _locomotionType;
-                _locomotionType = value;
-                _prevMovementPair = _currentMovementPair;
-                LocomotionConfig.MovementPairs.TryGetValue(_locomotionType, out _currentMovementPair);
-                
-                OnLocomotionTypeChanged?.Invoke();
-            }
-        }
+        public CharacterLocomotionType LocomotionType { get; private set; }
 
         public bool IsJumping { get; private set; }
         public bool IsGrounded { get; private set; }
@@ -62,7 +52,6 @@ namespace FlatLands.CharacterLocomotion
         public event Action OnLocomotionTypeChanged;
 
         private CharacterLocomotionType _prevLocomotionType;
-        private CharacterLocomotionType _locomotionType;
         private CharacterMovementPair _prevMovementPair;
         private CharacterMovementPair _currentMovementPair;
         
@@ -79,6 +68,7 @@ namespace FlatLands.CharacterLocomotion
         private float _heightReached;
         private float _jumpCounter;
         private float _groundDistance;
+        private float _locomotionTypeMagnitude;
         
         private RaycastHit _groundHit;
         
@@ -120,7 +110,7 @@ namespace FlatLands.CharacterLocomotion
         {
             LocomotionConfig = CharacterLocomotionConfig.Instance;
             Behaviour.CharacterAnimator.updateMode = AnimatorUpdateMode.AnimatePhysics;
-            LocomotionType = LocomotionConfig.DefaultLocomotionType;
+            SetLocomotionType(LocomotionConfig.DefaultLocomotionType);
 
             CreatePhysicsMaterials();
 
@@ -220,6 +210,24 @@ namespace FlatLands.CharacterLocomotion
 
 #region Movement
 
+        public void SetLocomotionType(CharacterLocomotionType locomotionType)
+        {
+            TweenUtils.DoValue((float)LocomotionType, (float)locomotionType, 0.1f, 
+                (value) =>
+                {
+                    _locomotionTypeMagnitude = value;
+                },
+                () =>
+                {
+                    _prevLocomotionType = LocomotionType;
+                    LocomotionType = locomotionType;
+                    _prevMovementPair = _currentMovementPair;
+                    LocomotionConfig.MovementPairs.TryGetValue(LocomotionType, out _currentMovementPair);
+                    
+                    OnLocomotionTypeChanged?.Invoke();
+                });
+        }
+
         private void ControlLocomotionType()
         {
             if (_lockMovement) 
@@ -256,6 +264,9 @@ namespace FlatLands.CharacterLocomotion
 
         private void SetControllerMovementSpeed(CharacterMovementPair movementPair)
         {
+            if(movementPair == null)
+                return;
+            
             var secondSpeed = IsSprinting 
                 ? movementPair.SprintSpeed 
                 : movementPair.MainSpeed;
@@ -265,6 +276,9 @@ namespace FlatLands.CharacterLocomotion
 
         private void MoveCharacter(Vector3 _direction)
         {
+            if(_currentMovementPair == null)
+                return;
+            
             var movementSmooth = _currentMovementPair.MovementSmooth;
             
             _inputSmooth = Vector3.Lerp(_inputSmooth, _inputAxis, movementSmooth * DeltaTime);
@@ -360,7 +374,8 @@ namespace FlatLands.CharacterLocomotion
         
         private void ControlRotationType()
         {
-            if (_lockRotation) 
+            if (_lockRotation 
+                || _currentMovementPair == null) 
                 return;
 
             var rotationWithCamera = _currentMovementPair.RotateWithCamera;
@@ -374,6 +389,7 @@ namespace FlatLands.CharacterLocomotion
             
             var dir = (!IsSprinting || (rotationWithCamera && _inputAxis == Vector3.zero)) 
                       && _rotateTarget ? _rotateTarget.forward : _moveDirection;
+            
             RotateToDirection(dir);
         }
 
@@ -426,7 +442,7 @@ namespace FlatLands.CharacterLocomotion
             animator.SetBool(AnimatorIsSprinting, IsSprinting);
             animator.SetBool(AnimatorIsGrounded, IsGrounded);
             animator.SetFloat(AnimatorGroundDistance, _groundDistance);
-            animator.SetInteger(AnimatorMovementType, (int)LocomotionType);
+            animator.SetFloat(AnimatorLocomotionTypeMagnitude, _locomotionTypeMagnitude);
 
             var verticalSpeed = StopMove ? 0 : _verticalSpeed;
             var horizontalSpeed = StopMove ? 0 : _horizontalSpeed;
