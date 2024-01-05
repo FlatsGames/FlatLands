@@ -13,8 +13,8 @@ namespace FlatLands.CharacterLocomotion
         private const string Vertical_Input_Name = "Vertical";
         
         private const string Jumping_SubMachine_Name = "Jumping";
-        private const string Jumping_Start_Simple = "JumpStart_Simple";
-        private const string Jumping_Start_Run = "JumpStart_Run";
+        private const string Jumping_Start_Simple = "Jump";
+        private const string Jumping_Start_Run = "JumpMove";
 
         [Inject] private GameAttributesManager _gameAttributesManager;
 
@@ -468,11 +468,11 @@ namespace FlatLands.CharacterLocomotion
         {
             _jumpCounter = LocomotionConfig.JumpTimer;
             IsJumping = true;
-
+            
             if (_inputAxis.sqrMagnitude < 0.1f)
-                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,Jumping_Start_Simple, 0.1f);
+                Behaviour.CharacterAnimator.CrossFadeInFixedTime(Jumping_Start_Simple, 0.1f);
             else
-                Behaviour.CharacterAnimator.PlayCrossFadeInFixedTime(LocomotionLayerIndex,Jumping_Start_Run, 0.2f);
+                Behaviour.CharacterAnimator.CrossFadeInFixedTime(Jumping_Start_Run, 0.2f);
         }
 
         private void ControlJumpBehaviour()

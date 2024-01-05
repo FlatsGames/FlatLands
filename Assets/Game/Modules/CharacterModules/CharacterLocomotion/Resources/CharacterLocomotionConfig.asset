@@ -89,10 +89,10 @@ MonoBehaviour:
       Data: 3|FlatLands.CharacterLocomotion.CharacterMovementPair, FlatLands.CharacterLocomotion
     - Name: _movementSmooth
       Entry: 4
-      Data: 6
+      Data: 9
     - Name: _animationSmooth
       Entry: 4
-      Data: 0.2
+      Data: 0.05
     - Name: _rotationSpeed
       Entry: 4
       Data: 16
