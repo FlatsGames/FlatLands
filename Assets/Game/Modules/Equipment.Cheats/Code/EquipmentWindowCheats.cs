@@ -72,7 +72,6 @@ namespace FlatLands.Equipments.Cheats
 		{
 			var characterEquipmentProvider = _characterManager.CurrentCharacter.GetProvider<CharacterEquipmentProvider>();
 			var allEquipments = BaseEquipmentItemConfig.Objects;
-			Debug.LogError($"Size: {allEquipments.Count}");
 			foreach (var equipmentItemConfig in allEquipments)
 			{
 				var createdWidget = Instantiate(_prefab, _allContent);
