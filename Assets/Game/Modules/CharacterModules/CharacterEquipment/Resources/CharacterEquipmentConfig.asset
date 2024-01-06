@@ -23,7 +23,7 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _weaponInputKeys
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.KeyCode, UnityEngine.CoreModule],[FlatLands.Equipments.WeaponEquipmentSlotType,
+      Data: 0|System.Collections.Generic.Dictionary`2[[UnityEngine.KeyCode, UnityEngine.CoreModule],[FlatLands.Equipments.EquipmentSlotType,
         FlatLands.Equipment]], mscorlib
     - Name: comparer
       Entry: 7
@@ -40,7 +40,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -61,18 +61,6 @@ MonoBehaviour:
       Data: 50
     - Name: $v
       Entry: 3
-      Data: 100
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
-      Data: 51
-    - Name: $v
-      Entry: 3
       Data: 200
     - Name: 
       Entry: 8
@@ -85,12 +73,12 @@ MonoBehaviour:
       Data: 
     - Name: _weaponEquipmentSettings
       Entry: 7
-      Data: 2|System.Collections.Generic.Dictionary`2[[FlatLands.Equipments.WeaponEquipmentSlotType,
+      Data: 2|System.Collections.Generic.Dictionary`2[[FlatLands.Equipments.EquipmentSlotType,
         FlatLands.Equipment],[FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair,
         FlatLands.CharacterEquipment]], mscorlib
     - Name: comparer
       Entry: 7
-      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.Equipments.WeaponEquipmentSlotType,
+      Data: 3|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.Equipments.EquipmentSlotType,
         FlatLands.Equipment]], mscorlib
     - Name: 
       Entry: 12
@@ -103,7 +91,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 3
+      Data: 2
     - Name: 
       Entry: 7
       Data: 
@@ -163,64 +151,10 @@ MonoBehaviour:
       Data: 
     - Name: $k
       Entry: 3
-      Data: 100
-    - Name: $v
-      Entry: 7
-      Data: 5|FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair, FlatLands.CharacterEquipment
-    - Name: _takeWeaponAnimationName
-      Entry: 1
-      Data: Take_WeaponSpine
-    - Name: _putWeaponAnimationName
-      Entry: 1
-      Data: Put_WeaponSpine
-    - Name: _useRightHand
-      Entry: 5
-      Data: true
-    - Name: _posInHand
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -7.54
-    - Name: 
-      Entry: 4
-      Data: 2.06
-    - Name: 
-      Entry: 4
-      Data: -1.78
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: _rotInHand
-      Entry: 7
-      Data: UnityEngine.Vector3, UnityEngine.CoreModule
-    - Name: 
-      Entry: 4
-      Data: -0.451
-    - Name: 
-      Entry: 4
-      Data: -2.714
-    - Name: 
-      Entry: 4
-      Data: -99.428
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 7
-      Data: 
-    - Name: $k
-      Entry: 3
       Data: 200
     - Name: $v
       Entry: 7
-      Data: 6|FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair, FlatLands.CharacterEquipment
+      Data: 5|FlatLands.CharacterEquipment.CharacterEquipmentWeaponPair, FlatLands.CharacterEquipment
     - Name: _takeWeaponAnimationName
       Entry: 1
       Data: Bow_Take

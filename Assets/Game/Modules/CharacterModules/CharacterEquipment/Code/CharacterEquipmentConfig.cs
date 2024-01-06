@@ -13,14 +13,14 @@ namespace FlatLands.CharacterEquipment
     public sealed class CharacterEquipmentConfig : SingletonScriptableObject<CharacterEquipmentConfig>
     {
         [SerializeField] 
-        private Dictionary<KeyCode, WeaponEquipmentSlotType> _weaponInputKeys;
+        private Dictionary<KeyCode, EquipmentSlotType> _weaponInputKeys;
         
         [SerializeField] 
-        private Dictionary<WeaponEquipmentSlotType, CharacterEquipmentWeaponPair> _weaponEquipmentSettings;
+        private Dictionary<EquipmentSlotType, CharacterEquipmentWeaponPair> _weaponEquipmentSettings;
 
         public IReadOnlyList<KeyCode> WeaponInputKeys => _weaponInputKeys.Keys.ToList();
 
-        public WeaponEquipmentSlotType GetWeaponInputKey(KeyCode keyType)
+        public EquipmentSlotType GetWeaponInputKey(KeyCode keyType)
         {
             if (!_weaponInputKeys.TryGetValue(keyType, out var slotType))
                 return default;
@@ -28,7 +28,7 @@ namespace FlatLands.CharacterEquipment
             return slotType;
         }
 
-        public IWeaponEquipmentSetting GetWeaponEquipmentSettings(WeaponEquipmentSlotType slotType)
+        public IWeaponEquipmentSetting GetWeaponEquipmentSettings(EquipmentSlotType slotType)
         {
             if (!_weaponEquipmentSettings.TryGetValue(slotType, out var settings))
                 return default;

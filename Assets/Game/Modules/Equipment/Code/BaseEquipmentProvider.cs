@@ -14,7 +14,7 @@ namespace FlatLands.Equipments
         protected int WeaponAnimatorLayerIndex => _animator.GetLayerIndex(WeaponAnimatorLayerName);
 
         public bool IsHoldWeapon => _currentSlot != null;
-        public WeaponEquipmentSlotType CurrentEquipmentWeaponType => _currentSlot.SlotType;
+        public EquipmentSlotType CurrentEquipmentType => _currentSlot.SlotType;
         public BaseEquipmentWeaponBehaviour CurrentEquipmentWeaponBehaviour => _currentSlot.WeaponBehaviour;
         public event Action OnCurrentEquipmentWeaponChanged;
         
@@ -39,7 +39,7 @@ namespace FlatLands.Equipments
 
 #region Animator
 
-        public abstract IWeaponEquipmentSetting GetEquipmentSettings(WeaponEquipmentSlotType slotType);
+        public abstract IWeaponEquipmentSetting GetEquipmentSettings(EquipmentSlotType slotType);
 
         // private void ApplyWeaponAnimationStates()
         // {
@@ -80,7 +80,7 @@ namespace FlatLands.Equipments
 
 #region Take / Remove
 
-        public void TakeWeaponToHands(WeaponEquipmentSlotType slotType, Action callback = null)
+        public void TakeWeaponToHands(EquipmentSlotType slotType, Action callback = null)
         {
             if(_handsCoroutine != null)
                 UnityEventsProvider.CoroutineStop(_handsCoroutine);

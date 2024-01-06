@@ -26,7 +26,7 @@ namespace FlatLands.CharacterCombat
 
 		private readonly CharacterEquipmentProvider _characterEquipmentProvider;
 		private readonly CharacterAttributesProvider _characterAttributesProvider;
-		private Dictionary<WeaponEquipmentSlotType, CharacterCombatConfig> _equipmentToSlots;
+		private Dictionary<EquipmentSlotType, CharacterCombatConfig> _equipmentToSlots;
 
 		protected override bool IsHoldWeapon => _characterEquipmentProvider?.IsHoldWeapon ?? false;
 		protected bool IsBlockActive { get; private set; }
@@ -55,7 +55,7 @@ namespace FlatLands.CharacterCombat
 		public void Init()
 		{
 			CharacterCombatConfig.Init();
-			_equipmentToSlots = new Dictionary<WeaponEquipmentSlotType, CharacterCombatConfig>();
+			_equipmentToSlots = new Dictionary<EquipmentSlotType, CharacterCombatConfig>();
 			var configs = CharacterCombatConfig.Objects;
 			foreach (var config in configs)
 			{
@@ -339,7 +339,7 @@ namespace FlatLands.CharacterCombat
 			if(!IsHoldWeapon)
 				return;
 
-			_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentWeaponType, out _currentConfig);
+			_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentType, out _currentConfig);
 			_currentWeaponBehaviour = _characterEquipmentProvider.CurrentEquipmentWeaponBehaviour;
 			
 			if (_currentWeaponBehaviour is EquipmentRangedWeaponBehaviour rangedWeaponBehaviour)

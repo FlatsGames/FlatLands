@@ -2,48 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="edb3e00e-03b8-474e-954f-dccf784b6b2b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotType.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotType.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/Items/EquipmentItemBehaviour.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/Items/EquipmentItemBehaviour.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/Items/WeaponMeleeItemConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/Items/WeaponMeleeItemConfig.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/Items/WeaponRangedItemConfig.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/Items/WeaponRangedItemConfig.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FlatLands/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Code/CharacterLocomotionProvider.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Resources/CharacterLocomotionConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterLocomotion/Resources/CharacterLocomotionConfig.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/3D/Models/Brett/Brett.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/3D/Models/Brett/Brett.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Basic_FreeMovement.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Basic_FreeMovement.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Enter.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Enter.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Exit.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Exit.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Loop.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Loop.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Run.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Jump/Simple_Jump_Run.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Simple_Run_Fwd.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Simple_Run_Fwd.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Bwd.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Bwd.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Bwd_R_45.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Bwd_R_45.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Fwd.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Fwd.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Fwd_L_45.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Fwd_L_45.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Fwd_R_45.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Strafe/Simple_Strf_Fwd_R_45.fbx.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Battle_Walk_L.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Battle_Walk_L.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Battle_Walk_R.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Battle_Walk_R.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Bwd.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Bwd.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Bwd_L.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Bwd_L.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Bwd_R.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Bwd_R.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Fwd.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Fwd.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Fwd_L.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Fwd_L.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Fwd_R.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_Fwd_R.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_L.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_L.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_R.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animations/Walk/Simple_Walk_R.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterCombat/Code/CharacterCombatProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Code/CharacterEquipmentProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Resources/CharacterEquipmentConfig.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/CharacterEquipment/Resources/CharacterEquipmentConfig.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Animators/CharacterAnimator.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AmplifyAnimationPack/AnimatorControllers/Character/Character_AnimController.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AmplifyAnimationPack/AnimatorControllers/Character/Character_AnimController.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/AmplifyAnimationPack/Scenes/DemoScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/AmplifyAnimationPack/Scenes/DemoScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Brett_Character].prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CharacterModules/Characters/Prefabs/[Brett_Character].prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/CombatSystem/Code/BaseCombatConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/CombatSystem/Code/BaseCombatConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/BaseEquipmentProvider.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotBehaviour.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/EquipmentSlotBehaviour.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/WeaponEquipmentStateBehaviour.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Game/Modules/Equipment/Code/WeaponEquipmentStateBehaviour.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Models/Weapons.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Models/Weapons.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Models/Wooden Bow.fbx.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Models/Wooden Bow.fbx.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Prefabs/Wooden Bow.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Free medieval weapons/Prefabs/Wooden Bow.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +133,7 @@
       <workItem from="1700577225858" duration="4099000" />
       <workItem from="1703003453045" duration="1788000" />
       <workItem from="1704441509432" duration="632000" />
+      <workItem from="1704529410837" duration="4583000" />
     </task>
     <servers />
   </component>

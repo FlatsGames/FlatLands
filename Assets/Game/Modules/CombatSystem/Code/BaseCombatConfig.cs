@@ -17,7 +17,7 @@ namespace FlatLands.CombatSystem
             = new List<ICombatInternalSetting>();
 
         public string AnimatorSubLayer => _animatorSubLayer;
-        public abstract WeaponEquipmentSlotType Category { get; }
+        public abstract EquipmentSlotType Category { get; }
 
         private Dictionary<Type, ICombatInternalSetting> _internalSettingsByTypes;
 

@@ -39,7 +39,7 @@ namespace FlatLands.CharacterEquipment
          
         }
 
-        public override IWeaponEquipmentSetting GetEquipmentSettings(WeaponEquipmentSlotType slotType)
+        public override IWeaponEquipmentSetting GetEquipmentSettings(EquipmentSlotType slotType)
         { 
             return _config.GetWeaponEquipmentSettings(slotType);
         }
@@ -56,7 +56,7 @@ namespace FlatLands.CharacterEquipment
             }
         }
 
-        private void TakeWeapon(WeaponEquipmentSlotType slotType)
+        private void TakeWeapon(EquipmentSlotType slotType)
         {
             TakeWeaponToHands(slotType);
         }

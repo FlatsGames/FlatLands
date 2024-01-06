@@ -12,8 +12,8 @@ namespace FlatLands.CharacterCombat
     public sealed class CharacterCombatConfig : BaseCombatConfig
     {
         [SerializeField, FoldoutGroup("Main Settings")] 
-        private WeaponEquipmentSlotType _animCategory;
+        private EquipmentSlotType _animCategory;
 
-        public override WeaponEquipmentSlotType Category => _animCategory;
+        public override EquipmentSlotType Category => _animCategory;
     }
 }

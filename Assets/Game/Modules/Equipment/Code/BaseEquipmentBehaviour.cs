@@ -14,14 +14,14 @@ namespace FlatLands.Equipments
 		[SerializeField] private TwoBoneIKConstraint _rightHandConstraint;
 		
 		[SerializeField, ReadOnly] 
-		private Dictionary<WeaponEquipmentSlotType, EquipmentSlotBehaviour> _equipmentSlotsBehaviourPairs;
+		private Dictionary<EquipmentSlotType, EquipmentSlotBehaviour> _equipmentSlotsBehaviourPairs;
 
 		public Transform LeftHandHolder => _leftHandHolder;
 		public Transform RightHandHolder => _rightHandHolder;
 		public TwoBoneIKConstraint LeftHandConstraint => _leftHandConstraint;
 		public TwoBoneIKConstraint RightHandConstraint => _rightHandConstraint;
 
-		public EquipmentSlotBehaviour GetBehaviour(WeaponEquipmentSlotType type)
+		public EquipmentSlotBehaviour GetBehaviour(EquipmentSlotType type)
 		{
 			if (!_equipmentSlotsBehaviourPairs.TryGetValue(type, out var behaviour))
 				return default;
@@ -35,7 +35,7 @@ namespace FlatLands.Equipments
 		private void RefreshSlots()
 		{
 			var behaviours = gameObject.GetComponentsInChildren<EquipmentSlotBehaviour>();
-			_equipmentSlotsBehaviourPairs = new Dictionary<WeaponEquipmentSlotType, EquipmentSlotBehaviour>();
+			_equipmentSlotsBehaviourPairs = new Dictionary<EquipmentSlotType, EquipmentSlotBehaviour>();
 			foreach (var slotBehaviour in behaviours)
 			{
 				_equipmentSlotsBehaviourPairs[slotBehaviour.SlotType] = slotBehaviour;
@@ -44,14 +44,5 @@ namespace FlatLands.Equipments
 #endif
 		
 		
-	}
-
-	public enum WeaponEquipmentSlotType
-	{
-		None = 0,
-		LeftLegSlot = 50,
-		SpineSlot = 100,
-		BeltSlot = 150,
-		BowSlot = 200
 	}
 }
