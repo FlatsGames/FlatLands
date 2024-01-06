@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using DG.Tweening;
-using FlatLands.Architecture;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace FlatLands.Equipments
@@ -38,7 +34,7 @@ namespace FlatLands.Equipments
             }
         }
 
-#region Add / Remove Items
+#region Slot Items
 
         public bool HasSlot(EquipmentSlotType slotType)
         {

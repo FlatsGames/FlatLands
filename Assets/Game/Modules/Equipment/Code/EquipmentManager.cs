@@ -23,27 +23,35 @@ namespace FlatLands.Equipments
             if (itemInSlot != null)
                 RemoveEquipmentItemFromProvider(slotType, targetProvider);
 
-            var parent = targetProvider.GetSlotBehaviour(slotType).PivotTrans;
-            var createdItem = GameObject.Instantiate(equipmentItemConfig.EquipmentItemPrefab, parent);
+            var slotParent = targetProvider.GetSlotBehaviour(slotType).SlotTrans;
+            var createdItem = GameObject.Instantiate(equipmentItemConfig.EquipmentItemPrefab, slotParent, false);
+            slotParent.localPosition = equipmentItemConfig.PosOnBody;
+            slotParent.localRotation = Quaternion.Euler(equipmentItemConfig.RotOnBody);
+            
             targetProvider.SetItemToSlot(slotType, equipmentItemConfig, createdItem);
             OnEquipmentItemAdded?.Invoke(slotType);
         }
         
-        public void RemoveEquipmentItemFromProvider(EquipmentSlotType equipmentSlotType, BaseEquipmentProvider targetProvider)
+        public void RemoveEquipmentItemFromProvider(EquipmentSlotType slotType, BaseEquipmentProvider targetProvider)
         {
             if(targetProvider == null)
                 return;
             
-            if(!targetProvider.HasSlot(equipmentSlotType))
+            if(!targetProvider.HasSlot(slotType))
                 return;
             
-            var itemInSlot = targetProvider.GetItemBehaviourInSlot(equipmentSlotType);
+            var itemInSlot = targetProvider.GetItemBehaviourInSlot(slotType);
             if (itemInSlot == null)
                 return;
-                
+            
             GameObject.Destroy(itemInSlot.gameObject);
-            targetProvider.SetItemToSlot(equipmentSlotType, null,null);
-            OnEquipmentItemRemoved?.Invoke(equipmentSlotType);
+            targetProvider.SetItemToSlot(slotType, null,null);
+            
+            var slotParent = targetProvider.GetSlotBehaviour(slotType).SlotTrans;
+            slotParent.localPosition = Vector3.zero;
+            slotParent.localRotation = Quaternion.identity;
+
+            OnEquipmentItemRemoved?.Invoke(slotType);
         }
     }
 }

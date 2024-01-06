@@ -150,13 +150,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334722252074707839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5844076, y: -0.68391913, z: 0.2836083, w: 0.3320975}
-  m_LocalPosition: {x: 0.000138, y: 0.001532, z: 0.001058}
+  m_LocalRotation: {x: 0.64946055, y: -0.6955717, z: 0.15765317, w: 0.2636787}
+  m_LocalPosition: {x: 0.00031, y: 0.0018, z: 0.00192}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5060143931640090283}
-  m_LocalEulerAnglesHint: {x: 129.09601, y: 11.225998, z: 104.329}
+  m_LocalEulerAnglesHint: {x: 145.818, y: 11.296005, z: 97.41}
 --- !u!1 &416633061776578063
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,13 +1411,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2392693323161959725}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.045009736, y: -0.0058393814, z: 0.12852493, w: 0.99066716}
+  m_LocalPosition: {x: -0, y: -0.00058, z: -0.00027}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8371104641244221393}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5.203, y: 0, z: 14.784}
 --- !u!1 &2418895755861427983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2531,7 +2531,7 @@ MonoBehaviour:
     SerializationNodes: []
   _slotType: 50
   _pivotTransform: {fileID: 5060143931640090283}
-  _equipmentWeaponBehaviour: {fileID: 0}
+  _slotTransform: {fileID: 7679429236171456284}
 --- !u!1 &4342940495077665426
 GameObject:
   m_ObjectHideFlags: 0
@@ -5858,8 +5858,6 @@ MonoBehaviour:
       Data: 
   _leftHandHolder: {fileID: 7583562234302835689}
   _rightHandHolder: {fileID: 6601465001737751176}
-  _leftHandConstraint: {fileID: 0}
-  _rightHandConstraint: {fileID: 0}
 --- !u!114 &5740158124331483382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6338,7 +6336,7 @@ MonoBehaviour:
     SerializationNodes: []
   _slotType: 200
   _pivotTransform: {fileID: 8371104641244221393}
-  _equipmentWeaponBehaviour: {fileID: 0}
+  _slotTransform: {fileID: 7685374240961439589}
 --- !u!1 &9167060222344303121
 GameObject:
   m_ObjectHideFlags: 0

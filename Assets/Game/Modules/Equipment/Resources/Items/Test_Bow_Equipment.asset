@@ -24,3 +24,5 @@ MonoBehaviour:
   _equipmentItemPrefab: {fileID: 765812545390725115, guid: ef5f168b2a7719c47b88b85ef9b4af06,
     type: 3}
   _equipmentSlotType: 200
+  _posOnBody: {x: 0, y: -0.00058, z: -0.00027}
+  _rotOnBody: {x: 5.203, y: 0, z: 14.784}
