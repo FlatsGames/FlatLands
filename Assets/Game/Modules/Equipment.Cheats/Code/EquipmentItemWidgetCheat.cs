@@ -48,13 +48,11 @@ namespace FlatLands.Equipments.Cheats
         private void HandleAddClicked()
         {
             _equipmentManager.AddEquipmentItemToProvider(_config, _characterEquipmentProvider);
-            Debug.Log("Click");
         }
 		
         private void HandleRemoveClicked()
         {
             _equipmentManager.RemoveEquipmentItemFromProvider(_config.SlotType, _characterEquipmentProvider);
-            Debug.Log("Click");
         }
     }
 }

@@ -41,7 +41,7 @@ namespace FlatLands.Equipments
             if (itemInSlot == null)
                 return;
                 
-            GameObject.Destroy(itemInSlot);
+            GameObject.Destroy(itemInSlot.gameObject);
             targetProvider.SetItemToSlot(equipmentSlotType, null,null);
             OnEquipmentItemRemoved?.Invoke(equipmentSlotType);
         }
