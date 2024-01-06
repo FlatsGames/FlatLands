@@ -10,10 +10,12 @@ using FlatLands.EntityControllable;
 using FlatLands.Equipments;
 using FlatLands.GameAttributes;
 using FlatLands.GeneralCamera;
+using FlatLands.Inventory;
 using FlatLands.Items;
 using FlatLands.Locations;
 using FlatLands.Loader;
 using FlatLands.LocationsCamera;
+using FlatLands.LocationsObjects;
 using FlatLands.UI;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
@@ -68,15 +70,23 @@ namespace FlatLands.Main
             //Character Mediator
             _container.Add<CharactersMediatorManager>();
             
-            //ItemsManager
+            //Items
             _container.Add<ItemsManager>();
+            _container.Add<ItemsSpawnManager>();
+            
+            //UseObjects
+            _container.Add<LocationObjectsUseManager>();
             
             //Equipments
             _container.Add<EquipmentManager>();
             
             //GameAttributes
             _container.Add<GameAttributesManager>();
-
+            
+            //Inventory
+            _container.Add<InventoryManager>();
+            _container.Add<InventoryModel>();
+            
             _container.ApplyDependencies();
             
             StartCoroutine(StartLoading());

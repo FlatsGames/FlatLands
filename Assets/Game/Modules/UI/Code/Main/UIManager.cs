@@ -65,6 +65,8 @@ namespace FlatLands.UI
             {
                 uiElement.HandleUpdate();
             }
+
+            UpdateKeys();
         }
 
 #region Windows
@@ -141,6 +143,28 @@ namespace FlatLands.UI
                 return default;
 
             return window;
+        }
+
+        private void UpdateKeys()
+        {
+            var windowGroups = _config.Windows;
+
+            foreach (var pair in windowGroups)
+            {
+                if (!Input.GetKeyDown(pair.Value.WindowKey))
+                    continue;
+
+                var targetWindow = GetOrCreateWindow(pair.Key);
+
+                if (targetWindow.IsWindowActive)
+                {
+                    Hide(pair.Key);
+                }
+                else
+                {
+                    Show(pair.Key);
+                }
+            }
         }
         
 #endregion
