@@ -18,6 +18,7 @@ MonoBehaviour:
     ReferencedUnityObjects:
     - {fileID: 526186048245022270, guid: df04b4a275b3bf6439700be6c797771a, type: 3}
     - {fileID: 7007291720042182984, guid: 7c1c90060f75d3e439b1fd1ca029de05, type: 3}
+    - {fileID: 1859395952548907373, guid: c4f13fa38d60ba14395072de2d506c7d, type: 3}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -42,7 +43,7 @@ MonoBehaviour:
       Data: 
     - Name: 
       Entry: 12
-      Data: 2
+      Data: 3
     - Name: 
       Entry: 7
       Data: 
@@ -85,6 +86,30 @@ MonoBehaviour:
     - Name: _windowKey
       Entry: 3
       Data: 9
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 
+    - Name: $k
+      Entry: 3
+      Data: 210
+    - Name: $v
+      Entry: 7
+      Data: 4|FlatLands.UI.UIWindowGroup, FlatLands.UI
+    - Name: _preload
+      Entry: 5
+      Data: true
+    - Name: _prefab
+      Entry: 10
+      Data: 2
+    - Name: _windowKey
+      Entry: 3
+      Data: 282
     - Name: 
       Entry: 8
       Data: 

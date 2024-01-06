@@ -1,5 +1,4 @@
-﻿using System;
-using FlatLands.Architecture;
+﻿using FlatLands.Architecture;
 using FlatLands.CharacterEquipment;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -22,6 +21,7 @@ namespace FlatLands.Equipments.Cheats
         public void Init(BaseEquipmentItemConfig config, CharacterEquipmentProvider characterEquipmentProvider)
         {
             _config = config;
+            _characterEquipmentProvider = characterEquipmentProvider;
             _addButton.onClick.AddListener(HandleAddClicked);
             _removeButton.onClick.AddListener(HandleRemoveClicked);
         }
@@ -48,11 +48,13 @@ namespace FlatLands.Equipments.Cheats
         private void HandleAddClicked()
         {
             _equipmentManager.AddEquipmentItemToProvider(_config, _characterEquipmentProvider);
+            Debug.Log("Click");
         }
 		
         private void HandleRemoveClicked()
         {
             _equipmentManager.RemoveEquipmentItemFromProvider(_config.SlotType, _characterEquipmentProvider);
+            Debug.Log("Click");
         }
     }
 }

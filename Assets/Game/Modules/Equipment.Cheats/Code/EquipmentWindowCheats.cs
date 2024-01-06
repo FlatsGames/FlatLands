@@ -26,18 +26,28 @@ namespace FlatLands.Equipments.Cheats
 			_characterWidgets = new List<EquipmentItemWidgetCheat>();
 			_allWidgets = new List<EquipmentItemWidgetCheat>();
 
+			BaseEquipmentItemConfig.Init();
+
 			_equipmentManager.OnEquipmentItemAdded += HandleEquipmentItemChanged;
 			_equipmentManager.OnEquipmentItemRemoved += HandleEquipmentItemChanged;
-
-			CreateCharacterWidgets();
-			CreateAllWidgets();
 		}
 
 		public override void Dispose()
 		{
 			_equipmentManager.OnEquipmentItemAdded -= HandleEquipmentItemChanged;
 			_equipmentManager.OnEquipmentItemRemoved -= HandleEquipmentItemChanged;
-			
+		}
+
+		protected override void OnShow()
+		{
+			base.OnShow();
+			CreateCharacterWidgets();
+			CreateAllWidgets();
+		}
+
+		protected override void OnHide()
+		{
+			base.OnHide();
 			DestroyCharacterWidgets();
 			DestroyAllWidgets();
 		}
@@ -47,6 +57,9 @@ namespace FlatLands.Equipments.Cheats
 			var characterEquipmentProvider = _characterManager.CurrentCharacter.GetProvider<CharacterEquipmentProvider>();
 			foreach (var (slotType, (config, behaviour)) in characterEquipmentProvider.EquipmentSlots)
 			{
+				if(config == null)
+					continue;
+
 				var createdWidget = Instantiate(_prefab, _characterContent);
 				createdWidget.Init(config, characterEquipmentProvider);
 				_container.InjectAt(createdWidget);
@@ -59,6 +72,7 @@ namespace FlatLands.Equipments.Cheats
 		{
 			var characterEquipmentProvider = _characterManager.CurrentCharacter.GetProvider<CharacterEquipmentProvider>();
 			var allEquipments = BaseEquipmentItemConfig.Objects;
+			Debug.LogError($"Size: {allEquipments.Count}");
 			foreach (var equipmentItemConfig in allEquipments)
 			{
 				var createdWidget = Instantiate(_prefab, _allContent);
@@ -73,6 +87,7 @@ namespace FlatLands.Equipments.Cheats
 		{
 			foreach (var widget in _characterWidgets)
 			{
+				widget.Dispose();
 				Destroy(widget.gameObject);
 			}
 			
@@ -83,6 +98,7 @@ namespace FlatLands.Equipments.Cheats
 		{
 			foreach (var widget in _allWidgets)
 			{
+				widget.Dispose();
 				Destroy(widget.gameObject);
 			}
 			

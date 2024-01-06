@@ -29,11 +29,11 @@ namespace FlatLands.UI
         internal void Show()
         {
             _root.gameObject.SetActive(true);
-            IsWindowActive = true;
             
             if(IsWindowActive)
                 return;
 
+            IsWindowActive = true;
             OnShow();
             OnWindowShow?.Invoke(this);
         }
@@ -42,13 +42,12 @@ namespace FlatLands.UI
 
         internal void Hide()
         {
-
             _root.gameObject.SetActive(false);
-            IsWindowActive = false;
             
             if(!IsWindowActive)
                 return;
 
+            IsWindowActive = false;
             OnHide();
             OnWindowHide?.Invoke(this);
         }

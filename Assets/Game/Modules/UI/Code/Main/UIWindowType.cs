@@ -4,5 +4,6 @@
     {
         ExampleWindow = 0,
         InventoryWindow = 100,
+        EquipmentCheatWindow = 210,
     }
 }
