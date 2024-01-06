@@ -7,6 +7,7 @@ using FlatLands.CharactersMediator;
 using FlatLands.Conditions;
 using FlatLands.Cursors;
 using FlatLands.EntityControllable;
+using FlatLands.Equipments;
 using FlatLands.GameAttributes;
 using FlatLands.GeneralCamera;
 using FlatLands.Items;
@@ -69,6 +70,9 @@ namespace FlatLands.Main
             
             //ItemsManager
             _container.Add<ItemsManager>();
+            
+            //Equipments
+            _container.Add<EquipmentManager>();
             
             //GameAttributes
             _container.Add<GameAttributesManager>();

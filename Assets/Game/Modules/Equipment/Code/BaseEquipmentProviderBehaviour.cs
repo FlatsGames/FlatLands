@@ -1,25 +1,21 @@
 using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 
 namespace FlatLands.Equipments
 {
-	public abstract class BaseEquipmentBehaviour : SerializedMonoBehaviour
+	public abstract class BaseEquipmentProviderBehaviour : SerializedMonoBehaviour
 	{
 		[SerializeField] private Transform _leftHandHolder;
 		[SerializeField] private Transform _rightHandHolder;
-		
-		[SerializeField] private TwoBoneIKConstraint _leftHandConstraint;
-		[SerializeField] private TwoBoneIKConstraint _rightHandConstraint;
 		
 		[SerializeField, ReadOnly] 
 		private Dictionary<EquipmentSlotType, EquipmentSlotBehaviour> _equipmentSlotsBehaviourPairs;
 
 		public Transform LeftHandHolder => _leftHandHolder;
 		public Transform RightHandHolder => _rightHandHolder;
-		public TwoBoneIKConstraint LeftHandConstraint => _leftHandConstraint;
-		public TwoBoneIKConstraint RightHandConstraint => _rightHandConstraint;
 
 		public EquipmentSlotBehaviour GetBehaviour(EquipmentSlotType type)
 		{
@@ -28,7 +24,12 @@ namespace FlatLands.Equipments
 
 			return behaviour;
 		}
-		
+
+		public List<EquipmentSlotType> GetAllSlots()
+		{
+			return _equipmentSlotsBehaviourPairs.Keys.ToList();
+		}
+
 #if UNITY_EDITOR
 		
 		[Button]
@@ -42,7 +43,6 @@ namespace FlatLands.Equipments
 			}
 		}
 #endif
-		
 		
 	}
 }

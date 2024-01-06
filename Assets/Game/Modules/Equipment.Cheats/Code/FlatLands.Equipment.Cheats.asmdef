@@ -1,0 +1,21 @@
+{
+    "name": "FlatLands.Equipment.Cheats",
+    "rootNamespace": "",
+    "references": [
+        "GUID:268109eae726949449e432e7b577b8c6",
+        "GUID:700f64dacfe35ce41a25b6b73ccc89eb",
+        "GUID:0f23418212482c94983a1cb5b1a6b845",
+        "GUID:343918e9d6f022740918d5e36787fcd2",
+        "GUID:88368031873508145bdc6d523ec40911",
+        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

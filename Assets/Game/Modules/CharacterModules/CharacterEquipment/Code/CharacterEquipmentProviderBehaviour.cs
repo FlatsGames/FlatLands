@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FlatLands.CharacterEquipment
 {
-    public sealed class CharacterEquipmentBehaviour : BaseEquipmentBehaviour, ICharacterBehaviour
+    public sealed class CharacterEquipmentProviderBehaviour : BaseEquipmentProviderBehaviour, ICharacterBehaviour
     {
         public Transform EntityTransform => transform;
     }

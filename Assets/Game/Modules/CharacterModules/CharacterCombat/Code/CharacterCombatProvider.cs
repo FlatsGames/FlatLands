@@ -28,7 +28,8 @@ namespace FlatLands.CharacterCombat
 		private readonly CharacterAttributesProvider _characterAttributesProvider;
 		private Dictionary<EquipmentSlotType, CharacterCombatConfig> _equipmentToSlots;
 
-		protected override bool IsHoldWeapon => _characterEquipmentProvider?.IsHoldWeapon ?? false;
+		// protected override bool IsHoldWeapon => _characterEquipmentProvider?.IsHoldWeapon ?? false;
+		protected override bool IsHoldWeapon => false;
 		protected bool IsBlockActive { get; private set; }
 
 		private CharacterCombatConfig _currentConfig;
@@ -69,12 +70,12 @@ namespace FlatLands.CharacterCombat
 				.GetAttributeHolder(CharacterAttributesProvider.CharacterHolderId)
 				.GetAttribute<AttributeRegeneratedData>(GameAttributeType.Stamina);
 
-			_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged += HandleEquipmentWeaponChanged;
+			//_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged += HandleEquipmentWeaponChanged;
 		}
 		
 		public void Dispose()
 		{
-			_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged -= HandleEquipmentWeaponChanged;
+			//_characterEquipmentProvider.OnCurrentEquipmentWeaponChanged -= HandleEquipmentWeaponChanged;
 		}
 		
 		public void HandleUpdate()
@@ -339,8 +340,8 @@ namespace FlatLands.CharacterCombat
 			if(!IsHoldWeapon)
 				return;
 
-			_equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentType, out _currentConfig);
-			_currentWeaponBehaviour = _characterEquipmentProvider.CurrentEquipmentWeaponBehaviour;
+			// _equipmentToSlots.TryGetValue(_characterEquipmentProvider.CurrentEquipmentType, out _currentConfig);
+			// _currentWeaponBehaviour = _characterEquipmentProvider.CurrentEquipmentWeaponBehaviour;
 			
 			if (_currentWeaponBehaviour is EquipmentRangedWeaponBehaviour rangedWeaponBehaviour)
 				_rangedWeaponBehaviour = rangedWeaponBehaviour;

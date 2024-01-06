@@ -150,13 +150,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334722252074707839}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.5844076, y: -0.68391913, z: 0.2836083, w: 0.3320975}
+  m_LocalPosition: {x: 0.000138, y: 0.001532, z: 0.001058}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5060143931640090283}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 129.09601, y: 11.225998, z: 104.329}
 --- !u!1 &416633061776578063
 GameObject:
   m_ObjectHideFlags: 0
@@ -5807,12 +5807,12 @@ MonoBehaviour:
     SerializationNodes:
     - Name: _equipmentSlotsBehaviourPairs
       Entry: 7
-      Data: 0|System.Collections.Generic.Dictionary`2[[FlatLands.Equipments.WeaponEquipmentSlotType,
+      Data: 0|System.Collections.Generic.Dictionary`2[[FlatLands.Equipments.EquipmentSlotType,
         FlatLands.Equipment],[FlatLands.Equipments.EquipmentSlotBehaviour, FlatLands.Equipment]],
         mscorlib
     - Name: comparer
       Entry: 7
-      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.Equipments.WeaponEquipmentSlotType,
+      Data: 1|System.Collections.Generic.EnumEqualityComparer`1[[FlatLands.Equipments.EquipmentSlotType,
         FlatLands.Equipment]], mscorlib
     - Name: 
       Entry: 12
