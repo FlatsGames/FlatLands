@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27e1e9fb7a99423db559e6c799c18643, type: 3}
+  m_Name: Test_Axe_Equipment
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  _equipmentItemPrefab: {fileID: 5273060194325731944, guid: 68d642ad89bd2884e83b2652fe38071c,
+    type: 3}
+  _equipmentSlotType: 50
+  _posOnBody: {x: 0, y: 0.001, z: 0}
+  _rotOnBody: {x: 43.935, y: -160.712, z: 116.014}
