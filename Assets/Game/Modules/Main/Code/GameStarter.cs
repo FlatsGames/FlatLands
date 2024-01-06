@@ -84,8 +84,8 @@ namespace FlatLands.Main
             _container.Add<GameAttributesManager>();
             
             //Inventory
-            _container.Add<InventoryManager>();
-            _container.Add<InventoryModel>();
+            // _container.Add<InventoryManager>();
+            // _container.Add<InventoryModel>();
             
             _container.ApplyDependencies();
             
